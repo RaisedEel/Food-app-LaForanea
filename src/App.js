@@ -1,5 +1,7 @@
+import DishList from './components/dishes/DishList';
+
 function App() {
-  return <div>Hello World!</div>;
+  return <DishList />;
 }
 
 export default App;
