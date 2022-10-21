@@ -33,8 +33,33 @@ body {
   column-gap: 2.4rem;
 }
 
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .grid--3-cols {
   grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.btn {
+  display: inline-block;
+  padding: 1.2rem 1.6rem;
+  border: none;
+  border-radius: 9px;
+  background-color: #44911b;
+  color: #fff;
+  font-size: 1.8rem;
+  font-family: inherit;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #367416;
 }
 
 /* 
