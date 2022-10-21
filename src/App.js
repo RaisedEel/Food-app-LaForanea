@@ -1,7 +1,7 @@
-import DishList from './components/dishes/DishList';
+import MenuPage from './pages/MenuPage';
 
 function App() {
-  return <DishList />;
+  return <MenuPage />;
 }
 
 export default App;
