@@ -1,0 +1,24 @@
+.categories {
+  display: flex;
+  gap: 0.4rem;
+  list-style: none;
+  grid-column: span 2;
+  grid-row: 1;
+}
+
+.category:link,
+.category:visited {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+  text-decoration: none;
+  border-radius: 9px;
+  transition: all 0.3s;
+}
+
+.category:hover,
+.category:active,
+.category--selected:link,
+.category--selected:visited {
+  background-color: #f97474;
+  color: #fff;
+}

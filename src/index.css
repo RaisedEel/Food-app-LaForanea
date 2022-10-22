@@ -14,7 +14,7 @@ html {
 
 body {
   font-family: 'Lexend', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 400;
   line-height: 1;
   color: #555;
@@ -52,8 +52,9 @@ body {
   border-radius: 9px;
   background-color: #44911b;
   color: #fff;
-  font-size: 1.8rem;
+  font-size: inherit;
   font-family: inherit;
+  font-weight: 500;
   transition: all 0.3s;
   cursor: pointer;
 }

@@ -24,8 +24,11 @@ function DishItem(props) {
             className={classes['dish-input']}
             type='number'
             defaultValue='1'
+            min='1'
+            max='99'
+            step='1'
           />
-          <button className='btn'>Ordenar!</button>
+          <button className='btn'>Agregar</button>
         </form>
       </article>
     </li>

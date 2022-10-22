@@ -1,0 +1,22 @@
+.pagination {
+  grid-column: span 2;
+  grid-row: 3;
+
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.page {
+  border: 1px solid #aaa;
+  border-radius: 9px;
+  padding: 1.2rem 1.6rem;
+}
+
+.icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
