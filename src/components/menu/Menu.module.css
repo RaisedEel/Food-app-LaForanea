@@ -1,0 +1,7 @@
+.menu {
+  grid-column: span 2;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}

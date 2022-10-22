@@ -1,7 +1,4 @@
 .pagination {
-  grid-column: span 2;
-  grid-row: 3;
-
   display: flex;
   gap: 0.8rem;
   justify-content: center;

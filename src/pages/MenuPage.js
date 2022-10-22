@@ -1,15 +1,13 @@
 import { Fragment } from 'react';
-import CategoryMenu from '../components/dishes/CategoryMenu';
-import DishList from '../components/dishes/DishList';
-import DishPage from '../components/dishes/DishPage';
+import Cart from '../components/cart/Cart';
+import Menu from '../components/menu/Menu';
 
 function MenuPage() {
   return (
     <Fragment>
       <div className='container grid grid--3-cols'>
-        <CategoryMenu />
-        <DishList />
-        <DishPage />
+        <Menu />
+        <Cart />
       </div>
     </Fragment>
   );

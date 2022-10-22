@@ -1,6 +1,6 @@
 import DishItem from './DishItem';
 import classes from './DishList.module.css';
-import hamImg from '../../assets/hamburger.jpg';
+import hamImg from '../../../assets/hamburger.jpg';
 
 const dishes = [
   {
