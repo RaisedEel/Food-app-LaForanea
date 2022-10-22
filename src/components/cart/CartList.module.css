@@ -1,0 +1,8 @@
+.cart-list {
+  list-style: none;
+  height: 45rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}

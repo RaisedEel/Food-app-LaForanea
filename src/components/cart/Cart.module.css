@@ -1,4 +1,8 @@
 .cart {
   padding: 2.4rem;
   border-left: 2px solid #f97474;
+
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
 }
