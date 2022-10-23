@@ -11,7 +11,7 @@ function CartForm() {
         <p>Total</p>
       </div>
 
-      <button>Enviar orden</button>
+      <button className='btn'>Enviar orden</button>
     </form>
   );
 }

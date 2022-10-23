@@ -8,7 +8,7 @@
 
   display: grid;
   grid-template-columns: 30fr 70fr;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 
 .cart-item-img-cntr {
@@ -28,7 +28,7 @@
 
 .cart-item-title {
   font-size: 1.6rem;
-  font-weight: 600;
+  font-weight: 700;
   height: 2.8rem;
   flex-shrink: 0;
 }
@@ -53,9 +53,10 @@
 
 .cart-item-total {
   flex: 1;
+  text-align: center;
   margin-left: auto;
   font-size: 1.4rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.4rem 0.8rem;
   border-radius: 9px;
   background-color: #ffd597;
@@ -87,6 +88,14 @@
   stroke: #f97474;
 }
 
+.icon--pink:hover {
+  stroke: #c75d5d;
+}
+
 .icon--green {
   stroke: #44911b;
+}
+
+.icon--green:hover {
+  stroke: #367416;
 }

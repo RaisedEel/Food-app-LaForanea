@@ -5,7 +5,10 @@ import Menu from '../components/menu/Menu';
 function MenuPage() {
   return (
     <Fragment>
-      <div className='container grid grid--3-cols'>
+      <div
+        className='container grid'
+        style={{ gridTemplateColumns: '1fr 40rem' }}
+      >
         <Menu />
         <Cart />
       </div>
