@@ -1,8 +1,11 @@
 .cart-list {
   list-style: none;
-  height: 45rem;
+  padding: 1.2rem;
+  height: 35rem;
+  overflow-y: scroll;
+  /* background-color: #aaa; */
 
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
+  gap: 1.6rem;
 }

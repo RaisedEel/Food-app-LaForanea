@@ -21,6 +21,12 @@ body {
   overflow-x: hidden;
 }
 
+input {
+  font-size: inherit;
+  font-family: inherit;
+  color: inherit;
+}
+
 .container {
   max-width: 120rem;
   margin: 0 auto;

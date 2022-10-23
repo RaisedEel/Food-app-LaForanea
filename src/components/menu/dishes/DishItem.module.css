@@ -71,8 +71,6 @@
 .dish-input {
   display: inline-block;
   width: 100%;
-  font-size: inherit;
-  font-family: inherit;
   color: #aaa;
   text-align: center;
   border: 2px solid #aaa;
