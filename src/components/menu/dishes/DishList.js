@@ -6,7 +6,7 @@ const dishes = [
   {
     id: 1,
     name: 'Hamburguesa con Queso y Tomate',
-    price: '$50',
+    price: '$500',
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
     image: hamImg,
@@ -14,7 +14,7 @@ const dishes = [
   {
     id: 2,
     name: 'Hamburguesa 2',
-    price: '$100',
+    price: '$1999',
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
     image: hamImg,
@@ -22,14 +22,14 @@ const dishes = [
   {
     id: 3,
     name: 'Hamburguesa 3',
-    price: '$25',
+    price: '$4567',
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
     image: hamImg,
   },
   {
     id: 4,
     name: 'Hamburguesa 4',
-    price: '$50',
+    price: '$2002',
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: hamImg,

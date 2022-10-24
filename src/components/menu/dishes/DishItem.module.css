@@ -1,6 +1,6 @@
 .dish {
   height: 36rem;
-  padding: 2.4rem;
+  padding: 2rem;
   border-radius: 11px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
@@ -23,14 +23,15 @@
 .dish-img {
   align-self: center;
   width: 100%;
+  border-radius: 9px;
 }
 
 .dish-header {
   display: flex;
   align-items: flex-start;
-  position: relative;
   height: 4.4rem;
   flex-shrink: 0;
+  /* position: relative; */
 }
 
 .dish-title {
@@ -41,13 +42,16 @@
 }
 
 .dish-price {
+  flex-shrink: 0;
   display: inline-block;
   font-size: 1.8rem;
   font-weight: 500;
+  text-align: center;
+  width: 7rem;
   padding: 0.4rem 0.8rem;
   border-radius: 9px;
   background-color: #ffd597;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   margin-left: auto;
 
   /* position: absolute;
