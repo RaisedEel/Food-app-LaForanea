@@ -22,7 +22,8 @@ body {
 }
 
 input,
-textarea {
+textarea,
+select {
   font-size: inherit;
   font-family: inherit;
   color: inherit;

@@ -1,29 +1,65 @@
-.accordion {
+.accordion-header {
   padding: 3.2rem;
   background-image: linear-gradient(to right, #de7607, #e59139);
   color: #fff;
   border-radius: 13px;
-  margin-bottom: 3.2rem;
 
-  display: flex;
+  display: grid;
+  grid-template-columns: 6rem 1fr 4.4rem;
+  align-items: center;
   gap: 3.2rem;
+}
+
+.logo-img {
+  width: 100%;
 }
 
 .accordion-btn {
   width: 4.4rem;
   height: 4.4rem;
-  align-self: flex-start;
   background-color: transparent;
   border: 2px solid #fff;
   border-radius: 50%;
   cursor: pointer;
+  transition: all 0.3s;
+
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.accordion-btn:hover {
+  transform: scale(1.15);
 }
 
 .accordion-arrow {
   width: 3.2rem;
   height: 3.2rem;
   stroke: #fff;
+}
+
+.accordion-content {
+  overflow: hidden;
+  max-height: 0;
+  border-radius: 0 0 11px 11px;
+  margin-top: -1rem;
+  margin-bottom: 3.2rem;
+  transition: all 0.4s ease-in-out;
+  opacity: 0;
+
+  display: grid;
+  grid-template-columns: 60fr 30fr 10fr;
+  gap: 2.4rem;
+}
+
+.accordion-content--open {
+  max-height: 99rem;
+  padding: 4.2rem 3.2rem 3.2rem;
+  border: 2px solid #aaa;
+  border-top: none;
+  opacity: 1;
+}
+
+.restaurant-img {
+  width: 100%;
 }
