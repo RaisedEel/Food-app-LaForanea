@@ -1,0 +1,29 @@
+.accordion {
+  padding: 3.2rem;
+  background-image: linear-gradient(to right, #de7607, #e59139);
+  color: #fff;
+  border-radius: 13px;
+  margin-bottom: 3.2rem;
+
+  display: flex;
+  gap: 3.2rem;
+}
+
+.accordion-btn {
+  width: 4.4rem;
+  height: 4.4rem;
+  align-self: flex-start;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.accordion-arrow {
+  width: 3.2rem;
+  height: 3.2rem;
+  stroke: #fff;
+}

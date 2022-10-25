@@ -2,6 +2,7 @@ import CartItem from './CartItem';
 import classes from './CartList.module.css';
 
 import imgHam from '../../assets/hamburger.jpg';
+import { Fragment } from 'react';
 
 const cartContent = [
   {
@@ -18,11 +19,14 @@ const cartContent = [
 
 function CartList() {
   return (
-    <ul className={classes['cart-list']}>
-      {cartContent.map((item, index) => (
-        <CartItem {...item} key={index} />
-      ))}
-    </ul>
+    <Fragment>
+      <ul className={classes['cart-list']}>
+        {cartContent.map((item, index) => (
+          <CartItem {...item} key={index} />
+        ))}
+      </ul>
+      <p className={classes['total-items']}>5 items en el carro</p>
+    </Fragment>
   );
 }
 

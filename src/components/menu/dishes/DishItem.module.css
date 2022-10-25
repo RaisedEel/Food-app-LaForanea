@@ -1,17 +1,17 @@
 .dish {
-  height: 36rem;
+  height: 40rem;
   padding: 2rem;
   border-radius: 11px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1.2rem;
 }
 
 .dish-img-container {
   flex-shrink: 0;
-  height: 14rem;
+  height: 18rem;
   border-radius: 9px;
   overflow: hidden;
 
@@ -29,13 +29,13 @@
 .dish-header {
   display: flex;
   align-items: flex-start;
-  height: 4.4rem;
+  height: 4.8rem;
   flex-shrink: 0;
   /* position: relative; */
 }
 
 .dish-title {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   letter-spacing: -0.5px;
   font-weight: 700;
   /* margin-bottom: 0.8rem; */

@@ -5,7 +5,11 @@ const categories = [
   { name: 'Hot dogs', href: '#' },
   { name: 'Pizza', href: '#' },
   { name: 'Tacos', href: '#' },
+  { name: 'Salads', href: '#' },
+  { name: 'Steaks', href: '#' },
+  { name: 'Sea food', href: '#' },
   { name: 'Drinks', href: '#' },
+  { name: 'Desserts', href: '#' },
 ];
 
 function CategoryMenu() {

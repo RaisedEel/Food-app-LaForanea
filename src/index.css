@@ -7,7 +7,7 @@
 }
 
 html {
-  /* Font Size = 10px */
+  /* Font Size: 10px */
   font-size: 62.5%;
   overflow-x: hidden;
 }
@@ -29,9 +29,14 @@ textarea {
 }
 
 .container {
-  max-width: 120rem;
+  max-width: 130rem;
   margin: 0 auto;
   padding: 2.4rem;
+}
+
+.heading-secondary {
+  font-size: 3.6rem;
+  font-weight: 700;
 }
 
 .grid {

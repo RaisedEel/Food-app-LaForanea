@@ -1,18 +1,19 @@
-import { Fragment } from 'react';
 import Cart from '../components/cart/Cart';
 import Menu from '../components/menu/Menu';
+import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 
 function MenuPage() {
   return (
-    <Fragment>
+    <div className='container'>
+      <RestaurantAccordion />
       <div
-        className='container grid'
-        style={{ gridTemplateColumns: '1fr 40rem' }}
+        className='grid'
+        style={{ gridTemplateColumns: 'minmax(0,1fr) 45rem' }}
       >
         <Menu />
         <Cart />
       </div>
-    </Fragment>
+    </div>
   );
 }
 
