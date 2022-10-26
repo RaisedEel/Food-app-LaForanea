@@ -56,7 +56,7 @@
   opacity: 0;
 
   display: grid;
-  grid-template-columns: 60fr 30fr 10fr;
+  grid-template-columns: 60fr 40fr auto;
   gap: 2.4rem;
 }
 
@@ -68,6 +68,12 @@
   opacity: 1;
 }
 
+.restaurant-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
 .restaurant-img {
   width: 100%;
 }
@@ -75,5 +81,5 @@
 .social-links {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  justify-content: space-around;
 }

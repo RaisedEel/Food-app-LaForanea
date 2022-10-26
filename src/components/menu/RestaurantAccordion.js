@@ -3,6 +3,7 @@ import classes from './RestaurantAccordion.module.css';
 
 import logo from '../../assets/logo.png';
 import rest from '../../assets/restaurant.jpg';
+import SocialMediaLink from '../ui/SocialMediaLink';
 
 function RestaurantAccordion() {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,7 @@ function RestaurantAccordion() {
             : classes['accordion-content']
         }
       >
-        <div>
+        <div className={classes['restaurant-info']}>
           <h4>¿Quiénes somos?</h4>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet
@@ -74,8 +75,8 @@ function RestaurantAccordion() {
             lacus, rhoncus ut dolor at, tempor dictum urna.{' '}
           </p>
           <div>
-            <p>755555555</p>
-            <p>www.default.com</p>
+            <p>Tel: 755555555</p>
+            <p>Correo Electrónico: www.default.com</p>
           </div>
         </div>
         <div>
@@ -85,7 +86,12 @@ function RestaurantAccordion() {
             alt='Thr restaurant Default'
           />
         </div>
-        <div className={classes['social-links']}></div>
+        <div className={classes['social-links']}>
+          <SocialMediaLink type='FB' />
+          <SocialMediaLink type='TW' />
+          <SocialMediaLink type='WH' />
+          <SocialMediaLink type='IG' />
+        </div>
       </div>
     </div>
   );
