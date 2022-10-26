@@ -6,10 +6,7 @@ function MenuPage() {
   return (
     <div className='container'>
       <RestaurantAccordion />
-      <div
-        className='grid'
-        style={{ gridTemplateColumns: 'minmax(0,1fr) 45rem' }}
-      >
+      <div className='grid' style={{ gridTemplateColumns: '1fr 45rem' }}>
         <Menu />
         <Cart />
       </div>

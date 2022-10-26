@@ -24,7 +24,14 @@ function RestaurantAccordion() {
         <h2 className='heading-secondary'>
           Restaurant 'El Típico Default' : Restaurante de Comida Rápida
         </h2>
-        <button className={classes['accordion-btn']} onClick={isOpenHandler}>
+        <button
+          className={
+            isOpen
+              ? `${classes['accordion-btn--close']} ${classes['accordion-btn']}`
+              : classes['accordion-btn']
+          }
+          onClick={isOpenHandler}
+        >
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'
@@ -49,6 +56,7 @@ function RestaurantAccordion() {
         }
       >
         <div>
+          <h4>¿Quiénes somos?</h4>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet
             risus sagittis, fermentum dolor id, fermentum nunc. Pellentesque
@@ -59,6 +67,7 @@ function RestaurantAccordion() {
             Curabitur sollicitudin leo justo, vitae viverra risus dignissim
             quis.
           </p>
+          <h4>¿Dónde nos encuentras?</h4>
           <p>
             Nunc ut rutrum libero, id semper quam. Nulla rutrum justo risus, ut
             bibendum massa finibus vel. Ut sed pharetra justo. Mauris justo
@@ -76,6 +85,7 @@ function RestaurantAccordion() {
             alt='Thr restaurant Default'
           />
         </div>
+        <div className={classes['social-links']}></div>
       </div>
     </div>
   );
