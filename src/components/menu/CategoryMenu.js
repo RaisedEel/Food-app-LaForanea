@@ -14,9 +14,9 @@ const categories = [
 
 function CategoryMenu() {
   return (
-    <div className={classes.cntr}>
-      <label>Categorías: </label>
-      <select className={classes.categories}>
+    <div className={classes['categories-container']}>
+      <label htmlFor='categories'>Categorías: </label>
+      <select className={classes.categories} id='categories'>
         {categories.map((category, index) => (
           <option key={index}>{category.name}</option>
         ))}

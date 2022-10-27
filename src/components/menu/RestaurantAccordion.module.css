@@ -49,23 +49,27 @@
 .accordion-content {
   overflow: hidden;
   max-height: 0;
-  border-radius: 0 0 11px 11px;
-  margin-top: -1rem;
   margin-bottom: 3.2rem;
   transition: all 0.4s ease-in-out;
   opacity: 0;
+}
+
+.accordion-content--open {
+  margin-top: -1rem;
+  max-height: 99rem;
+  opacity: 1;
+}
+
+.content-box {
+  overflow: hidden;
+  border-radius: 0 0 11px 11px;
+  border: 2px solid #aaa;
+  border-top: none;
+  padding: 4.2rem 3.2rem 3.2rem;
 
   display: grid;
   grid-template-columns: 60fr 40fr auto;
   gap: 2.4rem;
-}
-
-.accordion-content--open {
-  max-height: 99rem;
-  padding: 4.2rem 3.2rem 3.2rem;
-  border: 2px solid #aaa;
-  border-top: none;
-  opacity: 1;
 }
 
 .restaurant-info {
@@ -74,8 +78,29 @@
   gap: 1.2rem;
 }
 
-.restaurant-img {
+.restaurant-info > p,
+.restaurant-info > address {
+  margin-bottom: 0.8rem;
+  line-height: 1.6;
+}
+
+.restaurant-info address {
+  font-style: normal;
+}
+
+.restaurant-img-cntr {
   width: 100%;
+  border-radius: 11px;
+  background-size: cover;
+  background-position: center;
+}
+
+.contact-info {
+  font-weight: 500;
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .social-links {

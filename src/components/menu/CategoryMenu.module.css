@@ -1,17 +1,10 @@
-/* .categories {
-  list-style: none;
-  overflow-x: scroll;
-  display: flex;
-  gap: 0.4rem;
-} */
-
-.cntr {
+.categories-container {
   display: flex;
   align-items: center;
   gap: 3.2rem;
 }
 
-.cntr label {
+.categories-container label {
   color: #f97474;
   font-weight: 600;
 }
@@ -25,29 +18,5 @@
   display: inline-block;
   padding: 0.8rem 1.6rem;
   border-radius: 9px;
-}
-
-.categories option:hover {
-  background-color: #f97474;
-  color: #fff;
-}
-
-.category:link,
-.category:visited {
-  font-size: 1.8rem;
-  font-weight: 500;
-  white-space: nowrap;
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
-  text-decoration: none;
-  border-radius: 9px;
-  transition: all 0.3s;
-}
-
-.category:hover,
-.category:active,
-.category--selected:link,
-.category--selected:visited {
-  background-color: #f97474;
-  color: #fff;
+  cursor: pointer;
 }

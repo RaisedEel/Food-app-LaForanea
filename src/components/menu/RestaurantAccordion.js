@@ -56,41 +56,41 @@ function RestaurantAccordion() {
             : classes['accordion-content']
         }
       >
-        <div className={classes['restaurant-info']}>
-          <h4>¿Quiénes somos?</h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit amet
-            risus sagittis, fermentum dolor id, fermentum nunc. Pellentesque
-            lacinia orci non neque aliquet blandit. Cras vestibulum iaculis
-            sollicitudin. Suspendisse maximus nisi id luctus aliquet. Nullam
-            fringilla accumsan maximus. Maecenas sed tincidunt mauris, vitae
-            sodales mauris. Nam facilisis vehicula est sodales faucibus.
-            Curabitur sollicitudin leo justo, vitae viverra risus dignissim
-            quis.
-          </p>
-          <h4>¿Dónde nos encuentras?</h4>
-          <p>
-            Nunc ut rutrum libero, id semper quam. Nulla rutrum justo risus, ut
-            bibendum massa finibus vel. Ut sed pharetra justo. Mauris justo
-            lacus, rhoncus ut dolor at, tempor dictum urna.{' '}
-          </p>
-          <div>
-            <p>Tel: 755555555</p>
-            <p>Correo Electrónico: www.default.com</p>
+        <div className={classes['content-box']}>
+          <div className={classes['restaurant-info']}>
+            <h4 className='heading-quaternary'>¿Quiénes somos?</h4>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit
+              amet risus sagittis, fermentum dolor id, fermentum nunc.
+              Pellentesque lacinia orci non neque aliquet blandit. Cras
+              vestibulum iaculis sollicitudin. Suspendisse maximus nisi id
+              luctus aliquet. Nullam fringilla accumsan maximus. Maecenas sed
+              tincidunt mauris, vitae sodales mauris. Nam facilisis vehicula est
+              sodales faucibus. Curabitur sollicitudin leo justo, vitae viverra
+              risus dignissim quis.
+            </p>
+
+            <h4 className='heading-quaternary'>¿Dónde nos encuentras?</h4>
+            <address>
+              Nunc ut rutrum libero, id semper quam. Nulla rutrum justo risus,
+              ut bibendum massa finibus vel. Ut sed pharetra justo. Mauris justo
+              lacus, rhoncus ut dolor at, tempor dictum urna.{' '}
+            </address>
+            <div className={classes['contact-info']}>
+              <p>Correo Electrónico: www.default.com</p>
+              <p>Tel: 755-555-5555</p>
+            </div>
           </div>
-        </div>
-        <div>
-          <img
-            className={classes['restaurant-img']}
-            src={rest}
-            alt='Thr restaurant Default'
-          />
-        </div>
-        <div className={classes['social-links']}>
-          <SocialMediaLink type='FB' />
-          <SocialMediaLink type='TW' />
-          <SocialMediaLink type='WH' />
-          <SocialMediaLink type='IG' />
+          <div
+            className={classes['restaurant-img-cntr']}
+            style={{ backgroundImage: `url(${rest})` }}
+          ></div>
+          <div className={classes['social-links']}>
+            <SocialMediaLink type='FB' url='#' />
+            <SocialMediaLink type='TW' url='#' />
+            <SocialMediaLink type='WH' url='#' />
+            <SocialMediaLink type='IG' url='#' />
+          </div>
         </div>
       </div>
     </div>

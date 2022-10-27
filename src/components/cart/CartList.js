@@ -12,7 +12,7 @@ const cartContent = [
     total: 100,
   },
   { name: 'Cart Item 2', src: imgHam, quantity: 4, total: 200 },
-  { name: 'Cart Item 3', src: imgHam, quantity: 10, total: 50 },
+  { name: 'Cart Item 3', src: imgHam, quantity: 10, total: 9999 },
   { name: 'Cart Item 4', src: imgHam, quantity: 20, total: 2000 },
   { name: 'Cart Item 5', src: imgHam, quantity: 1, total: 50 },
 ];
@@ -25,7 +25,9 @@ function CartList() {
           <CartItem {...item} key={index} />
         ))}
       </ul>
-      <p className={classes['total-items']}>5 items en el carro</p>
+      <p className={classes['total-items']}>
+        {cartContent.length} items en el carro
+      </p>
     </Fragment>
   );
 }
