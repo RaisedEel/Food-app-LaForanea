@@ -6,3 +6,23 @@
   column-gap: 2.4rem;
   row-gap: 1.6rem;
 }
+
+@media (max-width: 62em) {
+  .dish-list {
+    column-gap: 3.2rem;
+    row-gap: 2.4rem;
+  }
+}
+
+@media (max-width: 48em) {
+  .dish-list {
+    column-gap: 2.4rem;
+    row-gap: 1.6rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .dish-list {
+    grid-template-columns: 1fr;
+  }
+}

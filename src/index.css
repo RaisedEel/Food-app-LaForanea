@@ -63,6 +63,10 @@ select {
   grid-template-columns: repeat(4, 1fr);
 }
 
+.grid--menu {
+  grid-template-columns: 1fr 45rem;
+}
+
 .btn {
   display: inline-block;
   padding: 1.2rem 1.6rem;
@@ -80,6 +84,40 @@ select {
 .btn:hover {
   background-color: #367416;
 }
+
+/* 1344px */
+@media (max-width: 84em) {
+  .container {
+    max-width: 120rem;
+  }
+}
+
+/* 1200px */
+@media (max-width: 75em) {
+  html {
+    /* Font-size: 9px */
+    font-size: 56.25%;
+  }
+}
+
+/* 992px */
+@media (max-width: 62em) {
+  html {
+    /* Font-size: 8px */
+    font-size: 50%;
+  }
+
+  .container {
+    padding: 3.2rem;
+  }
+
+  .grid--menu {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 768px */
+/* 576px */
 
 /* 
 - Font sizes (px)
