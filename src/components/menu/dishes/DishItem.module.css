@@ -117,13 +117,8 @@
 }
 
 @media (max-width: 36em) {
-  .dish {
-    height: auto;
-    max-height: 48rem;
-  }
-
   .dish-img-container {
-    height: 24rem;
+    height: 22rem;
   }
 
   .dish-description {

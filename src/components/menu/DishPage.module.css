@@ -8,6 +8,9 @@
   border: 1px solid #aaa;
   border-radius: 9px;
   padding: 1.2rem 1.6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .icon {
