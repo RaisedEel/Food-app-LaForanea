@@ -55,7 +55,7 @@
 
 .accordion-content--open {
   margin-top: -1rem;
-  max-height: 99rem;
+  max-height: 999rem;
   opacity: 1;
   pointer-events: auto;
   visibility: visible;
@@ -94,6 +94,7 @@
   border-radius: 11px;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 .contact-info {
