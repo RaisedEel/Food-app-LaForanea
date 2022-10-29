@@ -32,7 +32,7 @@ select {
 .container {
   max-width: 130rem;
   margin: 0 auto;
-  padding: 2.4rem;
+  padding: 9.6rem 2.4rem 2.4rem;
 }
 
 .heading-secondary {
