@@ -19,7 +19,11 @@ function SearchBar(props) {
           />
         </svg>
       </button>
-      <input className={classes['search-input']} type='search' />
+      <input
+        className={classes['search-input']}
+        type='text'
+        placeholder={props.placeholder}
+      />
     </div>
   );
 }

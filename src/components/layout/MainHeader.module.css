@@ -1,5 +1,6 @@
 .header {
   position: fixed;
+  top: 0;
   height: 7.2rem;
   width: 100%;
   z-index: 10;
@@ -10,7 +11,7 @@
   gap: 1.6rem;
 }
 
-.heading {
+.header-heading {
   align-self: center;
   text-transform: uppercase;
   color: #fff;
@@ -48,4 +49,39 @@
   width: 3.2rem;
   height: 3.2rem;
   stroke: #fff;
+}
+
+@media (max-width: 48em) {
+  .header-searchbar {
+    width: 40rem;
+  }
+}
+
+@media (max-width: 36em) {
+  .header {
+    gap: 0.4rem;
+  }
+
+  .header-img {
+    margin-right: 1.2rem;
+  }
+
+  .header-heading {
+    display: none;
+  }
+
+  .header-searchbar {
+    align-self: center;
+    padding: 0.8rem;
+    font-size: 1.4rem;
+  }
+
+  .header--btn {
+    padding: 0.8rem;
+  }
+
+  .icon {
+    width: 2rem;
+    height: 2rem;
+  }
 }

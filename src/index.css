@@ -31,8 +31,8 @@ select {
 
 .container {
   max-width: 130rem;
-  margin: 0 auto;
-  padding: 9.6rem 2.4rem 2.4rem;
+  margin: 7.2rem auto 0;
+  padding: 2.4rem;
 }
 
 .heading-secondary {
@@ -85,6 +85,10 @@ select {
   background-color: #367416;
 }
 
+/*  */
+/* MEDIA QUERIES */
+/*  */
+
 /* 1344px */
 @media (max-width: 84em) {
   .container {
@@ -116,7 +120,7 @@ select {
   }
 
   .btn {
-    padding: 1.6rem 1.6rem;
+    padding: 1.6rem;
   }
 }
 

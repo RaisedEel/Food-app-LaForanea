@@ -4,11 +4,6 @@
   justify-content: center;
 }
 
-.pagination button {
-  padding-left: 2.4rem;
-  padding-right: 2.4rem;
-}
-
 .page {
   border: 1px solid #aaa;
   border-radius: 9px;

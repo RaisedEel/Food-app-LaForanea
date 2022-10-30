@@ -6,8 +6,11 @@ function MainHeader() {
   return (
     <header className={classes.header}>
       <img className={classes['header-img']} src={logo} alt='La Foránea Logo' />
-      <h2 className={classes.heading}>La Foránea</h2>
-      <SearchBar className={classes['header-searchbar']} />
+      <h2 className={classes['header-heading']}>La Foránea</h2>
+      <SearchBar
+        className={classes['header-searchbar']}
+        placeholder='Busca un restaurant'
+      />
       <button className={classes['header--btn']}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
