@@ -1,20 +1,54 @@
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../../context/cart-slice';
 import classes from './CartItem.module.css';
 
 function CartItem(props) {
+  const dispatch = useDispatch();
+
+  function removeAllItemsHandler() {
+    dispatch(
+      cartActions.removeAllItemsFromCart({
+        id: props.id,
+        itemTotal: props.itemTotal,
+        amount: props.amount,
+      })
+    );
+  }
+
+  function removeOneItemHandler() {
+    dispatch(
+      cartActions.removeItemFromCart({ id: props.id, price: props.price })
+    );
+  }
+
+  function addOneItemHandler() {
+    dispatch(
+      cartActions.addItemsToCart({
+        id: props.id,
+        price: props.price,
+        amount: 1,
+      })
+    );
+  }
+
   return (
     <li>
       <article className={classes['cart-item']}>
         <div className={classes['cart-item-img-cntr']}>
           <img
             className={classes['cart-item-img']}
-            src={props.src}
+            src={props.image}
             alt={props.name}
           />
         </div>
         <div className={classes['cart-item-content']}>
           <p className={classes['cart-item-title']}>{props.name}</p>
           <div className={classes['cart-item-data']}>
-            <button className={classes['btn-icon']}>
+            <button
+              className={classes['btn-icon']}
+              onClick={removeOneItemHandler}
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -30,8 +64,8 @@ function CartItem(props) {
                 />
               </svg>
             </button>
-            <p className={classes['cart-item-qty']}>{props.quantity}</p>
-            <button className={classes['btn-icon']}>
+            <p className={classes['cart-item-qty']}>{props.amount}</p>
+            <button className={classes['btn-icon']} onClick={addOneItemHandler}>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 fill='none'
@@ -47,11 +81,12 @@ function CartItem(props) {
                 />
               </svg>
             </button>
-            <p className={classes['cart-item-total']}>$ {props.total}</p>
+            <p className={classes['cart-item-total']}>$ {props.itemTotal}</p>
           </div>
         </div>
         <button
           className={`${classes['btn-icon']} ${classes['btn-icon--close']}`}
+          onClick={removeAllItemsHandler}
         >
           <svg
             xmlns='http://www.w3.org/2000/svg'

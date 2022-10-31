@@ -1,6 +1,30 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../../../context/cart-slice';
 import classes from './DishItem.module.css';
 
 function DishItem(props) {
+  const dispatch = useDispatch();
+
+  const [itemAmount, setItemAmount] = useState(1);
+
+  function itemAmountInputChangeHandler(event) {
+    setItemAmount(event.target.value);
+  }
+
+  function addItemsToCartHandler() {
+    const item = {
+      id: props.id,
+      name: props.name,
+      price: props.price,
+      amount: itemAmount,
+      image: props.image,
+    };
+
+    dispatch(cartActions.addItemsToCart(item));
+  }
+
   return (
     <li>
       <article className={classes.dish}>
@@ -13,23 +37,23 @@ function DishItem(props) {
         </div>
         <div className={classes['dish-header']}>
           <p className={classes['dish-title']}>{props.name}</p>
-          <span className={classes['dish-price']}>{props.price}</span>
+          <span className={classes['dish-price']}>${props.price}</span>
         </div>
         <p className={classes['dish-description']}>{props.description}</p>
-        <form
-          className={`${classes['dish-form']} grid grid--2-cols`}
-          action='#'
-        >
+        <div className={`${classes['dish-controls']} grid grid--2-cols`}>
           <input
             className={classes['dish-input']}
             type='number'
-            defaultValue='1'
+            value={itemAmount}
             min='1'
             max='99'
             step='1'
+            onChange={itemAmountInputChangeHandler}
           />
-          <button className='btn'>Agregar</button>
-        </form>
+          <button className='btn' onClick={addItemsToCartHandler}>
+            Agregar
+          </button>
+        </div>
       </article>
     </li>
   );

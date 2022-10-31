@@ -53,14 +53,14 @@
 }
 
 .cart-item-total {
-  width: 8rem;
+  width: 9rem;
   text-align: center;
   margin-left: auto;
   font-weight: 600;
   padding: 0.4rem 0.8rem;
   border-radius: 9px;
   background-color: #ffd597;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
 }
 
 .btn-icon {
