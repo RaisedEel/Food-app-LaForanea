@@ -29,6 +29,12 @@ select {
   color: inherit;
 }
 
+.body--fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
 .container {
   max-width: 130rem;
   margin: 7.2rem auto 0;

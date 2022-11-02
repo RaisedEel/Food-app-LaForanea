@@ -1,6 +1,5 @@
 .cart {
-  padding: 2.4rem 0 2.4rem 2.4rem;
-  border-left: 2px solid #f97474;
+  padding: 2.4rem;
 
   display: flex;
   flex-direction: column;

@@ -29,7 +29,8 @@
   padding: 0 1.6rem;
 }
 
-.header--btn {
+.btn--header {
+  position: relative;
   border: none;
   border-radius: 9px;
   background-color: transparent;
@@ -41,7 +42,7 @@
   align-items: center;
 }
 
-.header--btn:hover {
+.btn--header:hover {
   background-color: #c86a06;
 }
 
@@ -78,7 +79,7 @@
     font-size: 1.5rem;
   }
 
-  .header--btn {
+  .btn--header {
     padding: 0.8rem;
   }
 }

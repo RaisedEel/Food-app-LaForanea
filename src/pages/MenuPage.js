@@ -22,7 +22,14 @@ function MenuPage() {
       <RestaurantAccordion />
       <div className='grid grid--menu'>
         <Menu />
-        {showCart && <Cart />}
+        {showCart && (
+          <Cart
+            style={{
+              paddingRight: '0',
+              borderLeft: 'border-left: 2px solid #f97474',
+            }}
+          />
+        )}
       </div>
     </div>
   );

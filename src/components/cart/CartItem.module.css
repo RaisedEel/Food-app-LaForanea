@@ -1,6 +1,6 @@
 .cart-item {
   position: relative;
-  height: 10rem;
+  min-height: 10rem;
   padding: 1.2rem;
   border-radius: 9px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -13,13 +13,9 @@
 
 .cart-item-img-cntr {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 9px;
-}
-
-.cart-item-img {
-  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   border-radius: 9px;
 }
 
@@ -56,6 +52,7 @@
   width: 9rem;
   text-align: center;
   margin-left: auto;
+  color: #444;
   font-weight: 600;
   padding: 0.4rem 0.8rem;
   border-radius: 9px;

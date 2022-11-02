@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialCart = {
   restaurantKey: '',
+  showCart: false,
   cartContent: [],
   amountOfItems: 0,
   totalOfCart: 0,
@@ -11,6 +12,9 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: initialCart,
   reducers: {
+    toggleCart(state) {
+      state.showCart = !state.showCart;
+    },
     resetCart(state) {
       state = initialCart;
     },

@@ -1,8 +1,17 @@
+import { useDispatch } from 'react-redux';
+
+import { cartActions } from '../../context/cart-slice';
 import classes from './MainHeader.module.css';
 import logo from '../../assets/la-foranea-logo.png';
 import SearchBar from '../ui/SearchBar';
 
 function MainHeader() {
+  const dispatch = useDispatch();
+
+  function openCartHandler() {
+    dispatch(cartActions.toggleCart());
+  }
+
   return (
     <header className={classes.header}>
       <img className={classes['header-img']} src={logo} alt='La Foránea Logo' />
@@ -11,7 +20,7 @@ function MainHeader() {
         className={classes['header-searchbar']}
         placeholder='Busca un restaurant'
       />
-      <button className={classes['header--btn']}>
+      <button className={classes['btn--header']} onClick={openCartHandler}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
@@ -27,7 +36,7 @@ function MainHeader() {
           />
         </svg>
       </button>
-      <button className={classes['header--btn']}>
+      <button className={classes['btn--header']}>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           fill='none'
