@@ -38,8 +38,10 @@ function CartItem(props) {
       <article className={classes['cart-item']}>
         <div
           className={classes['cart-item-img-cntr']}
-          style={{ backgroundImage: `url(${hamImg})` }}
-        ></div>
+          // style={{ backgroundImage: `url(${hamImg})` }}
+        >
+          <img src={hamImg} alt='xd' />
+        </div>
         <div className={classes['cart-item-content']}>
           <p className={classes['cart-item-title']}>{props.name}</p>
           <div className={classes['cart-item-data']}>

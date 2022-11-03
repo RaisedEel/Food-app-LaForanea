@@ -17,6 +17,11 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 9px;
+  overflow: hidden;
+}
+
+.cart-item-img-cntr img {
+  width: 100%;
 }
 
 .cart-item-content {
