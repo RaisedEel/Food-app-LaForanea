@@ -1,6 +1,6 @@
 import DishItem from './DishItem';
 import classes from './DishList.module.css';
-import hamImg from '../../../assets/hamburger.jpg';
+// import hamImg from '../../../assets/hamburger.jpg';
 
 const dishes = [
   {
@@ -9,7 +9,8 @@ const dishes = [
     price: 500,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
-    image: hamImg,
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg',
   },
   {
     id: 2,
@@ -17,14 +18,16 @@ const dishes = [
     price: 1999,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
-    image: hamImg,
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg',
   },
   {
     id: 3,
     name: 'Hamburguesa 3',
     price: 4567,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
-    image: hamImg,
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg',
   },
   {
     id: 4,
@@ -32,7 +35,8 @@ const dishes = [
     price: 2002,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
-    image: hamImg,
+    image:
+      'https://upload.wikimedia.org/wikipedia/commons/4/4d/Cheeseburger.jpg',
   },
 ];
 
