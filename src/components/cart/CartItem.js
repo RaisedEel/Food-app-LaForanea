@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 
 import { cartActions } from '../../context/cart-slice';
 import classes from './CartItem.module.css';
+import hamImg from '../../assets/hamburger.jpg';
 
 function CartItem(props) {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ function CartItem(props) {
       <article className={classes['cart-item']}>
         <div
           className={classes['cart-item-img-cntr']}
-          style={{ backgroundImage: `url(${props.image})` }}
+          style={{ backgroundImage: `url(${hamImg})` }}
         ></div>
         <div className={classes['cart-item-content']}>
           <p className={classes['cart-item-title']}>{props.name}</p>
