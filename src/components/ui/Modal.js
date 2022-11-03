@@ -15,7 +15,7 @@ function Modal(props) {
 
   return (
     <div className={classes.overlay}>
-      <div className={classes.modal}>
+      <div className={classes.modal} style={{ maxWidth: props.preferredSize }}>
         <button className={classes['btn--close']} onClick={props.onClose}>
           <svg
             xmlns='http://www.w3.org/2000/svg'

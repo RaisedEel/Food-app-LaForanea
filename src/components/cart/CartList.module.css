@@ -1,7 +1,7 @@
 .cart-list {
   list-style: none;
   padding: 1.2rem;
-  max-height: 36rem;
+  max-height: 39rem;
   overflow-y: auto;
 
   display: flex;

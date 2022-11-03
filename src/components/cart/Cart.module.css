@@ -5,3 +5,9 @@
   flex-direction: column;
   gap: 3.2rem;
 }
+
+@media (max-width: 36em) {
+  .cart {
+    padding: 0;
+  }
+}

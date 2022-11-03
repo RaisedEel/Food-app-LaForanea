@@ -1,21 +1,18 @@
+import { Fragment } from 'react';
+
 import CartItem from './CartItem';
 import classes from './CartList.module.css';
 
-import { Fragment } from 'react';
-import { useSelector } from 'react-redux';
-
-function CartList() {
-  const { cartContent, amountOfItems } = useSelector((state) => state.cart);
-
+function CartList(props) {
   return (
     <Fragment>
       <ul className={classes['cart-list']}>
-        {cartContent.map((item) => (
+        {props.items.map((item) => (
           <CartItem {...item} key={item.id} />
         ))}
       </ul>
       <p className={classes['total-items']}>
-        {amountOfItems} items en el carro
+        {props.amountOfItems} items en el carro
       </p>
     </Fragment>
   );

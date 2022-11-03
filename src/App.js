@@ -17,7 +17,11 @@ function App() {
   return (
     <Fragment>
       {showCart && (
-        <Modal title='Carrito' onClose={closeModalHandler}>
+        <Modal
+          title='Carrito'
+          onClose={closeModalHandler}
+          preferredSize='80rem'
+        >
           <Cart />
         </Modal>
       )}
