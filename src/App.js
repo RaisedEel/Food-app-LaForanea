@@ -18,7 +18,7 @@ function App() {
     <Fragment>
       {showCart && (
         <Modal
-          title='Carrito'
+          title='Mi Orden'
           onClose={closeModalHandler}
           preferredSize='80rem'
         >

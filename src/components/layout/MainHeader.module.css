@@ -30,7 +30,6 @@
 }
 
 .btn--header {
-  position: relative;
   border: none;
   border-radius: 9px;
   background-color: transparent;
@@ -43,6 +42,23 @@
 }
 
 .btn--header:hover {
+  background-color: #c86a06;
+}
+
+.btn-cart-cntr {
+  position: relative;
+  display: flex;
+}
+
+.amount {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9px;
+  font-size: 1.2rem;
+  color: #fff;
+  border: 1px solid #fff;
   background-color: #c86a06;
 }
 

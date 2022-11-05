@@ -1,6 +1,6 @@
 import DishList from './dishes/DishList';
 import CategoryMenu from './CategoryMenu';
-import DishPage from './DishPage';
+import DishPagination from './DishPagination';
 
 import classes from './Menu.module.css';
 
@@ -9,7 +9,7 @@ function Menu() {
     <div className={classes.menu}>
       <CategoryMenu />
       <DishList />
-      <DishPage />
+      <DishPagination dishesAmount='6' />
     </div>
   );
 }

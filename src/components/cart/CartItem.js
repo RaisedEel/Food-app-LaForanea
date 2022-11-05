@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { cartActions } from '../../context/cart-slice';
@@ -104,4 +105,4 @@ function CartItem(props) {
   );
 }
 
-export default CartItem;
+export default memo(CartItem);

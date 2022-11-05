@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import classes from './RestaurantAccordion.module.css';
 
-import logo from '../../assets/logo.png';
-import rest from '../../assets/restaurant.jpg';
 import SocialMediaLink from '../ui/SocialMediaLink';
 
-function RestaurantAccordion() {
+function RestaurantAccordion(props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const isOpenHandler = () => {
@@ -18,12 +16,12 @@ function RestaurantAccordion() {
         <div>
           <img
             className={classes['logo-img']}
-            src={logo}
-            alt='Logo de Restaurant'
+            src={props.data.logo}
+            alt={`Logo de ${props.data.name}`}
           />
         </div>
         <h2 className='heading-secondary'>
-          Restaurant 'El Típico Default' : Restaurante de Comida Rápida
+          {`${props.data.name} : ${props.data.type}`}
         </h2>
         <button
           className={
@@ -59,37 +57,23 @@ function RestaurantAccordion() {
         <div className={classes['content-box']}>
           <div className={classes['restaurant-info']}>
             <h4 className='heading-quaternary'>¿Quiénes somos?</h4>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit
-              amet risus sagittis, fermentum dolor id, fermentum nunc.
-              Pellentesque lacinia orci non neque aliquet blandit. Cras
-              vestibulum iaculis sollicitudin. Suspendisse maximus nisi id
-              luctus aliquet. Nullam fringilla accumsan maximus. Maecenas sed
-              tincidunt mauris, vitae sodales mauris. Nam facilisis vehicula est
-              sodales faucibus. Curabitur sollicitudin leo justo, vitae viverra
-              risus dignissim quis.
-            </p>
+            <p>{props.data.description}</p>
 
             <h4 className='heading-quaternary'>¿Dónde nos encuentras?</h4>
-            <address>
-              Nunc ut rutrum libero, id semper quam. Nulla rutrum justo risus,
-              ut bibendum massa finibus vel. Ut sed pharetra justo. Mauris justo
-              lacus, rhoncus ut dolor at, tempor dictum urna.{' '}
-            </address>
+            <address>{props.data.address}</address>
             <div className={classes['contact-info']}>
-              <p>Correo Electrónico: www.default.com</p>
-              <p>Tel: 755-555-5555</p>
+              <p>Correo Electrónico: {props.data.email}</p>
+              <p>Tel: {props.data.cellphone}</p>
             </div>
           </div>
           <div
             className={classes['restaurant-img-cntr']}
-            style={{ backgroundImage: `url(${rest})` }}
+            style={{ backgroundImage: `url(${props.data.photo})` }}
           ></div>
           <div className={classes['social-links']}>
-            <SocialMediaLink type='FB' url='#' />
-            <SocialMediaLink type='TW' url='#' />
-            <SocialMediaLink type='WH' url='#' />
-            <SocialMediaLink type='IG' url='#' />
+            {props.data.social.map((link, index) => (
+              <SocialMediaLink key={index} {...link} />
+            ))}
           </div>
         </div>
       </div>
