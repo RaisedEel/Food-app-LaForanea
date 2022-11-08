@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { cartActions } from '../../context/cart-slice';
 import classes from './MainHeader.module.css';
-import logo from '../../assets/la-foranea-logo.png';
+import logo from '../../assets/images/la-foranea-logo.png';
 import SearchBar from '../ui/SearchBar';
 
 function MainHeader() {
@@ -16,7 +16,9 @@ function MainHeader() {
   return (
     <header className={classes.header}>
       <img className={classes['header-img']} src={logo} alt='La Foránea Logo' />
-      <h2 className={classes['header-heading']}>La Foránea</h2>
+      <h1 className={`${classes['header-heading']} heading-primary`}>
+        La Foránea
+      </h1>
       <SearchBar
         className={classes['header-searchbar']}
         placeholder='Busca un restaurant'

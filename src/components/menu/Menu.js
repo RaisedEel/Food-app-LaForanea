@@ -4,10 +4,10 @@ import DishPagination from './DishPagination';
 
 import classes from './Menu.module.css';
 
-function Menu() {
+function Menu(props) {
   return (
     <div className={classes.menu}>
-      <CategoryMenu />
+      <CategoryMenu data={props.categories} />
       <DishList />
       <DishPagination dishesAmount='6' />
     </div>

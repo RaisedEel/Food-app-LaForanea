@@ -4,13 +4,13 @@ import DishItem from './DishItem';
 import classes from './DishList.module.css';
 
 function DishList() {
-  const { menu, currentPage, amountPerPage } = useSelector(
+  const { slice, currentPage, amountPerPage } = useSelector(
     (state) => state.menu
   );
 
   return (
     <ul className={classes['dish-list']}>
-      {menu
+      {slice
         .slice((currentPage - 1) * amountPerPage, amountPerPage * currentPage)
         .map((dish) => (
           <DishItem {...dish} key={dish.id} />

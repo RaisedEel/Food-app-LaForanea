@@ -6,7 +6,6 @@ import classes from './DishItem.module.css';
 
 function DishItem(props) {
   const dispatch = useDispatch();
-
   const [itemAmount, setItemAmount] = useState(1);
 
   function itemAmountInputChangeHandler(event) {

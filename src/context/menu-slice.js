@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialMenu = {
   restaurantId: '',
   menu: [],
+  slice: [],
+  currentCategory: '',
   currentPage: 1,
-  amountOfDishes: 0,
   amountPerPage: 4,
 };
 
@@ -14,10 +15,16 @@ const menuSlice = createSlice({
   reducers: {
     setMenu(state, action) {
       state.menu = action.payload;
-      state.amountOfDishes = action.payload.length;
+    },
+    setCategory(state, action) {
+      state.currentCategory = action.payload;
+      state.slice = state.menu.filter(
+        (dish) => dish.category === action.payload
+      );
+      state.currentPage = 1;
     },
     increasePage(state) {
-      if (state.currentPage >= state.amountOfDishes / state.amountPerPage) {
+      if (state.currentPage >= state.slice.length / state.amountPerPage) {
         return;
       }
 
@@ -31,12 +38,12 @@ const menuSlice = createSlice({
       state.currentPage--;
     },
     goToPage(state, action) {
-      if (action.payload <= state.amountOfDishes / state.amountPerPage) {
+      if (action.payload <= state.slice.length / state.amountPerPage) {
         state.currentPage = action.payload;
         return;
       }
 
-      state.currentPage = Math.ceil(state.amountOfDishes / state.amountPerPage);
+      state.currentPage = Math.ceil(state.slice.length / state.amountPerPage);
     },
   },
 });

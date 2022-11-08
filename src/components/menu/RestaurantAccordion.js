@@ -20,7 +20,7 @@ function RestaurantAccordion(props) {
             alt={`Logo de ${props.data.name}`}
           />
         </div>
-        <h2 className='heading-secondary'>
+        <h2 className='heading-secondary' style={{ color: '#fff' }}>
           {`${props.data.name} : ${props.data.type}`}
         </h2>
         <button
@@ -56,10 +56,10 @@ function RestaurantAccordion(props) {
       >
         <div className={classes['content-box']}>
           <div className={classes['restaurant-info']}>
-            <h4 className='heading-quaternary'>¿Quiénes somos?</h4>
+            <h3 className='heading-ternary'>¿Quiénes somos?</h3>
             <p>{props.data.description}</p>
 
-            <h4 className='heading-quaternary'>¿Dónde nos encuentras?</h4>
+            <h3 className='heading-ternary'>¿Dónde nos encuentras?</h3>
             <address>{props.data.address}</address>
             <div className={classes['contact-info']}>
               <p>Correo Electrónico: {props.data.email}</p>
