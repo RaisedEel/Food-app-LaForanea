@@ -1,14 +1,9 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { menuActions } from '../../context/menu-slice';
 import classes from './CategoryMenu.module.css';
 
 function CategoryMenu(props) {
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(menuActions.setCategory(props.data[0]));
-  }, [dispatch, props.data]);
 
   function changeCategoryHandler(event) {
     dispatch(menuActions.setCategory(event.target.value));

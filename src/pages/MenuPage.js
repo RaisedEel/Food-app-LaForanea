@@ -47,6 +47,7 @@ function MenuPage() {
 
   useEffect(() => {
     dispatch(menuActions.setMenu(menu));
+    dispatch(menuActions.setCategory(restaurant.categories[0]));
   }, [dispatch]);
 
   return (
