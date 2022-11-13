@@ -1,10 +1,74 @@
 .restaurant-item {
+  height: 42rem;
   padding: 1.2rem;
+  border-radius: 11px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s;
+
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 0.8rem;
 }
 
-.restaurant-logo {
+.restaurant-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+}
+
+.restaurant-rating {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.rating-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+  fill: #fcc419;
+}
+
+.restaurant-photo-cntr {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 18rem;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.restaurant-photo {
   width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.restaurant-subheading {
+  align-self: flex-start;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  background-color: #ffd597;
+}
+
+.restaurant-heading {
+  font-size: 2.4rem;
+}
+
+.restaurant-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.restaurant-item a:link,
+.restaurant-item a:visited {
+  margin-top: auto;
 }

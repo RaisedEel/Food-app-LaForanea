@@ -41,6 +41,7 @@ select {
   padding: 2.4rem;
 }
 
+.heading,
 .heading-primary,
 .heading-secondary,
 .heading-ternary,
@@ -90,7 +91,9 @@ select {
   grid-template-columns: 1fr 45rem;
 }
 
-.btn {
+.btn,
+.btn:link,
+.btn:visited {
   display: inline-block;
   padding: 1.2rem 1.6rem;
   border: none;
@@ -100,11 +103,14 @@ select {
   font-size: inherit;
   font-family: inherit;
   font-weight: 500;
+  text-align: center;
+  text-decoration: none;
   transition: all 0.3s;
   cursor: pointer;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:active {
   background-color: #367416;
 }
 
