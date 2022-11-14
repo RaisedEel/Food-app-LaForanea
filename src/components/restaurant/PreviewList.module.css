@@ -1,0 +1,9 @@
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.preview-link {
+  align-self: flex-end;
+}

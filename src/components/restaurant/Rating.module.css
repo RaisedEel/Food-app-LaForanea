@@ -1,0 +1,20 @@
+.restaurant-rating {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.restaurant-reviews {
+  font-size: 1.4rem;
+  color: #777;
+}
+
+.rating-icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.rating-icon--filled {
+  fill: #fcc419;
+}

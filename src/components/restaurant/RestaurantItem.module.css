@@ -15,19 +15,6 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
 }
 
-.restaurant-rating {
-  display: flex;
-  align-items: flex-end;
-  gap: 0.4rem;
-  margin-bottom: 1.2rem;
-}
-
-.rating-icon {
-  width: 1.6rem;
-  height: 1.6rem;
-  fill: #fcc419;
-}
-
 .restaurant-photo-cntr {
   display: flex;
   align-items: center;

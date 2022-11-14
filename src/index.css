@@ -144,6 +144,11 @@ select {
     padding: 3.2rem;
   }
 
+  .grid--4-cols,
+  .grid--3-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .grid--menu {
     grid-template-columns: 1fr;
   }
@@ -164,6 +169,12 @@ select {
 @media (max-width: 36em) {
   .heading-secondary {
     font-size: 3.4rem;
+  }
+
+  .grid--2-cols,
+  .grid--3-cols,
+  .grid--4-cols {
+    grid-template-columns: 1fr;
   }
 }
 

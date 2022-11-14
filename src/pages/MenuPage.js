@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import logoImg from '../assets/images/logo.png';
 import photo from '../assets/images/restaurant.jpg';
@@ -10,6 +9,7 @@ import Cart from '../components/cart/Cart';
 import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
+import ArrowLink from '../components/ui/ArrowLink';
 
 const restaurant = {
   id: 'a1',
@@ -53,7 +53,9 @@ function MenuPage() {
 
   return (
     <div className='container'>
-      <Link to='/'>Regresar</Link>
+      <ArrowLink to='/' style={{ marginBottom: '2.4rem' }}>
+        Regresar
+      </ArrowLink>
       <RestaurantAccordion data={restaurant} />
       <div className='grid grid--menu'>
         <Menu categories={restaurant.categories} />
