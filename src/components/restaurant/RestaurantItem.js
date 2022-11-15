@@ -1,10 +1,16 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Rating from './Rating';
 import classes from './RestaurantItem.module.css';
 
 function RestaurantItem(props) {
+  const navigate = useNavigate();
+
+  function onSelectionHandler() {
+    navigate('/menu');
+  }
+
   return (
-    <li>
+    <li onClick={onSelectionHandler}>
       <article className={classes['restaurant-item']}>
         <div className={classes['restaurant-photo-cntr']}>
           <img
@@ -20,9 +26,6 @@ function RestaurantItem(props) {
         </p>
         <Rating rating={props.rating[0] - 1} reviews={props.rating[1]} />
         <p className={classes['restaurant-description']}>{props.description}</p>
-        <Link className='btn' to='/menu'>
-          Ver Menú
-        </Link>
       </article>
     </li>
   );

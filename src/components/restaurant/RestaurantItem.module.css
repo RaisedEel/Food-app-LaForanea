@@ -1,8 +1,9 @@
 .restaurant-item {
-  height: 42rem;
+  height: 38rem;
   padding: 1.2rem;
   border-radius: 11px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
   transition: all 0.4s;
 
   display: flex;
@@ -12,14 +13,14 @@
 
 .restaurant-item:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .restaurant-photo-cntr {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 18rem;
+  height: 20rem;
   border-radius: 9px;
   overflow: hidden;
 }

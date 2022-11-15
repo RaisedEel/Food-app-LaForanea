@@ -7,6 +7,7 @@ import './index.css';
 import App from './App';
 import Layout from './components/layout/Layout';
 import store from './context/store';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,6 +15,7 @@ root.render(
     <BrowserRouter>
       <Provider store={store}>
         <Layout>
+          <ScrollToTop />
           <App />
         </Layout>
       </Provider>

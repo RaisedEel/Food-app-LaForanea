@@ -7,6 +7,7 @@ import Cart from './components/cart/Cart';
 import Modal from './components/ui/Modal';
 import MenuPage from './pages/MenuPage';
 import LandingPage from './pages/LandingPage';
+import RestaurantListPage from './pages/RestaurantListPage';
 
 function App() {
   const showCart = useSelector((state) => state.cart.showCart);
@@ -29,6 +30,7 @@ function App() {
       )}
       <Routes>
         <Route path='/' element={<LandingPage />} />
+        <Route path='/results' element={<RestaurantListPage />} />
         <Route path='/menu' element={<MenuPage />} />
       </Routes>
     </Fragment>

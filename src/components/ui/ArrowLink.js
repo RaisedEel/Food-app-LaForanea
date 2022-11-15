@@ -5,6 +5,7 @@ function ArrowLink(props) {
   return (
     <Link
       to={props.to}
+      onClick={props.onClick}
       className={`${classes.link} ${props.className}`}
       style={props.style}
     >
