@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { elements: [], size: 0 };
+const initialState = { name: '', elements: [], size: 0 };
 
 const restaurantsSlice = createSlice({
   name: 'restaurants',
@@ -10,8 +10,9 @@ const restaurantsSlice = createSlice({
       state = initialState;
     },
     setRestaurants(state, action) {
-      state.elements = action.payload;
-      state.size = action.payload.length;
+      state.name = action.payload.name;
+      state.elements = action.payload.elements;
+      state.size = action.payload.elements.length;
     },
   },
 });

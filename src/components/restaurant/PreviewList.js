@@ -9,7 +9,12 @@ function PreviewList(props) {
   const dispatch = useDispatch();
 
   function setRestaurantsHandler() {
-    dispatch(restaurantsActions.setRestaurants(props.data));
+    dispatch(
+      restaurantsActions.setRestaurants({
+        name: props.title,
+        elements: props.data,
+      })
+    );
   }
 
   return (
@@ -18,7 +23,7 @@ function PreviewList(props) {
       <RestaurantList data={props.data.slice(0, 6)} />
       {props.data.length > 6 && (
         <ArrowLink
-          to='results'
+          to={`search/${props.title.toLowerCase()}`}
           className={classes['preview-link']}
           onClick={setRestaurantsHandler}
           right

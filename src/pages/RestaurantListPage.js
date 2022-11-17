@@ -20,7 +20,7 @@ function RestaurantListPage() {
         Regresar
       </ArrowLink>
       <h2 className='heading-secondary'>
-        Restaurantes ({restaurants.size} resultados)
+        {restaurants.name} ({restaurants.size} resultados)
       </h2>
       <RestaurantList data={restaurants.elements} />
     </div>

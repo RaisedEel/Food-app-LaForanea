@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { cartActions } from './context/cart-slice';
 import Cart from './components/cart/Cart';
@@ -29,9 +29,10 @@ function App() {
         </Modal>
       )}
       <Routes>
-        <Route path='/' element={<LandingPage />} />
-        <Route path='/results' element={<RestaurantListPage />} />
-        <Route path='/menu' element={<MenuPage />} />
+        <Route path='*' element={<Navigate replace to='/welcome' />} />
+        <Route path='/welcome' element={<LandingPage />} />
+        <Route path='/search/:term' element={<RestaurantListPage />} />
+        <Route path='/restaurant/:restaurantCode' element={<MenuPage />} />
       </Routes>
     </Fragment>
   );

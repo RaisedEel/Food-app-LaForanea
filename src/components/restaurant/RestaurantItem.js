@@ -6,7 +6,7 @@ function RestaurantItem(props) {
   const navigate = useNavigate();
 
   function onSelectionHandler() {
-    navigate('/menu');
+    navigate(`restaurant/${props.id}`);
   }
 
   return (
