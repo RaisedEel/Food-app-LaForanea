@@ -1,9 +1,14 @@
+.restaurant-link:link,
+.restaurant-link:visited {
+  color: currentColor;
+  text-decoration: none;
+}
+
 .restaurant-item {
   height: 38rem;
   padding: 1.2rem;
   border-radius: 11px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  cursor: pointer;
   transition: all 0.4s;
 
   display: flex;
@@ -44,6 +49,11 @@
 
 .restaurant-heading {
   font-size: 2.4rem;
+  transition: all 0.4s;
+}
+
+.restaurant-item:hover .restaurant-heading {
+  color: #e18420;
 }
 
 .restaurant-description {

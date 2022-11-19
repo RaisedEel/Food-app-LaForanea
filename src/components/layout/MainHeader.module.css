@@ -11,13 +11,20 @@
   gap: 1.6rem;
 }
 
-.header-heading {
-  align-self: center;
-  color: #fff;
+.header-heading:link,
+.header-heading:visited {
+  text-decoration: none;
+  display: flex;
+  gap: 1.6rem;
 }
 
 .header-img {
   height: 100%;
+}
+
+.header-heading h1 {
+  align-self: center;
+  color: #fff;
 }
 
 .header-searchbar {
@@ -79,17 +86,14 @@
     gap: 0.4rem;
   }
 
-  .header-img {
-    margin-right: 1.2rem;
-  }
-
-  .header-heading {
+  .header-heading h1 {
     display: none;
   }
 
   .header-searchbar {
     align-self: center;
     flex: 1;
+    margin-left: 1.2rem;
     padding: 0.8rem 1.2rem;
     font-size: 1.5rem;
   }

@@ -18,12 +18,12 @@ function PreviewList(props) {
   }
 
   return (
-    <div className={classes.preview}>
+    <section className={classes.preview}>
       <h2 className='heading-secondary'>{props.title}</h2>
       <RestaurantList data={props.data.slice(0, 6)} />
       {props.data.length > 6 && (
         <ArrowLink
-          to={`search/${props.title.toLowerCase()}`}
+          to={`/search/${props.title.toLowerCase()}`}
           className={classes['preview-link']}
           onClick={setRestaurantsHandler}
           right
@@ -31,7 +31,7 @@ function PreviewList(props) {
           Ver Todos
         </ArrowLink>
       )}
-    </div>
+    </section>
   );
 }
 

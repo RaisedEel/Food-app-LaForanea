@@ -23,7 +23,7 @@ function App() {
         <Modal
           title='Mi Orden'
           onClose={closeModalHandler}
-          preferredSize='80rem'
+          preferredWidth='80rem'
         >
           <Cart />
         </Modal>

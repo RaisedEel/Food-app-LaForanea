@@ -1,0 +1,11 @@
+.dish-view {
+  padding: 1.2rem 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.dish-view img {
+  border-radius: 9px;
+}

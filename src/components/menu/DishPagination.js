@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 
 import { menuActions } from '../../context/menu-slice';
-import classes from './DishPage.module.css';
+import classes from './DishPagination.module.css';
 
 function DishPagination() {
   const { currentPage } = useSelector((state) => state.menu);

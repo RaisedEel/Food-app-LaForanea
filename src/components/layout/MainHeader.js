@@ -4,6 +4,7 @@ import { cartActions } from '../../context/cart-slice';
 import classes from './MainHeader.module.css';
 import logo from '../../assets/images/la-foranea-logo.png';
 import SearchBar from '../ui/SearchBar';
+import { Link } from 'react-router-dom';
 
 function MainHeader() {
   const { amountOfItems } = useSelector((state) => state.cart);
@@ -15,10 +16,14 @@ function MainHeader() {
 
   return (
     <header className={classes.header}>
-      <img className={classes['header-img']} src={logo} alt='La Foránea Logo' />
-      <h1 className={`${classes['header-heading']} heading-primary`}>
-        La Foránea
-      </h1>
+      <Link to='/welcome' className={classes['header-heading']}>
+        <img
+          className={classes['header-img']}
+          src={logo}
+          alt='La Foránea Logo'
+        />
+        <h1 className='heading-primary'>La Foránea</h1>
+      </Link>
       <SearchBar
         className={classes['header-searchbar']}
         placeholder='Busca un restaurant'

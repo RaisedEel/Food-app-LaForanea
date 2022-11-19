@@ -10,6 +10,7 @@ import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
 import ArrowLink from '../components/ui/ArrowLink';
+import { useNavigate } from 'react-router-dom';
 
 const restaurant = {
   id: 'a1',
@@ -34,6 +35,7 @@ const restaurant = {
 function MenuPage() {
   const [showCart, setShowCart] = useState(window.innerWidth > 992);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function showCartHandler() {
     setShowCart(window.innerWidth > 992);
@@ -53,7 +55,12 @@ function MenuPage() {
 
   return (
     <div className='container'>
-      <ArrowLink to='/' style={{ marginBottom: '2.4rem' }}>
+      <ArrowLink
+        onClick={() => {
+          navigate(-1);
+        }}
+        style={{ marginBottom: '2.4rem' }}
+      >
         Regresar
       </ArrowLink>
       <RestaurantAccordion data={restaurant} />
