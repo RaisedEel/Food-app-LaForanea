@@ -1,5 +1,7 @@
 import restaurant from '../assets/images/restaurant.jpg';
+import Carousel from '../components/landing/Carousel';
 import PreviewList from '../components/restaurant/PreviewList';
+import Banner from '../components/ui/Banner';
 
 const restaurants = [
   {
@@ -67,6 +69,23 @@ const restaurants = [
 function LandingPage() {
   return (
     <div className='container'>
+      <Carousel>
+        <Banner
+          title='Attempt to Perfect'
+          text='Sadly I think this will look terrible. Please work'
+          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+        />
+        <Banner
+          title='Attempt to Perfect'
+          text='Sadly I think this will look terrible. Please work. This is number 2 Yeah :)'
+          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+        />
+        <Banner
+          title='Attempt to Perfect'
+          text='Sadly I think this will look terrible. I already know this work ha ha ha.'
+          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+        />
+      </Carousel>
       <PreviewList title='Restaurantes de la Semana' data={restaurants} />
     </div>
   );

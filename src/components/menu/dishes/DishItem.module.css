@@ -43,9 +43,10 @@
 }
 
 .view-icon {
-  width: 2.4rem;
-  height: 2.4rem;
-  stroke: #fff;
+  width: 3rem;
+  height: 3rem;
+  stroke: #666;
+  fill: #fff;
 }
 
 .dish-header {

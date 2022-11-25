@@ -19,6 +19,10 @@ const cartSlice = createSlice({
       state = initialCart;
     },
     addItemsToCart(state, action) {
+      if (action.payload.amount <= 0) {
+        return;
+      }
+
       const itemInCart = state.cartContent.find(
         (item) => item.id === action.payload.id
       );
@@ -30,7 +34,7 @@ const cartSlice = createSlice({
       } else {
         state.cartContent.push({
           ...action.payload,
-          itemTotal: action.payload.price,
+          itemTotal: action.payload.amount * action.payload.price,
         });
       }
       state.amountOfItems += action.payload.amount;

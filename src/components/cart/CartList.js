@@ -12,7 +12,10 @@ function CartList(props) {
         ))}
       </ul>
       <p className={classes['total-items']}>
-        {props.amountOfItems} items en la bolsa
+        {props.amountOfItems === 1
+          ? '1 item '
+          : `${props.amountOfItems} items `}
+        en la bolsa
       </p>
     </Fragment>
   );
