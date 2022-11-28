@@ -1,89 +1,43 @@
-import restaurant from '../assets/images/restaurant.jpg';
+import restaurants from '../data/restaurants-data';
 import Carousel from '../components/landing/Carousel';
 import PreviewList from '../components/restaurant/PreviewList';
 import Banner from '../components/ui/Banner';
-
-const restaurants = [
-  {
-    id: '101',
-    name: 'El Clásico',
-    type: 'Restaurante de Comida Rápida',
-    rating: [4.5, 1035],
-    photo: restaurant,
-    description:
-      'Restaurante para toda la familia con toda clase de platillos desde las deliciosas hamburguesas hasta los clásicos tacos. Prometemos un servicio rápido y atento.',
-  },
-  {
-    id: '106',
-    name: 'Little China',
-    type: 'Restaurante Tradicional Chino',
-    rating: [4.7, 5061],
-    photo: restaurant,
-    description:
-      'Pequeño restaurante donde se sirve comida china. Tambien tenemos buffet.',
-  },
-  {
-    id: '107',
-    name: 'El Noa Noa',
-    type: 'Bar y Karaoke',
-    rating: [2, 102],
-    photo: restaurant,
-    description:
-      'Se hacen bebidas de todo tipo, ambiente relajado con la música más moderna. Lunes, Miercoles y Viernes se organizan noches de karaoke.',
-  },
-  {
-    id: '202',
-    name: 'Moka',
-    type: 'Cafeteria',
-    rating: [3.8, 380],
-    photo: restaurant,
-    description:
-      'Cafe rápido y caliente a domicilio. Checa nuestro menú para ver nuestra gran variedad.',
-  },
-  {
-    id: '221',
-    name: 'Florinda',
-    type: 'Fonda Mexicana',
-    rating: [4, 642],
-    photo: restaurant,
-    description: 'Fonda de antojitos mexicanos. Servicio todos los días.',
-  },
-  {
-    id: '351',
-    name: 'América',
-    type: 'Pastelería',
-    rating: [5, 123],
-    photo: restaurant,
-    description: 'Los mejores diseños y sabores. Cobramos por sabor.',
-  },
-  {
-    id: '382',
-    name: 'Cafetería',
-    type: 'Pasteleria',
-    rating: [3.6, 6242],
-    photo: restaurant,
-    description: 'Cafe importado. La mejor calidad de grano y postres.',
-  },
-];
+import carousel1 from '../assets/images/carousel/carousel-1.jpg';
+import carousel2 from '../assets/images/carousel/carousel-2.png';
+import carousel3 from '../assets/images/carousel/carousel-3.jpg';
 
 function LandingPage() {
   return (
     <div className='container'>
       <Carousel>
         <Banner
-          title='Attempt to Perfect'
-          text='Sadly I think this will look terrible. Please work'
-          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+          style={{ backgroundColor: '#37b24d', color: '#fff' }}
+          title='Disfruta nuestro gran sazón'
+          text='La Foránea te trae todo el sazón de Zihuatanejo a tu alcance con un solo click. Te traemos nuestra selección de lo mejor para tu proxima comida.'
+          image={carousel1}
+          link={{
+            type: 'ext',
+            href: 'https://www.google.com',
+            message: 'Ve nuestro catalogo completo',
+          }}
         />
         <Banner
-          title='Attempt to Perfect'
-          text='Sadly I think this will look terrible. Please work. This is number 2 Yeah :)'
-          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+          backwards
+          style={{ color: '#333' }}
+          title='Cientos de elecciones!'
+          text='Nuestra selección no es suficiente? No te quedes con las ganas. Usa la barra de busqueda y empieza a explorar miles de sabores diferentes.'
+          image={carousel2}
         />
         <Banner
-          title='Attempt to Perfect'
-          text='Sadly I think this will look terrible. I already know this work ha ha ha.'
-          image='https://res.cloudinary.com/people-matters/image/upload/q_auto,f_auto/v1616825048/1616825047.jpg'
+          style={{ backgroundColor: '#e03131', color: '#fff' }}
+          title='Tambien puedes ser parte!'
+          text='Unete ahora por el mejor precio posible y hasta con 1 mes de prueba. Tu propio restaurante virtual con platillos ilimitados!'
+          image={carousel3}
+          link={{
+            type: 'int',
+            href: '/restaurant/101',
+            message: '¿Que estas esperando?',
+          }}
         />
       </Carousel>
       <PreviewList title='Restaurantes de la Semana' data={restaurants} />

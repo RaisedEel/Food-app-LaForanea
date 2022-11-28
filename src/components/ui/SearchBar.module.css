@@ -2,14 +2,12 @@
   background-color: #fff;
   border-radius: 21px;
   overflow: hidden;
-
   display: flex;
-  align-items: center;
 }
 
 .search-btn {
   display: inline-block;
-  width: 3.2rem;
+  width: 4.8rem;
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -19,17 +17,22 @@
   align-items: center;
 }
 
+.search-btn:hover {
+  background-color: #eee;
+}
+
 .search-icon {
   width: 2.4rem;
   height: 2.4rem;
 }
 
 .search-input {
+  align-self: center;
   display: inline-block;
   flex: 1;
   min-width: 17rem;
   border: none;
-  padding: 0 1.2rem;
+  padding-right: 2rem;
 }
 
 .search-input:focus {

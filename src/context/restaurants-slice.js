@@ -1,18 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = { name: '', elements: [], size: 0 };
+const initialState = { history: [] };
 
 const restaurantsSlice = createSlice({
   name: 'restaurants',
   initialState,
   reducers: {
-    reset(state) {
-      state = initialState;
+    reset() {
+      return initialState;
     },
     setRestaurants(state, action) {
-      state.name = action.payload.name;
-      state.elements = action.payload.elements;
-      state.size = action.payload.elements.length;
+      if (state.history.some((record) => record.code === action.payload.code))
+        return;
+
+      state.history.push({
+        code: action.payload.code,
+        name: action.payload.name,
+        elements: action.payload.elements,
+      });
     },
   },
 });

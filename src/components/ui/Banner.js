@@ -1,18 +1,38 @@
+import { Link } from 'react-router-dom';
+import classes from './Banner.module.css';
+
 function Banner(props) {
   return (
     <div
-      className='grid grid--2-cols'
-      style={{
-        backgroundColor: 'white',
-        height: '100%',
-        borderRadius: '11px',
-      }}
+      className={`grid grid--2-cols ${classes.banner} ${
+        props.backwards ? classes['banner-backwards'] : ''
+      }`}
+      style={props.style ? props.style : {}}
     >
-      <div>
-        <h3>{props.title}</h3>
-        <p>{props.text}</p>
+      <div className={classes['text-container']}>
+        <h3 className={`heading-ternary ${classes['banner-header']}`}>
+          {props.title}
+        </h3>
+        <p className={classes['banner-text']}>{props.text}</p>
+        {props.link && props.link.type === 'ext' && (
+          <a
+            className={classes['banner-link']}
+            href={props.link.href}
+            target='_blank'
+            rel='noreferrer'
+          >
+            {props.link.message}
+          </a>
+        )}
+        {props.link && props.link.type === 'int' && (
+          <Link className={classes['banner-link']} to={props.link.href}>
+            {props.link.message}
+          </Link>
+        )}
       </div>
-      <img src={props.image} alt={props.title} style={{ width: '100%' }} />
+      <div className={classes['image-container']}>
+        <img src={props.image} alt={props.title} />
+      </div>
     </div>
   );
 }

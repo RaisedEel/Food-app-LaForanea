@@ -11,6 +11,7 @@ function PreviewList(props) {
   function setRestaurantsHandler() {
     dispatch(
       restaurantsActions.setRestaurants({
+        code: props.title.toLowerCase(),
         name: props.title,
         elements: props.data,
       })

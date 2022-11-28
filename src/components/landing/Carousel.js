@@ -1,4 +1,4 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import classes from './Carousel.module.css';
 
 function Carousel(props) {
@@ -39,7 +39,7 @@ function Carousel(props) {
   }, [pauseCarousel, slides.length, moveSlideForward]);
 
   return (
-    <Fragment>
+    <section>
       <div className={classes.carousel}>
         <button
           className={`${classes['btn--carousel']} ${classes['btn--carousel--left']}`}
@@ -113,7 +113,7 @@ function Carousel(props) {
           ></button>
         ))}
       </div>
-    </Fragment>
+    </section>
   );
 }
 

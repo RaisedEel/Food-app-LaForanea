@@ -9,3 +9,8 @@
 .dish-view img {
   border-radius: 9px;
 }
+
+.dish-caption {
+  font-size: 1.8rem;
+  line-height: 1.6;
+}

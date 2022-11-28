@@ -1,17 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import RestaurantList from '../components/restaurant/RestaurantList';
 import ArrowLink from '../components/ui/ArrowLink';
-import { restaurantsActions } from '../context/restaurants-slice';
 
 function RestaurantListPage() {
-  const dispatch = useDispatch();
-  const restaurants = useSelector((state) => state.restaurants);
   const navigate = useNavigate();
+  const { term } = useParams();
+
+  const restaurantsHistory = useSelector((state) => state.restaurants.history);
+  const restaurants = restaurantsHistory.find((record) => record.code === term);
 
   function returnToPreviousPageHandler() {
-    dispatch(restaurantsActions.reset());
     navigate(-1);
   }
 
@@ -22,7 +22,7 @@ function RestaurantListPage() {
     >
       <ArrowLink onClick={returnToPreviousPageHandler}>Regresar</ArrowLink>
       <h2 className='heading-secondary'>
-        {restaurants.name} ({restaurants.size} resultados)
+        {restaurants.name} ({restaurants.elements.length} resultados)
       </h2>
       <RestaurantList data={restaurants.elements} />
     </div>

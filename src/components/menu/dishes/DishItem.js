@@ -23,7 +23,7 @@ function DishItem(props) {
     const item = {
       id: props.id,
       name: props.name,
-      price: props.price,
+      price: +props.price,
       amount: +itemAmount,
       image: props.image,
     };

@@ -1,30 +1,33 @@
 .carousel {
   height: 48rem;
-  margin: 1.2rem;
-  background-image: linear-gradient(to right, #de7607, #e59139);
+  margin-bottom: 1.2rem;
   border-radius: 15px;
-  overflow: hidden;
 
   display: grid;
   grid-template-columns: auto 1fr auto;
 }
 
 .btn--carousel {
+  align-self: center;
+  padding: 4rem 0;
   border: none;
+  background-color: #de7607;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .btn--carousel:hover {
-  background-color: #cb771d;
+  background-color: #b25e06;
 }
 
 .btn--carousel--left {
-  background-color: #de7607;
+  border-top-left-radius: 11px;
+  border-bottom-left-radius: 11px;
 }
 
 .btn--carousel--right {
-  background-color: #e59139;
+  border-top-right-radius: 11px;
+  border-bottom-right-radius: 11px;
 }
 
 .arrow-icon {
@@ -34,19 +37,19 @@
 }
 
 .carousel-content {
-  padding: 2.4rem 0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 11px;
   overflow: hidden;
 }
 
 .carousel-slides {
   height: 100%;
-  white-space: nowrap;
+  display: flex;
   transition: all 0.5s;
 }
 
 .slide {
-  height: 100%;
-  display: inline-block;
+  flex: 0 0 100%;
 }
 
 .carousel-counter {
@@ -59,7 +62,7 @@
 .counter-dot {
   height: 1.2rem;
   width: 1.2rem;
-  background-color: #e59139;
+  background-color: #de7607;
   border-radius: 50%;
   border: none;
   cursor: pointer;
@@ -68,6 +71,13 @@
 
 .counter-dot:hover,
 .counter-dot--current {
-  background-color: #de7607;
+  background-color: #b25e06;
   transform: scale(1.15);
+}
+
+@media (max-width: 36em) {
+  .carousel {
+    height: auto;
+    margin: 0 -2.4rem 1.2rem;
+  }
 }

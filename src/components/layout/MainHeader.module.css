@@ -32,7 +32,6 @@
   border-radius: 21px;
   border: none;
   margin-left: auto;
-  padding: 0 1.6rem;
 }
 
 .btn--header {
@@ -94,7 +93,7 @@
     align-self: center;
     flex: 1;
     margin-left: 1.2rem;
-    padding: 0.8rem 1.2rem;
+    padding: 0.8rem 0;
     font-size: 1.5rem;
   }
 
