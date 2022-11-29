@@ -9,7 +9,7 @@
 
 .btn--carousel {
   align-self: center;
-  padding: 4rem 0;
+  padding: 4rem 0.4rem;
   border: none;
   background-color: #de7607;
   cursor: pointer;

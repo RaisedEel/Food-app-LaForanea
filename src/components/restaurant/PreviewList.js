@@ -19,7 +19,7 @@ function PreviewList(props) {
   }
 
   return (
-    <section className={classes.preview}>
+    <section className={classes['section-preview']}>
       <h2 className='heading-secondary'>{props.title}</h2>
       <RestaurantList data={props.data.slice(0, 6)} />
       {props.data.length > 6 && (

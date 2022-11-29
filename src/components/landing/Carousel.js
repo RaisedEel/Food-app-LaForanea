@@ -31,15 +31,18 @@ function Carousel(props) {
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (pauseCarousel) return;
-      moveSlideForward(true);
-    }, 30000);
+    const interval = setInterval(
+      () => {
+        if (pauseCarousel) return;
+        moveSlideForward(true);
+      },
+      props.duration ? +props.duration * 1000 : 15000
+    );
     return () => clearInterval(interval);
-  }, [pauseCarousel, slides.length, moveSlideForward]);
+  }, [pauseCarousel, props.duration, slides.length, moveSlideForward]);
 
   return (
-    <section>
+    <section className='section-carousel'>
       <div className={classes.carousel}>
         <button
           className={`${classes['btn--carousel']} ${classes['btn--carousel--left']}`}

@@ -5,10 +5,14 @@ import Banner from '../components/ui/Banner';
 import carousel1 from '../assets/images/carousel/carousel-1.jpg';
 import carousel2 from '../assets/images/carousel/carousel-2.png';
 import carousel3 from '../assets/images/carousel/carousel-3.jpg';
+import CallToAction from '../components/landing/CallToAction';
 
 function LandingPage() {
   return (
-    <div className='container'>
+    <div
+      className='container'
+      style={{ display: 'flex', flexDirection: 'column', gap: '9.6rem' }}
+    >
       <Carousel>
         <Banner
           style={{ backgroundColor: '#37b24d', color: '#fff' }}
@@ -41,6 +45,15 @@ function LandingPage() {
         />
       </Carousel>
       <PreviewList title='Restaurantes de la Semana' data={restaurants} />
+
+      <PreviewList
+        title='Lo Mejor de lo Mejor'
+        data={restaurants
+          .slice()
+          .sort((first, second) => second.rating[0] - first.rating[0])}
+      />
+
+      <CallToAction />
     </div>
   );
 }

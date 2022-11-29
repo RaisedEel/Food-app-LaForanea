@@ -1,10 +1,10 @@
 /* 
   COLORS: 
-  - Primary: #DE7607
-  - Grays: #aaa, #555, #333
+  - Primary: #de7607
+  - Greys: #aaa, #555, #333
 
   TINTS:
-  - #e18420
+  - #e18420, #ffd597
 
   SHADES:
   - #c86a06, #b25e06
@@ -39,6 +39,13 @@ select {
   font-size: inherit;
   font-family: inherit;
   color: inherit;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #aaa;
 }
 
 .body--fixed {

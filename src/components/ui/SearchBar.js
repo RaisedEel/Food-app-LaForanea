@@ -29,7 +29,7 @@ function SearchBar(props) {
     dispatch(
       restaurantsActions.setRestaurants({
         code: correctedSearchTerm,
-        name: 'Resultados',
+        name: `"${searchTerm}"`,
         elements: foundRestaurants,
       })
     );
