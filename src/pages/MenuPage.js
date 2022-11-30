@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import useMatchMedia from '../hooks/useMatchMedia';
 
 import logoImg from '../assets/images/logo.png';
 import photo from '../assets/images/restaurant.jpg';
@@ -10,7 +12,6 @@ import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
 import ArrowLink from '../components/ui/ArrowLink';
-import { useNavigate } from 'react-router-dom';
 
 const restaurant = {
   id: 'a1',
@@ -33,20 +34,9 @@ const restaurant = {
 };
 
 function MenuPage() {
-  const [showCart, setShowCart] = useState(window.innerWidth > 992);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  function showCartHandler() {
-    setShowCart(window.innerWidth > 992);
-  }
-
-  useEffect(() => {
-    window.addEventListener('resize', showCartHandler);
-    return () => {
-      window.removeEventListener('resize', showCartHandler);
-    };
-  }, []);
+  const showCart = useMatchMedia('(min-width: 62em)');
 
   useEffect(() => {
     dispatch(menuActions.setMenu(menu));

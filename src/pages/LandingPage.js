@@ -44,7 +44,10 @@ function LandingPage() {
           }}
         />
       </Carousel>
+
       <PreviewList title='Restaurantes de la Semana' data={restaurants} />
+
+      <PreviewList title='Lo Más Nuevo' data={restaurants.slice().reverse()} />
 
       <PreviewList
         title='Lo Mejor de lo Mejor'

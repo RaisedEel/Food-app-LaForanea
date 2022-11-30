@@ -1,12 +1,15 @@
+import { useDispatch } from 'react-redux';
+import useMatchMedia from '../../hooks/useMatchMedia';
+
+import { restaurantsActions } from '../../context/restaurants-slice';
 import ArrowLink from '../ui/ArrowLink';
 import RestaurantList from './RestaurantList';
-
 import classes from './PreviewList.module.css';
-import { useDispatch } from 'react-redux';
-import { restaurantsActions } from '../../context/restaurants-slice';
 
 function PreviewList(props) {
   const dispatch = useDispatch();
+
+  const reduceList = useMatchMedia('(max-width: 62em)');
 
   function setRestaurantsHandler() {
     dispatch(
@@ -21,7 +24,9 @@ function PreviewList(props) {
   return (
     <section className={classes['section-preview']}>
       <h2 className='heading-secondary'>{props.title}</h2>
-      <RestaurantList data={props.data.slice(0, 6)} />
+      <RestaurantList
+        data={reduceList ? props.data.slice(0, 4) : props.data.slice(0, 6)}
+      />
       {props.data.length > 6 && (
         <ArrowLink
           to={`/search/${props.title.toLowerCase()}`}

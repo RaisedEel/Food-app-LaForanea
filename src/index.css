@@ -1,6 +1,7 @@
 /* 
   COLORS: 
   - Primary: #de7607
+  - Secondary: #670D05, #44911b
   - Greys: #aaa, #555, #333
 
   TINTS:
@@ -56,8 +57,8 @@ select:focus {
 
 .container {
   max-width: 130rem;
-  margin: 7.2rem auto 0;
-  padding: 2.4rem;
+  margin: 12rem auto 4.8rem;
+  padding: 0 2.4rem;
 }
 
 .heading,

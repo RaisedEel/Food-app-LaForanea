@@ -63,7 +63,7 @@ function SocialMediaLink(props) {
   }
 
   return (
-    <a className='' href={props.url}>
+    <a href={props.url} target='_blank' rel='noreferrer'>
       {icon}
     </a>
   );
