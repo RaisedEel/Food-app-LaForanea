@@ -23,7 +23,7 @@
 }
 
 .footer-social-links {
-  margin-top: 1.2rem;
+  margin-top: 2.4rem;
 
   display: flex;
   justify-content: space-around;
@@ -65,13 +65,10 @@
 .footer-copyright {
   text-align: center;
   font-size: 1.4rem;
+  padding-bottom: 1.2rem;
 }
 
 @media (max-width: 75em) {
-  .footer {
-    font-size: 1.5rem;
-  }
-
   .footer-grid {
     padding: 9.6rem 8rem;
   }

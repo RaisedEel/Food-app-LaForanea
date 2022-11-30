@@ -22,25 +22,27 @@ function LandingPage() {
           link={{
             type: 'ext',
             href: 'https://www.google.com',
-            message: 'Ve nuestro catalogo completo',
+            message: 'Ve nuestro catálogo completo',
           }}
         />
+
         <Banner
           backwards
           style={{ color: '#333' }}
           title='Cientos de elecciones!'
-          text='Nuestra selección no es suficiente? No te quedes con las ganas. Usa la barra de busqueda y empieza a explorar miles de sabores diferentes.'
+          text='Nuestra selección no es suficiente? No te quedes con las ganas. Usa la barra de búsqueda y empieza a explorar miles de sabores diferentes.'
           image={carousel2}
         />
+
         <Banner
           style={{ backgroundColor: '#e03131', color: '#fff' }}
-          title='Tambien puedes ser parte!'
+          title='También puedes ser parte!'
           text='Unete ahora por el mejor precio posible y hasta con 1 mes de prueba. Tu propio restaurante virtual con platillos ilimitados!'
           image={carousel3}
           link={{
             type: 'int',
             href: '/restaurant/101',
-            message: '¿Que estas esperando?',
+            message: '¿Qué estas esperando?',
           }}
         />
       </Carousel>

@@ -42,12 +42,12 @@ function Footer() {
               </li>
               <li>
                 <Link className={classes['footer-action']} to='/'>
-                  Crear Cuenta para Cliente
+                  Crear Cuenta (Cliente)
                 </Link>
               </li>
               <li>
                 <Link className={classes['footer-action']} to='/'>
-                  Crear Cuenta para Restaurante
+                  Crear Cuenta (Restaurante)
                 </Link>
               </li>
               <li>
@@ -72,7 +72,7 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Documentación de la Página
+                  Documentación
                 </a>
               </li>
               <li>
@@ -82,7 +82,7 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Repositorio de Github{' '}
+                  Repositorio de Github
                 </a>
               </li>
             </ul>
