@@ -1,4 +1,6 @@
+import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
+
 import classes from './Modal.module.css';
 
 function Modal(props) {
@@ -13,7 +15,7 @@ function Modal(props) {
     };
   }, []);
 
-  return (
+  return createPortal(
     <div className={classes.overlay}>
       <div className={classes.modal} style={{ maxWidth: props.preferredWidth }}>
         <button className={classes['btn--close']} onClick={props.onClose}>
@@ -35,7 +37,8 @@ function Modal(props) {
         <h2 className='heading-secondary'>{props.title}</h2>
         {props.children}
       </div>
-    </div>
+    </div>,
+    document.getElementById('modal-overlay')
   );
 }
 

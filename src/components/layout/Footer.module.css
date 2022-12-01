@@ -19,7 +19,11 @@
 .footer-heading {
   color: #fff;
   font-size: 2rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+.slogan {
+  font-size: 1.4rem;
 }
 
 .footer-social-links {
@@ -50,11 +54,16 @@
   gap: 2.4rem;
 }
 
+.footer-action,
 .footer-action:link,
 .footer-action:visited {
+  border: none;
+  background-color: transparent;
   text-decoration: none;
   color: #aaa;
+  font-size: inherit;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 .footer-action:hover,

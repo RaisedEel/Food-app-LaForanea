@@ -1,7 +1,7 @@
 /* 
   COLORS: 
   - Primary: #de7607
-  - Secondary: #670D05, #44911b
+  - Secondary: #670d05, #44911b, #f97474
   - Greys: #aaa, #555, #333
 
   TINTS:
@@ -35,6 +35,7 @@ body {
 }
 
 input,
+button,
 textarea,
 select {
   font-size: inherit;

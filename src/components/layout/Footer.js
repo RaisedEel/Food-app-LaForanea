@@ -1,16 +1,23 @@
-import classes from './Footer.module.css';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { authenticationActions } from '../../context/authentication-slice';
 import logo from '../../assets/images/la-foranea-logo.png';
 import SocialMediaLink from '../ui/SocialMediaLink';
-import { Link } from 'react-router-dom';
+import classes from './Footer.module.css';
 
 function Footer() {
+  const dispatch = useDispatch();
+
   return (
     <footer className={classes.footer}>
       <div className={`grid grid--2-cols ${classes['footer-grid']}`}>
         <div className={classes['footer-section']}>
-          <div className={classes['social-info']}>
-            <img src={logo} alt='Logo de La Foránea ' />
-            <p>"Nuestra diferencia es el sazón"</p>
+          <div className='social-info'>
+            <a href='/welcome#'>
+              <img src={logo} alt='Logo de La Foránea ' />
+            </a>
+            <p className={classes.slogan}>"Nuestra diferencia es el sazón"</p>
             <div className={classes['footer-social-links']}>
               <SocialMediaLink type='FB' url='/' />
               <SocialMediaLink type='TW' url='/' />
@@ -18,7 +25,7 @@ function Footer() {
               <SocialMediaLink type='IG' url='/' />
             </div>
           </div>
-          <div className={classes['contact-info']}>
+          <div className='contact-info'>
             <p className={`heading ${classes['footer-heading']}`}>
               Contactanos
             </p>
@@ -36,9 +43,14 @@ function Footer() {
             <p className={`heading ${classes['footer-heading']}`}>Cuenta</p>
             <ul className={classes['footer-actions']}>
               <li>
-                <Link className={classes['footer-action']} to='/'>
+                <button
+                  className={classes['footer-action']}
+                  onClick={() => {
+                    dispatch(authenticationActions.toggleLogin());
+                  }}
+                >
                   Ingresar
-                </Link>
+                </button>
               </li>
               <li>
                 <Link className={classes['footer-action']} to='/'>
@@ -82,7 +94,7 @@ function Footer() {
                   target='_blank'
                   rel='noreferrer'
                 >
-                  Repositorio de Github
+                  Repositorio de GitHub
                 </a>
               </li>
             </ul>
