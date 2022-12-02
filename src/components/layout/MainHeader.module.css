@@ -46,6 +46,7 @@
   align-items: center;
 }
 
+.btn--header--active,
 .btn--header:hover {
   background-color: #c86a06;
 }

@@ -1,5 +1,5 @@
 .login {
-  padding: 3.6rem 0;
+  padding: 3.2rem 0 2.4rem;
 
   display: flex;
   flex-direction: column;
@@ -39,6 +39,7 @@
 }
 
 .input-error {
+  color: #f97474;
   font-size: 1.4rem;
 }
 

@@ -44,7 +44,7 @@
 
 .cta-link a:hover,
 .cta-link a:active {
-  border-bottom: transparent;
+  border-bottom: 1px solid transparent;
 }
 
 .cta-icon {

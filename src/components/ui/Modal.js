@@ -16,8 +16,11 @@ function Modal(props) {
   }, []);
 
   return createPortal(
-    <div className={classes.overlay}>
-      <div className={classes.modal} style={{ maxWidth: props.preferredWidth }}>
+    <div
+      className={classes.overlay}
+      style={{ gridTemplateColumns: `minmax(0,${props.preferredWidth})` }}
+    >
+      <div className={classes.modal}>
         <button className={classes['btn--close']} onClick={props.onClose}>
           <svg
             xmlns='http://www.w3.org/2000/svg'

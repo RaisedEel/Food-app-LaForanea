@@ -15,7 +15,7 @@ function LandingPage() {
     >
       <Carousel>
         <Banner
-          style={{ backgroundColor: '#37b24d', color: '#fff' }}
+          style={{ backgroundColor: '#2f9e44', color: '#fff' }}
           title='Disfruta nuestro gran sazón'
           text='La Foránea te trae todo el sazón de Zihuatanejo a tu alcance con un solo click. Te traemos nuestra selección de lo mejor para tu proxima comida.'
           image={carousel1}

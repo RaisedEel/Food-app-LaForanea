@@ -1,0 +1,37 @@
+.nav {
+  width: 25rem;
+  background-color: #fff;
+  border: 1px solid #555;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  position: fixed;
+  top: 7.2rem;
+  right: 0;
+  z-index: 10;
+}
+
+.nav-links {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link,
+.nav-link:link,
+.nav-link:visited {
+  display: flex;
+  width: 100%;
+  padding: 1.2rem;
+  background-color: transparent;
+  color: #555;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  background-color: #f97474;
+  color: #fff;
+}
