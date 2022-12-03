@@ -1,22 +1,51 @@
-import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import useInput from '../../hooks/useInput';
 import { authenticationActions } from '../../context/authentication-slice';
+import InputField from '../ui/InputField';
 
 import classes from './Login.module.css';
 
 function Login() {
   const dispatch = useDispatch();
-  const [emailInput, setEmailInput] = useState('');
-  const [passwordInput, setPasswordInput] = useState('');
+  const {
+    value: emailValue,
+    isValid: emailIsValid,
+    errorMessage: emailError,
+    valueChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+  } = useInput(true, [
+    {
+      condition: (value) => value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
+      errorMessage: 'El correo dado no es válido',
+    },
+  ]);
+
+  const {
+    value: passwordValue,
+    isValid: passwordIsValid,
+    errorMessage: passwordError,
+    valueChangeHandler: passwordChangeHandler,
+    inputBlurHandler: passwordBlurHandler,
+  } = useInput(true, [
+    {
+      condition: (value) =>
+        value.trim().length <= 8 && value.trim().length >= 4,
+      errorMessage: 'La contraseña debe contener entre 4 y 8 caracteres',
+    },
+  ]);
 
   function loginHandler(event) {
     event.preventDefault();
 
+    if (!emailIsValid || !passwordIsValid) {
+      return;
+    }
+
     dispatch(
       authenticationActions.login({
-        email: emailInput,
-        password: passwordInput,
+        email: emailValue,
+        password: passwordValue,
       })
     );
   }
@@ -30,31 +59,25 @@ function Login() {
         </Link>
       </p>
 
-      <div className={classes['input-container']}>
-        <label className={classes['input-label']}>Correo Eléctronico</label>
-        <input
-          className={classes['input-box']}
-          type='text'
-          value={emailInput}
-          onChange={(event) => {
-            setEmailInput(event.target.value);
-          }}
-        />
-        <p className={classes['input-error']}>Error found!</p>
-      </div>
+      <InputField
+        id='login-email'
+        label='Correo Eléctronico'
+        type='email'
+        value={emailValue}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
+        error-message={emailError}
+      />
 
-      <div className={classes['input-container']}>
-        <label className={classes['input-label']}>Contraseña</label>
-        <input
-          className={classes['input-box']}
-          type='password'
-          value={passwordInput}
-          onChange={(event) => {
-            setPasswordInput(event.target.value);
-          }}
-        />
-        <p className={classes['input-error']}>Error found!</p>
-      </div>
+      <InputField
+        id='login-password'
+        label='Contraseña'
+        type='password'
+        value={passwordValue}
+        onChange={passwordChangeHandler}
+        onBlur={passwordBlurHandler}
+        error-message={passwordError}
+      />
 
       <button className={classes['login-button']}>Iniciar Sesión</button>
     </form>

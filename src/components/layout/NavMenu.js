@@ -13,7 +13,7 @@ function NavMenu(props) {
         <li>
           <button
             className={classes['nav-link']}
-            onClick={(event) => {
+            onClick={() => {
               dispatch(authenticationActions.toggleLogin());
               props.closeMenu();
             }}
@@ -42,7 +42,15 @@ function NavMenu(props) {
           </Link>
         </li>
         <li>
-          <button className={classes['nav-link']}>Cerrar Sesión</button>
+          <button
+            className={classes['nav-link']}
+            onClick={() => {
+              dispatch(authenticationActions.logout());
+              props.closeMenu();
+            }}
+          >
+            Cerrar Sesión
+          </button>
         </li>
       </ul>
     </nav>

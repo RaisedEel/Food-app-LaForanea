@@ -1,0 +1,28 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.input-box {
+  font-size: 1.8rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #aaa;
+  border-radius: 7px;
+  margin-bottom: 0.8rem;
+}
+
+.input-box--error {
+  border: 1px solid #f97474;
+}
+
+.input-error {
+  color: #f97474;
+  font-size: 1.4rem;
+  height: 1.4rem;
+}
