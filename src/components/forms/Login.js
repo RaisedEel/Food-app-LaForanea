@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import useInput from '../../hooks/useInput';
 import { authenticationActions } from '../../context/authentication-slice';
-import InputField from '../ui/InputField';
+import InputField from './inputs/InputField';
 
 import classes from './Login.module.css';
 

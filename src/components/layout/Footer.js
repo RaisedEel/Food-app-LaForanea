@@ -53,12 +53,12 @@ function Footer() {
                 </button>
               </li>
               <li>
-                <Link className={classes['footer-action']} to='/'>
+                <Link className={classes['footer-action']} to='/new/user'>
                   Crear Cuenta (Cliente)
                 </Link>
               </li>
               <li>
-                <Link className={classes['footer-action']} to='/'>
+                <Link className={classes['footer-action']} to='/new/restaurant'>
                   Crear Cuenta (Restaurante)
                 </Link>
               </li>

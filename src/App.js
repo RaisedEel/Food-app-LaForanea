@@ -10,6 +10,9 @@ import MenuPage from './pages/MenuPage';
 import LandingPage from './pages/LandingPage';
 import RestaurantListPage from './pages/RestaurantListPage';
 import Login from './components/forms/Login';
+import CreateAccountPage from './pages/CreateAccountPage';
+import UserForm from './components/forms/UserForm';
+import RestaurantForm from './components/forms/RestaurantForm';
 
 function App() {
   const showCart = useSelector((state) => state.cart.showCart);
@@ -49,6 +52,12 @@ function App() {
         <Route path='/welcome' element={<LandingPage />} />
         <Route path='/search/:term' element={<RestaurantListPage />} />
         <Route path='/restaurant/:restaurantCode' element={<MenuPage />} />
+        <Route path='/new' element={<CreateAccountPage />}>
+          <Route index element={<Navigate replace to='user' />} />
+          <Route path='user' element={<UserForm />} />
+          <Route path='restaurant' element={<RestaurantForm />} />
+          <Route path='*' element={<Navigate replace to='user' />} />
+        </Route>
       </Routes>
     </Fragment>
   );

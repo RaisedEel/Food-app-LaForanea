@@ -22,7 +22,7 @@ function NavMenu(props) {
           </button>
         </li>
         <li>
-          <Link className={classes['nav-link']} to='/'>
+          <Link className={classes['nav-link']} to='/new'>
             Crear Cuenta
           </Link>
         </li>

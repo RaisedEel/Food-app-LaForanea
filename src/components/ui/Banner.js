@@ -10,9 +10,9 @@ function Banner(props) {
       style={props.style ? props.style : {}}
     >
       <div className={classes['text-container']}>
-        <h3 className={`heading-ternary ${classes['banner-header']}`}>
+        <h2 className={`heading-secondary ${classes['banner-header']}`}>
           {props.title}
-        </h3>
+        </h2>
         <p className={classes['banner-text']}>{props.text}</p>
         {props.link && props.link.type === 'ext' && (
           <a

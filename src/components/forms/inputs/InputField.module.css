@@ -1,0 +1,63 @@
+.input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label {
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}
+
+.input-body {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.input-box {
+  flex: 1;
+  font-size: 1.8rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #aaa;
+  border-radius: 7px;
+  transition: all 0.3s;
+}
+
+.input-box:disabled {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.edit--button {
+  padding: 0 0.8rem;
+  background-color: transparent;
+  border: 1px solid #44911b;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.edit-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+  stroke: #44911b;
+}
+
+.edit--button:hover,
+.edit--button--active {
+  background-color: #44911b;
+}
+
+.edit--button:hover .edit-icon,
+.edit--button--active .edit-icon {
+  stroke: #fff;
+}
+
+.input-box--error {
+  border: 1px solid #f97474;
+}
+
+.input-error {
+  height: 1.4rem;
+  margin-top: 0.8rem;
+  color: #f97474;
+  font-size: 1.4rem;
+}
