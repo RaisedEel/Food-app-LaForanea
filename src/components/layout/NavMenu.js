@@ -22,7 +22,13 @@ function NavMenu(props) {
           </button>
         </li>
         <li>
-          <Link className={classes['nav-link']} to='/new'>
+          <Link
+            className={classes['nav-link']}
+            to='/new'
+            onClick={() => {
+              props.closeMenu();
+            }}
+          >
             Crear Cuenta
           </Link>
         </li>

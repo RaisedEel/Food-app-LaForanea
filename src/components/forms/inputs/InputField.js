@@ -2,7 +2,9 @@ import { useState } from 'react';
 import classes from './InputField.module.css';
 
 function InputField(props) {
-  const [disableInput, setDisableInput] = useState(Boolean(props.editable));
+  const [disableInput, setDisableInput] = useState(
+    props.editable ? true : false
+  );
 
   function toggleDisabledStateHandler() {
     setDisableInput((currentState) => !currentState);

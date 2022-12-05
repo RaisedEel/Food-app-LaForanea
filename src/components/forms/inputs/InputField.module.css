@@ -20,10 +20,12 @@
   padding: 0.8rem 1.2rem;
   border: 1px solid #aaa;
   border-radius: 7px;
+  resize: none;
   transition: all 0.3s;
 }
 
 .input-box:disabled {
+  color: #777;
   background-color: rgba(0, 0, 0, 0.05);
 }
 

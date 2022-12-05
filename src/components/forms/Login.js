@@ -14,7 +14,7 @@ function Login() {
     errorMessage: emailError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
-  } = useInput(true, [
+  } = useInput('', true, [
     {
       condition: (value) => value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
       errorMessage: 'El correo dado no es válido',
@@ -27,11 +27,11 @@ function Login() {
     errorMessage: passwordError,
     valueChangeHandler: passwordChangeHandler,
     inputBlurHandler: passwordBlurHandler,
-  } = useInput(true, [
+  } = useInput('', true, [
     {
       condition: (value) =>
-        value.trim().length <= 8 && value.trim().length >= 4,
-      errorMessage: 'La contraseña debe contener entre 4 y 8 caracteres',
+        value.trim().length <= 12 && value.trim().length >= 4,
+      errorMessage: 'La contraseña debe contener entre 4 y 12 caracteres',
     },
   ]);
 
@@ -61,7 +61,7 @@ function Login() {
 
       <InputField
         id='login-email'
-        label='Correo Eléctronico'
+        label='Correo Electrónico'
         type='email'
         value={emailValue}
         onChange={emailChangeHandler}

@@ -19,10 +19,10 @@ function inputStateReducer(state, action) {
   return initialInputState;
 }
 
-function useInput(cantBeEmpty, additionalConditions = []) {
+function useInput(initialValue, cantBeEmpty, additionalConditions = []) {
   const [inputState, dispatch] = useReducer(
     inputStateReducer,
-    initialInputState
+    initialValue ? { value: initialValue, isTouched: false } : initialInputState
   );
 
   let error = '';
