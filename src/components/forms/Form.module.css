@@ -9,7 +9,7 @@
   padding: 0 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.6rem;
 }
 
 .form-fieldset h2 {
@@ -28,6 +28,7 @@
   transition: all 0.3s;
 }
 
-.form-button:hover {
-  background-color: #c75d5d;
+.form-button:disabled {
+  background-color: #888;
+  cursor: default;
 }

@@ -1,7 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import useInput from '../../../hooks/useInput';
 import classes from './InputField.module.css';
 
 function InputField(props) {
+  const { value, isValid, valueChangeHandler, inputBlurHandler, errorMessage } =
+    useInput(
+      props.initialValue || '',
+      props.canBeEmpty ? false : true,
+      props.validation || []
+    );
+
+  useEffect(() => {
+    if (props.isValid) props.isValid(isValid ? value : false);
+  });
+
   const [disableInput, setDisableInput] = useState(
     props.editable ? true : false
   );
@@ -20,28 +32,38 @@ function InputField(props) {
       <div className={classes['input-body']}>
         {!props.textarea && (
           <input
-            {...props}
+            {...props.inputConfiguration}
+            id={props.id}
             name={props.id}
             disabled={disableInput}
             className={
-              props['error-message']
+              errorMessage
                 ? `${classes['input-box']} ${classes['input-box--error']}`
                 : classes['input-box']
             }
+            value={value}
+            onChange={valueChangeHandler}
+            onBlur={inputBlurHandler}
           />
         )}
+
         {props.textarea && (
           <textarea
-            {...props}
+            {...props.inputConfiguration}
+            id={props.id}
             name={props.id}
             disabled={disableInput}
             className={
-              props['error-message']
+              errorMessage
                 ? `${classes['input-box']} ${classes['input-box--error']}`
                 : classes['input-box']
             }
+            value={value}
+            onChange={valueChangeHandler}
+            onBlur={inputBlurHandler}
           />
         )}
+
         {props.editable && (
           <button
             type='button'
@@ -70,7 +92,7 @@ function InputField(props) {
         )}
       </div>
 
-      <p className={classes['input-error']}>{props['error-message']}</p>
+      <p className={classes['input-error']}>{errorMessage}</p>
     </div>
   );
 }

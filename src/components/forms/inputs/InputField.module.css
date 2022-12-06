@@ -24,6 +24,11 @@
   transition: all 0.3s;
 }
 
+.input-box--error {
+  background-color: rgba(249, 116, 116, 0.15);
+  border: 1px solid #f97474;
+}
+
 .input-box:disabled {
   color: #777;
   background-color: rgba(0, 0, 0, 0.05);
@@ -51,10 +56,6 @@
 .edit--button:hover .edit-icon,
 .edit--button--active .edit-icon {
   stroke: #fff;
-}
-
-.input-box--error {
-  border: 1px solid #f97474;
 }
 
 .input-error {

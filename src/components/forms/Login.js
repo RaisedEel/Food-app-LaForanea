@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import useInput from '../../hooks/useInput';
 import { authenticationActions } from '../../context/authentication-slice';
 import InputField from './inputs/InputField';
 
@@ -8,34 +8,10 @@ import classes from './Login.module.css';
 
 function Login() {
   const dispatch = useDispatch();
-  const {
-    value: emailValue,
-    isValid: emailIsValid,
-    errorMessage: emailError,
-    valueChangeHandler: emailChangeHandler,
-    inputBlurHandler: emailBlurHandler,
-  } = useInput('', true, [
-    {
-      condition: (value) => value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
-      errorMessage: 'El correo dado no es válido',
-    },
-  ]);
+  const [emailIsValid, setEmailIsValid] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
 
-  const {
-    value: passwordValue,
-    isValid: passwordIsValid,
-    errorMessage: passwordError,
-    valueChangeHandler: passwordChangeHandler,
-    inputBlurHandler: passwordBlurHandler,
-  } = useInput('', true, [
-    {
-      condition: (value) =>
-        value.trim().length <= 12 && value.trim().length >= 4,
-      errorMessage: 'La contraseña debe contener entre 4 y 12 caracteres',
-    },
-  ]);
-
-  function loginHandler(event) {
+  function onSubmitHandler(event) {
     event.preventDefault();
 
     if (!emailIsValid || !passwordIsValid) {
@@ -44,17 +20,23 @@ function Login() {
 
     dispatch(
       authenticationActions.login({
-        email: emailValue,
-        password: passwordValue,
+        email: emailIsValid,
+        password: passwordIsValid,
       })
     );
   }
 
   return (
-    <form className={classes.login} action='/' onSubmit={loginHandler}>
+    <form className={classes.login} onSubmit={onSubmitHandler}>
       <p className={classes['login-create-account']}>
         No tienes cuenta aún?{' '}
-        <Link className={classes['login-link']} to='/'>
+        <Link
+          className={classes['login-link']}
+          to='/new/user'
+          onClick={() => {
+            dispatch(authenticationActions.toggleLogin());
+          }}
+        >
           Crea tu Cuenta Aquí
         </Link>
       </p>
@@ -62,21 +44,28 @@ function Login() {
       <InputField
         id='login-email'
         label='Correo Electrónico'
-        type='email'
-        value={emailValue}
-        onChange={emailChangeHandler}
-        onBlur={emailBlurHandler}
-        error-message={emailError}
+        inputConfiguration={{ type: 'email' }}
+        isValid={setEmailIsValid}
+        validation={[
+          {
+            condition: (value) => value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
+            errorMessage: 'El correo dado no es válido',
+          },
+        ]}
       />
 
       <InputField
         id='login-password'
         label='Contraseña'
-        type='password'
-        value={passwordValue}
-        onChange={passwordChangeHandler}
-        onBlur={passwordBlurHandler}
-        error-message={passwordError}
+        inputConfiguration={{ type: 'password' }}
+        isValid={setPasswordIsValid}
+        validation={[
+          {
+            condition: (value) =>
+              value.trim().length <= 12 && value.trim().length >= 4,
+            errorMessage: 'La contraseña debe contener entre 4 y 12 caracteres',
+          },
+        ]}
       />
 
       <button className={classes['login-button']}>Iniciar Sesión</button>
