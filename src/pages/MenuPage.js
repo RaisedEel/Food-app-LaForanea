@@ -1,10 +1,7 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Fragment, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import useMatchMedia from '../hooks/useMatchMedia';
-
-import logoImg from '../assets/images/logo.png';
-import photo from '../assets/images/restaurant.jpg';
 
 import { menuActions } from '../context/menu-slice';
 import Cart from '../components/cart/Cart';
@@ -13,35 +10,23 @@ import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
 import ArrowLink from '../components/ui/ArrowLink';
 
-const restaurant = {
-  id: 'a1',
-  name: 'El Clásico',
-  type: 'Restaurante de Comida Rápida',
-  description:
-    'Etiam velit turpis, tristique in urna at, commodo semper ex. Nullam diam felis, dignissim in rhoncus eu, convallis blandit lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas vel fermentum magna. Integer sem nisi, gravida vel odio non, elementum sagittis est.',
-  categories: ['Hamburgers', 'Hot dogs', 'Pizzas', 'Tacos', 'Drinks'],
-  logo: logoImg,
-  photo: photo,
-  address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
-  email: 'www.elclasico.com',
-  cellphone: '755-555-6666',
-  social: [
-    { type: 'FB', url: '#' },
-    { type: 'TW', url: '#' },
-    { type: 'WH', url: '#' },
-    { type: 'IG', url: '#' },
-  ],
-};
-
 function MenuPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { restaurantCode } = useParams();
   const showCart = useMatchMedia('(min-width: 62em)');
+  const { allRestaurants } = useSelector((state) => state.restaurants);
+
+  const restaurant = allRestaurants.find(
+    (restaurant) => restaurant.id === restaurantCode
+  );
 
   useEffect(() => {
-    dispatch(menuActions.setMenu(menu));
-    dispatch(menuActions.setCategory(restaurant.categories[0]));
-  }, [dispatch]);
+    if (restaurant) {
+      dispatch(menuActions.setMenu(menu));
+      dispatch(menuActions.setCategory(restaurant.categories[0]));
+    }
+  }, [dispatch, restaurant]);
 
   return (
     <div className='container'>
@@ -53,18 +38,27 @@ function MenuPage() {
       >
         Regresar
       </ArrowLink>
-      <RestaurantAccordion data={restaurant} />
-      <div className='grid grid--menu'>
-        <Menu categories={restaurant.categories} />
-        {showCart && (
-          <Cart
-            style={{
-              paddingRight: '0',
-              borderLeft: 'border-left: 2px solid #f97474',
-            }}
-          />
-        )}
-      </div>
+      {restaurant && (
+        <Fragment>
+          <RestaurantAccordion data={restaurant} />
+          <div className='grid grid--menu'>
+            <Menu categories={restaurant.categories} />
+            {showCart && (
+              <Cart
+                style={{
+                  paddingRight: '0',
+                  borderLeft: 'border-left: 2px solid #f97474',
+                }}
+              />
+            )}
+          </div>
+        </Fragment>
+      )}
+      {!restaurant && (
+        <h2 className='heading-secondary' style={{ textAlign: 'center' }}>
+          El restaurante con el código "{restaurantCode}" no existe
+        </h2>
+      )}
     </div>
   );
 }

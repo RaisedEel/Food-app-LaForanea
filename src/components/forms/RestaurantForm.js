@@ -1,38 +1,89 @@
 import { Fragment, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Banner from '../ui/Banner';
 import InputField from './inputs/InputField';
 import classes from './Form.module.css';
 
+import placeholder from '../../assets/images/placeholders/restaurant-photo.jpg';
 import owners from '../../assets/images/forms/form-restaurant.jpg';
+import { authenticationActions } from '../../context/authentication-slice';
+import { restaurantsActions } from '../../context/restaurants-slice';
+import { useNavigate } from 'react-router-dom';
 
 function RestaurantForm(props) {
-  const [nameIsValid, setNameIsValid] = useState(false);
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
-  const [resNameIsValid, setResNameIsValid] = useState(false);
-  const [typeIsValid, setTypeIsValid] = useState(false);
-  const [descriptionIsValid, setDescriptionIsValid] = useState(false);
-  const [addressIsValid, setAddressIsValid] = useState(false);
-  const [resEmailIsValid, setResEmailIsValid] = useState(false);
-  const [cellphoneIsValid, setCellphoneIsValid] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { profiles } = useSelector((state) => state.authentication);
+  const [validatedName, setValidatedName] = useState(null);
+  const [validatedEmail, setValidatedEmail] = useState(null);
+  const [validatedPassword, setValidatedPassword] = useState(null);
+  const [validatedResName, setValidatedResName] = useState(null);
+  const [validatedType, setValidatedType] = useState(null);
+  const [validatedDescription, setValidatedDescription] = useState(null);
+  const [validatedPhoto, setValidatedPhoto] = useState(null);
+  const [submitPlaceholder, setSubmitPlaceholder] = useState(false);
+  const [validatedAddress, setValidatedAddress] = useState(null);
+  const [validatedResEmail, setValidatedResEmail] = useState(null);
+  const [validatedCellphone, setValidatedCellphone] = useState(null);
+  const [validatedFB, setValidatedFB] = useState(null);
+  const [validatedTW, setValidatedTW] = useState(null);
+  const [validatedWH, setValidatedWH] = useState(null);
+  const [validatedIG, setValidatedIG] = useState(null);
 
   const formIsValid =
-    nameIsValid &&
-    emailIsValid &&
-    passwordIsValid &&
-    resNameIsValid &&
-    typeIsValid &&
-    descriptionIsValid &&
-    addressIsValid &&
-    resEmailIsValid &&
-    cellphoneIsValid;
+    validatedName &&
+    validatedEmail &&
+    validatedPassword &&
+    validatedResName &&
+    validatedType &&
+    validatedDescription &&
+    validatedAddress &&
+    validatedResEmail &&
+    validatedCellphone;
 
   function onSubmitHandler(event) {
     event.preventDefault();
 
     if (!formIsValid) return;
 
-    alert('Exito');
+    const id = Date.now().toString(36) + Math.random().toString(36).substr(2);
+    dispatch(
+      authenticationActions.addProfile({
+        id,
+        name: validatedName,
+        email: validatedEmail,
+        password: validatedPassword,
+        type: 'owner',
+        restaurants: [],
+      })
+    );
+
+    const social = [];
+    if (validatedFB) social.push({ type: 'FB', url: validatedFB });
+    if (validatedTW) social.push({ type: 'TW', url: validatedTW });
+    if (validatedWH) social.push({ type: 'WH', url: validatedWH });
+    if (validatedIG) social.push({ type: 'IG', url: validatedIG });
+
+    dispatch(
+      restaurantsActions.addRestaurant({
+        id,
+        restaurantOwner: id,
+        name: validatedResName,
+        type: validatedType,
+        rating: [0, 0],
+        photo:
+          submitPlaceholder || !validatedPhoto ? placeholder : validatedPhoto,
+        description: validatedDescription,
+        address: validatedAddress,
+        email: validatedResEmail,
+        cellphone: validatedCellphone,
+        social,
+        categories: ['Base'],
+        menu: [],
+      })
+    );
+
+    navigate('/welcome');
   }
 
   return (
@@ -55,7 +106,7 @@ function RestaurantForm(props) {
           <InputField
             id='name-input'
             label='Nombre Completo*'
-            isValid={setNameIsValid}
+            getValidatedValue={setValidatedName}
             validation={[
               {
                 condition: (value) => value.trim().length <= 60,
@@ -68,12 +119,17 @@ function RestaurantForm(props) {
             id='email-input'
             label='Correo Eléctronico*'
             inputConfiguration={{ type: 'email' }}
-            isValid={setEmailIsValid}
+            getValidatedValue={setValidatedEmail}
             validation={[
               {
                 condition: (value) =>
                   value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
                 errorMessage: 'El correo dado no es válido',
+              },
+              {
+                condition: (value) =>
+                  !profiles.some((profile) => profile.email === value),
+                errorMessage: 'El correo ya se encuentra en uso',
               },
             ]}
           />
@@ -82,7 +138,7 @@ function RestaurantForm(props) {
             id='password-input '
             label='Contraseña (entre 4 y 12 caracteres)*'
             inputConfiguration={{ type: 'password' }}
-            isValid={setPasswordIsValid}
+            getValidatedValue={setValidatedPassword}
             validation={[
               {
                 condition: (value) =>
@@ -101,7 +157,7 @@ function RestaurantForm(props) {
           <InputField
             id='res-name-input'
             label='Nombre del Restaurante*'
-            isValid={setResNameIsValid}
+            getValidatedValue={setValidatedResName}
             validation={[
               {
                 condition: (value) => value.trim().length <= 60,
@@ -117,7 +173,7 @@ function RestaurantForm(props) {
               placeholder:
                 'Restaurante para toda la familia, Pasteleria, Marisquería, etc...',
             }}
-            isValid={setTypeIsValid}
+            getValidatedValue={setValidatedType}
             validation={[
               {
                 condition: (value) => value.trim().length <= 60,
@@ -129,21 +185,42 @@ function RestaurantForm(props) {
           <InputField
             id='description-input'
             label='Descripción Completa*'
-            isValid={setDescriptionIsValid}
+            getValidatedValue={setValidatedDescription}
             textarea='true'
           />
 
           <InputField
+            id='photo-input'
+            label='Fotografía del Restaurante (Enlace)'
+            inputConfiguration={{ type: 'url' }}
+            getValidatedValue={setValidatedPhoto}
+            canBeEmpty
+          />
+
+          {validatedPhoto && (
+            <div className={classes['form-img-ctnr']}>
+              <img
+                className={classes['form-img']}
+                src={validatedPhoto}
+                alt='&nbsp;Error: La imagen escogida no pudo ser encontrada. Revise que el enlace este correcto.'
+                onError={() => {
+                  setSubmitPlaceholder(true);
+                }}
+              />
+            </div>
+          )}
+
+          <InputField
             id='address-input'
             label='Dirección Física del Establecimiento*'
-            isValid={setAddressIsValid}
+            getValidatedValue={setValidatedAddress}
           />
 
           <InputField
             id='res-email-input'
             label='Correo Electrónico*'
             inputConfiguration={{ type: 'email' }}
-            isValid={setResEmailIsValid}
+            getValidatedValue={setValidatedResEmail}
             validation={[
               {
                 condition: (value) =>
@@ -157,7 +234,7 @@ function RestaurantForm(props) {
             id='cellphone-input'
             label='Teléfono (10 digitos)*'
             inputConfiguration={{ type: 'tel' }}
-            isValid={setCellphoneIsValid}
+            getValidatedValue={setValidatedCellphone}
             validation={[
               {
                 condition: (value) => value.trim().match(/\d/g).length === 10,
@@ -173,6 +250,7 @@ function RestaurantForm(props) {
             id='fb-input'
             label='Facebook'
             inputConfiguration={{ type: 'url' }}
+            getValidatedValue={setValidatedFB}
             canBeEmpty
           />
 
@@ -180,6 +258,7 @@ function RestaurantForm(props) {
             id='tw-input'
             label='Twitter'
             inputConfiguration={{ type: 'url' }}
+            getValidatedValue={setValidatedTW}
             canBeEmpty
           />
 
@@ -187,6 +266,7 @@ function RestaurantForm(props) {
             id='wh-input'
             label='Whatsapp'
             inputConfiguration={{ type: 'url' }}
+            getValidatedValue={setValidatedWH}
             canBeEmpty
           />
 
@@ -194,6 +274,7 @@ function RestaurantForm(props) {
             id='ig-input'
             label='Instagram'
             inputConfiguration={{ type: 'url' }}
+            getValidatedValue={setValidatedIG}
             canBeEmpty
           />
         </fieldset>

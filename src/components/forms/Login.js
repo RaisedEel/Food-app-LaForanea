@@ -8,20 +8,20 @@ import classes from './Login.module.css';
 
 function Login() {
   const dispatch = useDispatch();
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [validatedEmail, setValidatedEmail] = useState(null);
+  const [validatedPassword, setValidatedPassword] = useState(null);
 
   function onSubmitHandler(event) {
     event.preventDefault();
 
-    if (!emailIsValid || !passwordIsValid) {
+    if (!validatedEmail || !validatedPassword) {
       return;
     }
 
     dispatch(
       authenticationActions.login({
-        email: emailIsValid,
-        password: passwordIsValid,
+        email: validatedEmail,
+        password: validatedPassword,
       })
     );
   }
@@ -45,7 +45,7 @@ function Login() {
         id='login-email'
         label='Correo Electrónico'
         inputConfiguration={{ type: 'email' }}
-        isValid={setEmailIsValid}
+        getValidatedValue={setValidatedEmail}
         validation={[
           {
             condition: (value) => value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
@@ -58,7 +58,7 @@ function Login() {
         id='login-password'
         label='Contraseña'
         inputConfiguration={{ type: 'password' }}
-        isValid={setPasswordIsValid}
+        getValidatedValue={setValidatedPassword}
         validation={[
           {
             condition: (value) =>

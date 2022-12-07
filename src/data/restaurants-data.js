@@ -2,13 +2,24 @@ import restaurant from '../assets/images/restaurant.jpg';
 
 const restaurants = [
   {
-    id: '101',
+    id: 'a1',
     name: 'El Clásico',
     type: 'Restaurante de Comida Rápida',
-    rating: [4.5, 1035],
+    rating: [4.8, 1235],
     photo: restaurant,
     description:
-      'Restaurante para toda la familia con toda clase de platillos desde las deliciosas hamburguesas hasta los clásicos tacos. Prometemos un servicio rápido y atento.',
+      'Etiam velit turpis, tristique in urna at, commodo semper ex. Nullam diam felis, dignissim in rhoncus eu, convallis blandit lorem. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas vel fermentum magna. Integer sem nisi, gravida vel odio non, elementum sagittis est.',
+
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.elclasico.com',
+    cellphone: '755-555-6666',
+    social: [
+      { type: 'FB', url: '#' },
+      { type: 'TW', url: '#' },
+      { type: 'WH', url: '#' },
+      { type: 'IG', url: '#' },
+    ],
+    categories: ['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Drinks'],
   },
   {
     id: '106',
@@ -18,6 +29,11 @@ const restaurants = [
     photo: restaurant,
     description:
       'Pequeño restaurante donde se sirve comida china. Tambien tenemos buffet.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    social: [],
+    categories: ['Hamburguesa'],
   },
   {
     id: '107',
@@ -27,6 +43,11 @@ const restaurants = [
     photo: restaurant,
     description:
       'Se hacen bebidas de todo tipo, ambiente relajado con la música más moderna. Lunes, Miercoles y Viernes se organizan noches de karaoke.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    categories: ['Hamburguesa'],
+    social: [],
   },
   {
     id: '202',
@@ -36,6 +57,11 @@ const restaurants = [
     photo: restaurant,
     description:
       'Cafe rápido y caliente a domicilio. Checa nuestro menú para ver nuestra gran variedad.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    categories: ['Hamburguesa'],
+    social: [],
   },
   {
     id: '221',
@@ -44,6 +70,11 @@ const restaurants = [
     rating: [4, 642],
     photo: restaurant,
     description: 'Fonda de antojitos mexicanos. Servicio todos los días.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    categories: ['Hamburguesa'],
+    social: [],
   },
   {
     id: '351',
@@ -52,6 +83,11 @@ const restaurants = [
     rating: [5, 123],
     photo: restaurant,
     description: 'Los mejores diseños y sabores. Cobramos por sabor.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    categories: ['Hamburguesa'],
+    social: [],
   },
   {
     id: '382',
@@ -60,6 +96,11 @@ const restaurants = [
     rating: [3.6, 6242],
     photo: restaurant,
     description: 'Cafe importado. La mejor calidad de grano y postres.',
+    address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
+    email: 'www.placeholder.com',
+    cellphone: '755-555-6666',
+    categories: ['Hamburguesa'],
+    social: [],
   },
 ];
 

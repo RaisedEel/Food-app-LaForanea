@@ -7,7 +7,7 @@
   display: grid;
   grid-template-columns: 6rem 1fr 4.4rem;
   align-items: center;
-  gap: 3.2rem;
+  gap: 2.4rem;
 }
 
 .logo-img {
@@ -70,13 +70,13 @@
 
   display: grid;
   grid-template-columns: 60fr 40fr auto;
-  gap: 2.4rem;
+  gap: 3.2rem;
 }
 
 .restaurant-info {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 2.4rem;
 }
 
 .restaurant-info > p,
@@ -89,20 +89,21 @@
   font-style: normal;
 }
 
+.contact-info {
+  font-weight: 500;
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .restaurant-img-cntr {
   width: 100%;
+  min-height: 25rem;
   border-radius: 11px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-}
-
-.contact-info {
-  font-weight: 500;
-  margin-top: 1.2rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
 }
 
 .social-links {
@@ -118,7 +119,7 @@
 
   .restaurant-img-cntr {
     grid-row: 1;
-    height: 32rem;
+    height: 35rem;
   }
 
   .social-links {
@@ -145,5 +146,10 @@
 
   .accordion-btn:hover {
     transform: none;
+  }
+
+  .restaurant-img-cntr {
+    grid-row: 1;
+    height: 30rem;
   }
 }

@@ -16,6 +16,26 @@
   margin-bottom: 2.4rem;
 }
 
+.form-img-ctnr {
+  margin: 0 auto 3.2rem;
+  max-width: 75rem;
+  max-height: 30rem;
+  line-height: 1.6;
+  overflow: hidden;
+  border-radius: 9px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 9px;
+}
+
 .form-button {
   align-self: flex-end;
   background-color: #f97474;

@@ -1,25 +1,40 @@
 import { Fragment, useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import InputField from './inputs/InputField';
 import Banner from '../ui/Banner';
 import classes from './Form.module.css';
 
 import costumer from '../../assets/images/forms/form-user.jpg';
+import { authenticationActions } from '../../context/authentication-slice';
+import { useNavigate } from 'react-router-dom';
 
 function UserForm(props) {
-  const [nameIsValid, setNameIsValid] = useState(false);
-  const [emailIsValid, setEmailIsValid] = useState(false);
-  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [validatedName, setValidatedName] = useState(null);
+  const [validatedEmail, setValidatedEmail] = useState(null);
+  const [validatedPassword, setValidatedPassword] = useState(null);
 
-  const formIsValid = nameIsValid && emailIsValid && passwordIsValid;
+  const formIsValid = validatedName && validatedEmail && validatedPassword;
 
   function onSubmitHandler(event) {
     event.preventDefault();
 
     if (!formIsValid) return;
 
-    // Send to feed
-    alert('Cuenta creada!');
+    dispatch(
+      authenticationActions.addProfile({
+        id: Date.now().toString(36) + Math.random().toString(36).substr(2),
+        name: validatedName,
+        email: validatedEmail,
+        password: validatedPassword,
+        type: 'client',
+        restaurants: [],
+      })
+    );
+
+    navigate('/welcome');
   }
 
   return (
@@ -41,7 +56,7 @@ function UserForm(props) {
           <InputField
             id='name-input'
             label='Nombre Completo*'
-            isValid={setNameIsValid}
+            getValidatedValue={setValidatedName}
             validation={[
               {
                 condition: (value) => value.trim().length <= 60,
@@ -54,7 +69,7 @@ function UserForm(props) {
             id='email-input'
             label='Correo Electrónico*'
             inputConfiguration={{ type: 'email' }}
-            isValid={setEmailIsValid}
+            getValidatedValue={setValidatedEmail}
             validation={[
               {
                 condition: (value) =>
@@ -68,7 +83,7 @@ function UserForm(props) {
             id='password-input'
             label='Contraseña (entre 4 y 12 caracteres)*'
             inputConfiguration={{ type: 'password' }}
-            isValid={setPasswordIsValid}
+            getValidatedValue={setValidatedPassword}
             validation={[
               {
                 condition: (value) =>

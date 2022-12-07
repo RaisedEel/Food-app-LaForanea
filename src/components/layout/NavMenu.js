@@ -8,27 +8,20 @@ function NavMenu(props) {
   const dispatch = useDispatch();
 
   return (
-    <nav className={classes.nav}>
+    <nav className={classes.nav} onClick={props.closeMenu}>
       <ul className={classes['nav-links']}>
         <li>
           <button
             className={classes['nav-link']}
             onClick={() => {
               dispatch(authenticationActions.toggleLogin());
-              props.closeMenu();
             }}
           >
             Ingresar
           </button>
         </li>
         <li>
-          <Link
-            className={classes['nav-link']}
-            to='/new'
-            onClick={() => {
-              props.closeMenu();
-            }}
-          >
+          <Link className={classes['nav-link']} to='/new'>
             Crear Cuenta
           </Link>
         </li>
@@ -52,7 +45,6 @@ function NavMenu(props) {
             className={classes['nav-link']}
             onClick={() => {
               dispatch(authenticationActions.logout());
-              props.closeMenu();
             }}
           >
             Cerrar Sesión

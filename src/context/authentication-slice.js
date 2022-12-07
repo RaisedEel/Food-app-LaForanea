@@ -4,7 +4,7 @@ const initialState = {
   showLogin: false,
   isAuthenticated: false,
   currentProfile: {},
-  profiles: [{ email: 'testing@gmail.com', password: '1111' }],
+  profiles: [{ id: 'abcd101', email: 'testing@gmail.com', password: '1111' }],
 };
 
 const authenticationSlice = createSlice({
@@ -17,9 +17,18 @@ const authenticationSlice = createSlice({
     },
     addProfile(state, action) {
       state.profiles.push(action.payload);
-      state.currentProfile(action.payload);
+      state.currentProfile = action.payload;
       state.isAuthenticated = true;
       state.showLogin = false;
+    },
+    updateProfile(state, action) {
+      let profileToUpdate = state.profiles.find(
+        (profile) => profile.id === action.payload.id
+      );
+
+      if (!profileToUpdate) return;
+
+      profileToUpdate = action.payload;
     },
     login(state, action) {
       const profile = state.profiles.find(
@@ -38,6 +47,8 @@ const authenticationSlice = createSlice({
       state.currentProfile = {};
       state.isAuthenticated = false;
     },
+    addFavoriteRestaurant() {},
+    removeFavoriteRestaurant() {},
   },
 });
 

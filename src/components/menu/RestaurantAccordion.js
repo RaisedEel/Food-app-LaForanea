@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import classes from './RestaurantAccordion.module.css';
-
 import SocialMediaLink from '../ui/SocialMediaLink';
+
+import classes from './RestaurantAccordion.module.css';
+import logo from '../../assets/images/logo.png';
 
 function RestaurantAccordion(props) {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +17,7 @@ function RestaurantAccordion(props) {
         <div>
           <img
             className={classes['logo-img']}
-            src={props.data.logo}
+            src={logo}
             alt={`Logo de ${props.data.name}`}
           />
         </div>
@@ -70,11 +71,13 @@ function RestaurantAccordion(props) {
             className={classes['restaurant-img-cntr']}
             style={{ backgroundImage: `url(${props.data.photo})` }}
           ></div>
-          <div className={classes['social-links']}>
-            {props.data.social.map((link, index) => (
-              <SocialMediaLink key={index} {...link} />
-            ))}
-          </div>
+          {props.data.social.length > 0 && (
+            <div className={classes['social-links']}>
+              {props.data.social.map((link, index) => (
+                <SocialMediaLink key={index} {...link} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,13 +1,16 @@
-import restaurants from '../data/restaurants-data';
+import { useSelector } from 'react-redux';
 import Carousel from '../components/landing/Carousel';
 import PreviewList from '../components/restaurant/PreviewList';
 import Banner from '../components/ui/Banner';
+import CallToAction from '../components/landing/CallToAction';
+
 import carousel1 from '../assets/images/carousel/carousel-1.jpg';
 import carousel2 from '../assets/images/carousel/carousel-2.png';
 import carousel3 from '../assets/images/carousel/carousel-3.jpg';
-import CallToAction from '../components/landing/CallToAction';
 
 function LandingPage() {
+  const { allRestaurants } = useSelector((state) => state.restaurants);
+
   return (
     <div
       className='container'
@@ -47,13 +50,16 @@ function LandingPage() {
         />
       </Carousel>
 
-      <PreviewList title='Restaurantes de la Semana' data={restaurants} />
+      <PreviewList title='Restaurantes de la Semana' data={allRestaurants} />
 
-      <PreviewList title='Lo Más Nuevo' data={restaurants.slice().reverse()} />
+      <PreviewList
+        title='Lo Más Nuevo'
+        data={allRestaurants.slice().reverse()}
+      />
 
       <PreviewList
         title='Lo Mejor de lo Mejor'
-        data={restaurants
+        data={allRestaurants
           .slice()
           .sort((first, second) => second.rating[0] - first.rating[0])}
       />

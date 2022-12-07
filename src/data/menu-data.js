@@ -7,44 +7,44 @@ import sodasImg from '../assets/images/sodas.jpg';
 const menu = [
   {
     id: 1,
-    category: 'Hamburgers',
+    category: 'Hamburguesa',
     name: 'Hamburguesa con Queso',
-    price: 500,
+    price: 50,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
     image: hamburgerImg,
   },
   {
     id: 2,
-    category: 'Hamburgers',
+    category: 'Hamburguesa',
     name: 'Hamburguesa Pequeña',
-    price: 1999,
+    price: 30,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum. Quisque vitae turpis tincidunt, ultricies velit eu, aliquam turpis.',
     image: hamburgerImg,
   },
   {
     id: 3,
-    category: 'Hamburgers',
+    category: 'Hamburguesa',
     name: 'Hamburguesa Tres Carnes',
-    price: 325,
+    price: 70,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
     image: hamburgerImg,
   },
   {
     id: 4,
-    category: 'Hamburgers',
+    category: 'Hamburguesa',
     name: 'Hamburguesa con Tocino',
-    price: 100,
+    price: 60,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: hamburgerImg,
   },
   {
     id: 5,
-    category: 'Hamburgers',
+    category: 'Hamburguesa',
     name: 'Hamburguesa Mega',
-    price: 1234,
+    price: 80,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: hamburgerImg,
@@ -53,7 +53,7 @@ const menu = [
     id: 6,
     category: 'Tacos',
     name: 'Barbacoa',
-    price: 50,
+    price: 30,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: tacosImg,
@@ -62,7 +62,7 @@ const menu = [
     id: 7,
     category: 'Tacos',
     name: 'Al pastor',
-    price: 60,
+    price: 30,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: tacosImg,
@@ -71,7 +71,7 @@ const menu = [
     id: 8,
     category: 'Tacos',
     name: 'Dorados',
-    price: 60,
+    price: 25,
     description:
       'Suspendisse mollis turpis eu sapien sagittis tristique. In dictum ligula non dui sodales elementum.',
     image: tacosImg,
@@ -97,7 +97,7 @@ const menu = [
     id: 11,
     category: 'Pizzas',
     name: 'Vegetariana',
-    price: 150,
+    price: 140,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
     image: pizzaImg,
   },
@@ -111,7 +111,7 @@ const menu = [
   },
   {
     id: 13,
-    category: 'Drinks',
+    category: 'Bebidas',
     name: 'Refrescos',
     price: 20,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
@@ -119,7 +119,7 @@ const menu = [
   },
   {
     id: 14,
-    category: 'Drinks',
+    category: 'Bebidas',
     name: 'Aguas frescas',
     price: 15,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
@@ -129,10 +129,26 @@ const menu = [
     id: 15,
     category: 'Hot dogs',
     name: 'Normal',
-    price: 5252,
+    price: 30,
+    description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
+    image: hotdogImg,
+  },
+  {
+    id: 16,
+    category: 'Hot dogs',
+    name: 'Doble',
+    price: 50,
     description: 'Suspendisse mollis turpis eu sapien sagittis tristique.',
     image: hotdogImg,
   },
 ];
 
+function createMenu(numberOfItems) {
+  if (numberOfItems < 0) numberOfItems = 0;
+  if (numberOfItems >= menu.length) numberOfItems = menu.length - 1;
+
+  return menu.slice(numberOfItems);
+}
+
+export { createMenu };
 export default menu;

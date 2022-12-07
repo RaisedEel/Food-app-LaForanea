@@ -11,7 +11,8 @@ function InputField(props) {
     );
 
   useEffect(() => {
-    if (props.isValid) props.isValid(isValid ? value : false);
+    if (props.getValidatedValue)
+      props.getValidatedValue(isValid ? value : null);
   });
 
   const [disableInput, setDisableInput] = useState(
