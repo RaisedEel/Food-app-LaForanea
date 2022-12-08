@@ -20,6 +20,18 @@ const restaurantsSlice = createSlice({
 
       state.allRestaurants.push(action.payload);
     },
+    updateRestaurant(state, action) {
+      const restaurantToUpdate = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (!restaurantToUpdate) return;
+
+      Object.assign(restaurantToUpdate, {
+        ...action.payload.values,
+        id: action.payload.id,
+      });
+    },
     setRestaurants(state, action) {
       if (state.history.some((record) => record.code === action.payload.code))
         return;

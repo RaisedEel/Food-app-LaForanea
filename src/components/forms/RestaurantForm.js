@@ -11,6 +11,7 @@ import placeholder from '../../assets/images/placeholders/restaurant-photo.jpg';
 import owners from '../../assets/images/forms/form-restaurant.jpg';
 
 function RestaurantForm(props) {
+  const { initialValues } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { profiles } = useSelector((state) => state.authentication);
@@ -46,42 +47,69 @@ function RestaurantForm(props) {
 
     if (!formIsValid) return;
 
-    const id = Date.now().toString(36) + Math.random().toString(36).substr(2);
-    dispatch(
-      authenticationActions.addProfile({
-        id,
-        name: validatedName,
-        email: validatedEmail,
-        password: validatedPassword,
-        type: 'owner',
-        restaurants: [],
-      })
-    );
+    const id = Date.now().toString(36) + Math.random().toString(36);
+
+    const userToSubmit = {
+      id,
+      name: validatedName,
+      email: validatedEmail,
+      password: validatedPassword,
+    };
+
+    if (props.initialValues)
+      dispatch(
+        authenticationActions.updateProfile({
+          id: initialValues.id,
+          values: userToSubmit,
+        })
+      );
+
+    if (!props.initialValues)
+      dispatch(
+        authenticationActions.addProfile({
+          ...userToSubmit,
+          type: 'owner',
+          restaurants: [],
+        })
+      );
 
     const social = [];
-    if (validatedFB) social.push({ type: 'FB', url: validatedFB });
-    if (validatedTW) social.push({ type: 'TW', url: validatedTW });
-    if (validatedWH) social.push({ type: 'WH', url: validatedWH });
-    if (validatedIG) social.push({ type: 'IG', url: validatedIG });
+    social.push({ type: 'FB', url: validatedFB });
+    social.push({ type: 'TW', url: validatedTW });
+    social.push({ type: 'WH', url: validatedWH });
+    social.push({ type: 'IG', url: validatedIG });
 
-    dispatch(
-      restaurantsActions.addRestaurant({
-        id,
-        restaurantOwner: id,
-        name: validatedResName,
-        type: validatedType,
-        rating: [0, 0],
-        photo:
-          submitPlaceholder || !validatedPhoto ? placeholder : validatedPhoto,
-        description: validatedDescription,
-        address: validatedAddress,
-        email: validatedResEmail,
-        cellphone: validatedCellphone,
-        social,
-        categories: ['Base'],
-        menu: [],
-      })
-    );
+    const restaurantToSubmit = {
+      id,
+      restaurantOwner: id,
+      name: validatedResName,
+      type: validatedType,
+      photo:
+        submitPlaceholder || !validatedPhoto ? placeholder : validatedPhoto,
+      description: validatedDescription,
+      address: validatedAddress,
+      email: validatedResEmail,
+      cellphone: validatedCellphone,
+      social,
+    };
+
+    if (props.initialValues)
+      dispatch(
+        restaurantsActions.updateRestaurant({
+          id: initialValues.id,
+          values: restaurantToSubmit,
+        })
+      );
+
+    if (!props.initialValues)
+      dispatch(
+        restaurantsActions.addRestaurant({
+          restaurantToSubmit,
+          rating: [0, 0],
+          categories: ['Base'],
+          menu: [],
+        })
+      );
 
     navigate('/');
   }
@@ -115,6 +143,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            initialValue={initialValues ? initialValues.userName : null}
             editable={props.editable ? true : false}
           />
 
@@ -131,10 +160,12 @@ function RestaurantForm(props) {
               },
               {
                 condition: (value) =>
-                  !profiles.some((profile) => profile.email === value),
+                  !profiles.some((profile) => profile.email === value) ||
+                  (initialValues && initialValues.userEmail === value),
                 errorMessage: 'El correo ya se encuentra en uso',
               },
             ]}
+            initialValue={initialValues ? initialValues.userEmail : null}
             editable={props.editable ? true : false}
           />
 
@@ -151,6 +182,7 @@ function RestaurantForm(props) {
                   'La contraseña debe contener entre 4 y 12 caracteres',
               },
             ]}
+            initialValue={initialValues ? initialValues.password : null}
             editable={props.editable ? true : false}
           />
         </fieldset>
@@ -169,6 +201,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            initialValue={initialValues ? initialValues.name : null}
             editable={props.editable ? true : false}
           />
 
@@ -186,6 +219,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            initialValue={initialValues ? initialValues.type : null}
             editable={props.editable ? true : false}
           />
 
@@ -194,6 +228,7 @@ function RestaurantForm(props) {
             label='Descripción Completa*'
             getValidatedValue={setValidatedDescription}
             textarea='true'
+            initialValue={initialValues ? initialValues.description : null}
             editable={props.editable ? true : false}
           />
 
@@ -202,6 +237,7 @@ function RestaurantForm(props) {
             label='Fotografía del Restaurante (Enlace)'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedPhoto}
+            initialValue={initialValues ? initialValues.photo : null}
             editable={props.editable ? true : false}
             canBeEmpty
           />
@@ -223,6 +259,7 @@ function RestaurantForm(props) {
             id='address-input'
             label='Dirección Física del Establecimiento*'
             getValidatedValue={setValidatedAddress}
+            initialValue={initialValues ? initialValues.address : null}
             editable={props.editable ? true : false}
           />
 
@@ -238,6 +275,7 @@ function RestaurantForm(props) {
                 errorMessage: 'El correo dado no es válido',
               },
             ]}
+            initialValue={initialValues ? initialValues.email : null}
             editable={props.editable ? true : false}
           />
 
@@ -252,6 +290,7 @@ function RestaurantForm(props) {
                 errorMessage: 'El télefono no es valido',
               },
             ]}
+            initialValue={initialValues ? initialValues.cellphone : null}
             editable={props.editable ? true : false}
           />
         </fieldset>
@@ -263,6 +302,9 @@ function RestaurantForm(props) {
             label='Facebook'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedFB}
+            initialValue={
+              initialValues && initialValues[0] ? initialValues[0].url : null
+            }
             editable={props.editable ? true : false}
             canBeEmpty
           />
@@ -272,6 +314,9 @@ function RestaurantForm(props) {
             label='Twitter'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedTW}
+            initialValue={
+              initialValues && initialValues[1] ? initialValues[1].url : null
+            }
             editable={props.editable ? true : false}
             canBeEmpty
           />
@@ -281,6 +326,9 @@ function RestaurantForm(props) {
             label='Whatsapp'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedWH}
+            initialValue={
+              initialValues && initialValues[2] ? initialValues[2].url : null
+            }
             editable={props.editable ? true : false}
             canBeEmpty
           />
@@ -290,6 +338,9 @@ function RestaurantForm(props) {
             label='Instagram'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedIG}
+            initialValue={
+              initialValues && initialValues[3] ? initialValues[3].url : null
+            }
             editable={props.editable ? true : false}
             canBeEmpty
           />

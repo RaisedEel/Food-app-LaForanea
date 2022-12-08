@@ -50,39 +50,33 @@ function NavMenu(props) {
         )}
         {isAuthenticated && currentProfile.type === 'owner' && (
           <li>
-            <Link className={classes['nav-link']} to='/'>
+            <Link
+              className={classes['nav-link']}
+              to={`/restaurant/${currentProfile.id}`}
+            >
               Mi Restaurante
             </Link>
           </li>
         )}
         {isAuthenticated && (
-          <li>
-            <Link className={classes['nav-link']} to='/user/settings'>
-              Opciones de Cuenta
-            </Link>
-          </li>
-        )}
-        {isAuthenticated && currentProfile.type === 'owner' && (
-          <li>
-            <Link
-              className={classes['nav-link']}
-              to='/user/settings#restaurant'
-            >
-              Opciones del Restaurante
-            </Link>
-          </li>
-        )}
-        {isAuthenticated && (
-          <li>
-            <button
-              className={classes['nav-link']}
-              onClick={() => {
-                dispatch(authenticationActions.logout());
-              }}
-            >
-              Cerrar Sesión
-            </button>
-          </li>
+          <Fragment>
+            <li>
+              <Link className={classes['nav-link']} to='/user/settings'>
+                Opciones de Cuenta
+              </Link>
+            </li>
+
+            <li>
+              <button
+                className={classes['nav-link']}
+                onClick={() => {
+                  dispatch(authenticationActions.logout());
+                }}
+              >
+                Cerrar Sesión
+              </button>
+            </li>
+          </Fragment>
         )}
       </ul>
     </nav>

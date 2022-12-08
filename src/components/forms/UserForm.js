@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import InputField from './inputs/InputField';
 import Banner from '../ui/Banner';
@@ -10,8 +10,10 @@ import { authenticationActions } from '../../context/authentication-slice';
 import { useNavigate } from 'react-router-dom';
 
 function UserForm(props) {
+  const { initialValues } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { profiles } = useSelector((state) => state.authentication);
   const [validatedName, setValidatedName] = useState(null);
   const [validatedEmail, setValidatedEmail] = useState(null);
   const [validatedPassword, setValidatedPassword] = useState(null);
@@ -23,16 +25,29 @@ function UserForm(props) {
 
     if (!formIsValid) return;
 
-    dispatch(
-      authenticationActions.addProfile({
-        id: Date.now().toString(36) + Math.random().toString(36).substr(2),
-        name: validatedName,
-        email: validatedEmail,
-        password: validatedPassword,
-        type: 'client',
-        restaurants: [],
-      })
-    );
+    const valuesToSubmit = {
+      id: Date.now().toString(36) + Math.random().toString(36),
+      name: validatedName,
+      email: validatedEmail,
+      password: validatedPassword,
+    };
+
+    if (props.initialValues)
+      dispatch(
+        authenticationActions.updateProfile({
+          id: initialValues.id,
+          values: valuesToSubmit,
+        })
+      );
+
+    if (!props.initialValues)
+      dispatch(
+        authenticationActions.addProfile({
+          ...valuesToSubmit,
+          type: 'client',
+          restaurants: [],
+        })
+      );
 
     navigate('/');
   }
@@ -66,6 +81,7 @@ function UserForm(props) {
               },
             ]}
             editable={props.editable ? true : false}
+            initialValue={initialValues ? initialValues.name : null}
           />
 
           <InputField
@@ -79,8 +95,15 @@ function UserForm(props) {
                   value.trim().match(/(.+)@(.+){2,}\.(.+){2,}/),
                 errorMessage: 'El correo dado no es válido',
               },
+              {
+                condition: (value) =>
+                  !profiles.some((profile) => profile.email === value) ||
+                  (initialValues && initialValues.email === value),
+                errorMessage: 'El correo ya se encuentra en uso',
+              },
             ]}
             editable={props.editable ? true : false}
+            initialValue={initialValues ? initialValues.email : null}
           />
 
           <InputField
@@ -97,6 +120,7 @@ function UserForm(props) {
               },
             ]}
             editable={props.editable ? true : false}
+            initialValue={initialValues ? initialValues.password : null}
           />
         </fieldset>
         <button className={classes['form-button']} disabled={!formIsValid}>

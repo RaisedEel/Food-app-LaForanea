@@ -1,7 +1,17 @@
+import { Outlet } from 'react-router-dom';
+import TabNav from '../components/layout/TabNav';
+
 function HomePage() {
   return (
     <div className='container'>
-      <h2 className='heading-secondary'>Bienvenido!</h2>
+      <TabNav
+        data={[
+          { id: 'feed', title: 'Feed' },
+          { id: 'favorites', title: 'Favoritos' },
+        ]}
+      />
+
+      <Outlet />
     </div>
   );
 }

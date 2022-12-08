@@ -6,14 +6,16 @@ const initialState = {
   currentProfile: {},
   profiles: [
     {
-      id: 'abcd102',
+      id: 'abcd101',
+      name: 'Martina Goméz Palacios',
       email: 'client@gmail.com',
       password: '1111',
       type: 'client',
       restaurants: [],
     },
     {
-      id: 'abcd101',
+      id: 'abcd102',
+      name: 'Joaquín Hernandéz',
       email: 'owner@gmail.com',
       password: '1111',
       type: 'owner',
@@ -37,13 +39,18 @@ const authenticationSlice = createSlice({
       state.showLogin = false;
     },
     updateProfile(state, action) {
-      let profileToUpdate = state.profiles.find(
+      const profileToUpdate = state.profiles.find(
         (profile) => profile.id === action.payload.id
       );
 
       if (!profileToUpdate) return;
 
-      profileToUpdate = action.payload;
+      Object.assign(profileToUpdate, {
+        ...action.payload.values,
+        id: action.payload.id,
+      });
+
+      state.currentProfile = profileToUpdate;
     },
     login(state, action) {
       const profile = state.profiles.find(
