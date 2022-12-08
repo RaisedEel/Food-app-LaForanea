@@ -6,18 +6,23 @@ import { cartActions } from './context/cart-slice';
 import { authenticationActions } from './context/authentication-slice';
 import Cart from './components/cart/Cart';
 import Modal from './components/ui/Modal';
-import MenuPage from './pages/MenuPage';
+import PrivateRoutes from './components/layout/PrivateRoutes';
 import LandingPage from './pages/LandingPage';
+import CreateAccountPage from './pages/CreateAccountPage';
+import HomePage from './pages/HomePage';
+import SettingsPage from './pages/SettingsPage';
+import MenuPage from './pages/MenuPage';
 import RestaurantListPage from './pages/RestaurantListPage';
 import Login from './components/forms/Login';
-import CreateAccountPage from './pages/CreateAccountPage';
 import UserForm from './components/forms/UserForm';
 import RestaurantForm from './components/forms/RestaurantForm';
 
 function App() {
-  const showCart = useSelector((state) => state.cart.showCart);
-  const showLogin = useSelector((state) => state.authentication.showLogin);
   const dispatch = useDispatch();
+  const showCart = useSelector((state) => state.cart.showCart);
+  const { showLogin, isAuthenticated } = useSelector(
+    (state) => state.authentication
+  );
 
   function closeCartHandler() {
     dispatch(cartActions.toggleCart());
@@ -48,15 +53,35 @@ function App() {
         </Modal>
       )}
       <Routes>
-        <Route path='*' element={<Navigate replace to='/welcome' />} />
-        <Route path='/welcome' element={<LandingPage />} />
+        <Route path='*' element={<Navigate replace to='/' />} />
         <Route path='/search/:term' element={<RestaurantListPage />} />
         <Route path='/restaurant/:restaurantCode' element={<MenuPage />} />
-        <Route path='/new' element={<CreateAccountPage />}>
-          <Route index element={<Navigate replace to='user' />} />
-          <Route path='user' element={<UserForm />} />
-          <Route path='restaurant' element={<RestaurantForm />} />
-          <Route path='*' element={<Navigate replace to='user' />} />
+        <Route
+          path='/'
+          element={
+            <PrivateRoutes
+              accessOn={!isAuthenticated}
+              redirectPath='/user/home'
+            />
+          }
+        >
+          <Route index element={<Navigate replace to='welcome' />} />
+          <Route path='welcome' element={<LandingPage />} />
+          <Route path='new' element={<CreateAccountPage />}>
+            <Route index element={<Navigate replace to='user' />} />
+            <Route path='user' element={<UserForm />} />
+            <Route path='restaurant' element={<RestaurantForm />} />
+            <Route path='*' element={<Navigate replace to='user' />} />
+          </Route>
+        </Route>
+        <Route
+          path='/user'
+          element={
+            <PrivateRoutes accessOn={isAuthenticated} redirectPath='/welcome' />
+          }
+        >
+          <Route index path='home' element={<HomePage />} />
+          <Route path='settings' element={<SettingsPage />} />
         </Route>
       </Routes>
     </Fragment>

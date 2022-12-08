@@ -34,21 +34,23 @@ function UserForm(props) {
       })
     );
 
-    navigate('/welcome');
+    navigate('/');
   }
 
   return (
     <Fragment>
-      <Banner
-        style={{
-          backgroundColor: '#de7607',
-          color: '#fff',
-          marginBottom: '9.6rem',
-        }}
-        title='Crea tu Cuenta Gratis'
-        text='Podras interactuar con los diferentes restaurantes de una forma más sencilla y personalizada y ¡todo totalmente gratis! Escoge tus favoritos y califica a cada restaurante que te topes y mucho más. Se acabaron los días de tener que memorizarte tus restaurantes favoritos.'
-        image={costumer}
-      />
+      {!props.editable && (
+        <Banner
+          style={{
+            backgroundColor: '#de7607',
+            color: '#fff',
+            marginBottom: '9.6rem',
+          }}
+          title='Crea tu Cuenta Gratis'
+          text='Podras interactuar con los diferentes restaurantes de una forma más sencilla y personalizada y ¡todo totalmente gratis! Escoge tus favoritos y califica a cada restaurante que te topes y mucho más. Se acabaron los días de tener que memorizarte tus restaurantes favoritos.'
+          image={costumer}
+        />
+      )}
 
       <form className={classes.form} onSubmit={onSubmitHandler}>
         <fieldset className={classes['form-fieldset']}>
@@ -63,6 +65,7 @@ function UserForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -77,6 +80,7 @@ function UserForm(props) {
                 errorMessage: 'El correo dado no es válido',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -92,10 +96,11 @@ function UserForm(props) {
                   'La contraseña debe contener entre 4 y 12 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
         </fieldset>
         <button className={classes['form-button']} disabled={!formIsValid}>
-          Crear Nueva Cuenta
+          {props.editable ? 'Guardar Cambios' : 'Crear Nueva Cuenta'}
         </button>
       </form>
     </Fragment>

@@ -4,7 +4,22 @@ const initialState = {
   showLogin: false,
   isAuthenticated: false,
   currentProfile: {},
-  profiles: [{ id: 'abcd101', email: 'testing@gmail.com', password: '1111' }],
+  profiles: [
+    {
+      id: 'abcd102',
+      email: 'client@gmail.com',
+      password: '1111',
+      type: 'client',
+      restaurants: [],
+    },
+    {
+      id: 'abcd101',
+      email: 'owner@gmail.com',
+      password: '1111',
+      type: 'owner',
+      restaurants: [],
+    },
+  ],
 };
 
 const authenticationSlice = createSlice({

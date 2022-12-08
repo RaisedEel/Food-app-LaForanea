@@ -24,7 +24,7 @@ function MainHeader() {
   return (
     <Fragment>
       <header className={classes.header}>
-        <Link to='/welcome' className={classes['header-heading']}>
+        <Link to='/' className={classes['header-heading']}>
           <img
             className={classes['header-img']}
             src={logo}

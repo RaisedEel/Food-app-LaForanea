@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authenticationActions } from '../../context/authentication-slice';
 import InputField from './inputs/InputField';
 
@@ -8,6 +8,7 @@ import classes from './Login.module.css';
 
 function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [validatedEmail, setValidatedEmail] = useState(null);
   const [validatedPassword, setValidatedPassword] = useState(null);
 
@@ -24,6 +25,8 @@ function Login() {
         password: validatedPassword,
       })
     );
+
+    navigate('/user/feed');
   }
 
   return (

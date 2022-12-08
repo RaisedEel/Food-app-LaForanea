@@ -2,7 +2,7 @@ import restaurant from '../assets/images/restaurant.jpg';
 
 const restaurants = [
   {
-    id: 'a1',
+    id: '101',
     name: 'El Clásico',
     type: 'Restaurante de Comida Rápida',
     rating: [4.8, 1235],

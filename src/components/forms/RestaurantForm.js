@@ -1,14 +1,14 @@
 import { Fragment, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { authenticationActions } from '../../context/authentication-slice';
+import { restaurantsActions } from '../../context/restaurants-slice';
 import Banner from '../ui/Banner';
 import InputField from './inputs/InputField';
 import classes from './Form.module.css';
 
 import placeholder from '../../assets/images/placeholders/restaurant-photo.jpg';
 import owners from '../../assets/images/forms/form-restaurant.jpg';
-import { authenticationActions } from '../../context/authentication-slice';
-import { restaurantsActions } from '../../context/restaurants-slice';
-import { useNavigate } from 'react-router-dom';
 
 function RestaurantForm(props) {
   const dispatch = useDispatch();
@@ -83,21 +83,23 @@ function RestaurantForm(props) {
       })
     );
 
-    navigate('/welcome');
+    navigate('/');
   }
 
   return (
     <Fragment>
-      <Banner
-        style={{
-          backgroundColor: '#4263eb',
-          color: '#fff',
-          marginBottom: '9.6rem',
-        }}
-        title='Dale más exposición a tu negocio!'
-        text='¿Cansado de que los otros restaurantes tengan la ventaja solo por tener página web? Ahora te damos la oportunidad de tener tu propio espacio en la web y sin tener que pagar precios exorbitantes. Te damos 1 mes de prueba gratis al crear tu cuenta ahora mismo y ¡con todos los platillos que desees agregar! Ahora tu también estaras a la vanguardia.'
-        image={owners}
-      />
+      {!props.editable && (
+        <Banner
+          style={{
+            backgroundColor: '#4263eb',
+            color: '#fff',
+            marginBottom: '9.6rem',
+          }}
+          title='Dale más exposición a tu negocio!'
+          text='¿Cansado de que los otros restaurantes tengan la ventaja solo por tener página web? Ahora te damos la oportunidad de tener tu propio espacio en la web y sin tener que pagar precios exorbitantes. Te damos 1 mes de prueba gratis al crear tu cuenta ahora mismo y ¡con todos los platillos que desees agregar! Ahora tu también estaras a la vanguardia.'
+          image={owners}
+        />
+      )}
 
       <form className={classes.form} onSubmit={onSubmitHandler}>
         <fieldset className={classes['form-fieldset']}>
@@ -113,6 +115,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -132,6 +135,7 @@ function RestaurantForm(props) {
                 errorMessage: 'El correo ya se encuentra en uso',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -147,6 +151,7 @@ function RestaurantForm(props) {
                   'La contraseña debe contener entre 4 y 12 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
         </fieldset>
         <fieldset className={classes['form-fieldset']}>
@@ -164,6 +169,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -180,6 +186,7 @@ function RestaurantForm(props) {
                 errorMessage: 'Este campo acepta un máximo de 60 caracteres',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -187,6 +194,7 @@ function RestaurantForm(props) {
             label='Descripción Completa*'
             getValidatedValue={setValidatedDescription}
             textarea='true'
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -194,6 +202,7 @@ function RestaurantForm(props) {
             label='Fotografía del Restaurante (Enlace)'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedPhoto}
+            editable={props.editable ? true : false}
             canBeEmpty
           />
 
@@ -214,6 +223,7 @@ function RestaurantForm(props) {
             id='address-input'
             label='Dirección Física del Establecimiento*'
             getValidatedValue={setValidatedAddress}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -228,6 +238,7 @@ function RestaurantForm(props) {
                 errorMessage: 'El correo dado no es válido',
               },
             ]}
+            editable={props.editable ? true : false}
           />
 
           <InputField
@@ -241,6 +252,7 @@ function RestaurantForm(props) {
                 errorMessage: 'El télefono no es valido',
               },
             ]}
+            editable={props.editable ? true : false}
           />
         </fieldset>
         <fieldset className={classes['form-fieldset']}>
@@ -251,6 +263,7 @@ function RestaurantForm(props) {
             label='Facebook'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedFB}
+            editable={props.editable ? true : false}
             canBeEmpty
           />
 
@@ -259,6 +272,7 @@ function RestaurantForm(props) {
             label='Twitter'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedTW}
+            editable={props.editable ? true : false}
             canBeEmpty
           />
 
@@ -267,6 +281,7 @@ function RestaurantForm(props) {
             label='Whatsapp'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedWH}
+            editable={props.editable ? true : false}
             canBeEmpty
           />
 
@@ -275,11 +290,12 @@ function RestaurantForm(props) {
             label='Instagram'
             inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedIG}
+            editable={props.editable ? true : false}
             canBeEmpty
           />
         </fieldset>
         <button className={classes['form-button']} disabled={!formIsValid}>
-          Crear Nueva Cuenta
+          {props.editable ? 'Guardar Cambios' : 'Crear Nueva Cuenta'}
         </button>
       </form>
     </Fragment>

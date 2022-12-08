@@ -14,9 +14,9 @@ function Footer() {
       <div className={`grid grid--2-cols ${classes['footer-grid']}`}>
         <div className={classes['footer-section']}>
           <div className='social-info'>
-            <a href='/welcome#'>
+            <Link to='/'>
               <img src={logo} alt='Logo de La Foránea ' />
-            </a>
+            </Link>
             <p className={classes.slogan}>"Nuestra diferencia es el sazón"</p>
             <div className={classes['footer-social-links']}>
               <SocialMediaLink type='FB' url='/' />
