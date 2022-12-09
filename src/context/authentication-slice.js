@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   showLogin: false,
   isAuthenticated: false,
-  currentProfile: {},
+  currentProfile: -1,
   profiles: [
     {
       id: 'abcd101',
@@ -33,44 +33,49 @@ const authenticationSlice = createSlice({
       state.showLogin = !state.showLogin;
     },
     addProfile(state, action) {
+      state.currentProfile = state.profiles.length;
       state.profiles.push(action.payload);
-      state.currentProfile = action.payload;
       state.isAuthenticated = true;
       state.showLogin = false;
     },
     updateProfile(state, action) {
-      const profileToUpdate = state.profiles.find(
-        (profile) => profile.id === action.payload.id
-      );
+      const profileToUpdate = state.profiles[state.currentProfile];
 
       if (!profileToUpdate) return;
 
-      Object.assign(profileToUpdate, {
-        ...action.payload.values,
-        id: action.payload.id,
-      });
-
-      state.currentProfile = profileToUpdate;
+      Object.assign(profileToUpdate, action.payload);
     },
     login(state, action) {
-      const profile = state.profiles.find(
+      const profileIndex = state.profiles.findIndex(
         (profile) =>
           profile.email === action.payload.email &&
           profile.password === action.payload.password
       );
 
-      if (!profile) return;
+      if (profileIndex === -1) return;
 
-      state.currentProfile = profile;
+      state.currentProfile = profileIndex;
       state.isAuthenticated = true;
       state.showLogin = false;
     },
     logout(state) {
-      state.currentProfile = {};
+      state.currentProfile = -1;
       state.isAuthenticated = false;
     },
-    addFavoriteRestaurant() {},
-    removeFavoriteRestaurant() {},
+    toggleFavoriteRestaurant(state, action) {
+      if (
+        state.profiles[state.currentProfile].restaurants.includes(
+          action.payload
+        )
+      ) {
+        state.profiles[state.currentProfile].restaurants = state.profiles[
+          state.currentProfile
+        ].restaurants.filter((restaurant) => restaurant !== action.payload);
+        return;
+      }
+
+      state.profiles[state.currentProfile].restaurants.push(action.payload);
+    },
   },
 });
 

@@ -16,6 +16,7 @@ import RestaurantListPage from './pages/RestaurantListPage';
 import Login from './components/forms/Login';
 import UserForm from './components/forms/UserForm';
 import RestaurantForm from './components/forms/RestaurantForm';
+import FavoritesPage from './pages/FavoritesPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -81,6 +82,7 @@ function App() {
           }
         >
           <Route index path='home' element={<HomePage />} />
+          <Route path='favorites' element={<FavoritesPage />} />
           <Route path='settings' element={<SettingsPage />} />
         </Route>
       </Routes>

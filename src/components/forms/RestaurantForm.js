@@ -15,6 +15,10 @@ function RestaurantForm(props) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { profiles } = useSelector((state) => state.authentication);
+  const totalOfRes = useSelector(
+    (state) => state.restaurants.allRestaurants.length
+  );
+
   const [validatedName, setValidatedName] = useState(null);
   const [validatedEmail, setValidatedEmail] = useState(null);
   const [validatedPassword, setValidatedPassword] = useState(null);
@@ -56,23 +60,6 @@ function RestaurantForm(props) {
       password: validatedPassword,
     };
 
-    if (props.initialValues)
-      dispatch(
-        authenticationActions.updateProfile({
-          id: initialValues.id,
-          values: userToSubmit,
-        })
-      );
-
-    if (!props.initialValues)
-      dispatch(
-        authenticationActions.addProfile({
-          ...userToSubmit,
-          type: 'owner',
-          restaurants: [],
-        })
-      );
-
     const social = [];
     social.push({ type: 'FB', url: validatedFB });
     social.push({ type: 'TW', url: validatedTW });
@@ -80,7 +67,7 @@ function RestaurantForm(props) {
     social.push({ type: 'IG', url: validatedIG });
 
     const restaurantToSubmit = {
-      id,
+      id: (totalOfRes + 1).toString(),
       restaurantOwner: id,
       name: validatedResName,
       type: validatedType,
@@ -93,24 +80,40 @@ function RestaurantForm(props) {
       social,
     };
 
-    if (props.initialValues)
+    if (props.initialValues) {
       dispatch(
-        restaurantsActions.updateRestaurant({
-          id: initialValues.id,
-          values: restaurantToSubmit,
+        authenticationActions.updateProfile({
+          ...userToSubmit,
+          id: initialValues.userId,
         })
       );
 
-    if (!props.initialValues)
+      dispatch(
+        restaurantsActions.updateRestaurant({
+          id: initialValues.userId,
+          values: { ...restaurantToSubmit, id: initialValues.id },
+        })
+      );
+    }
+
+    if (!props.initialValues) {
+      dispatch(
+        authenticationActions.addProfile({
+          ...userToSubmit,
+          type: 'owner',
+          restaurants: [],
+        })
+      );
+
       dispatch(
         restaurantsActions.addRestaurant({
-          restaurantToSubmit,
+          ...restaurantToSubmit,
           rating: [0, 0],
           categories: ['Base'],
           menu: [],
         })
       );
-
+    }
     navigate('/');
   }
 
@@ -345,6 +348,7 @@ function RestaurantForm(props) {
             canBeEmpty
           />
         </fieldset>
+
         <button className={classes['form-button']} disabled={!formIsValid}>
           {props.editable ? 'Guardar Cambios' : 'Crear Nueva Cuenta'}
         </button>

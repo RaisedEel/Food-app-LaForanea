@@ -22,14 +22,14 @@ const restaurantsSlice = createSlice({
     },
     updateRestaurant(state, action) {
       const restaurantToUpdate = state.allRestaurants.find(
-        (restaurant) => restaurant.id === action.payload.id
+        (restaurant) => restaurant.restaurantOwner === action.payload.id
       );
 
       if (!restaurantToUpdate) return;
 
       Object.assign(restaurantToUpdate, {
         ...action.payload.values,
-        id: action.payload.id,
+        restaurantOwner: action.payload.id,
       });
     },
     setRestaurants(state, action) {

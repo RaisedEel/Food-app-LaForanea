@@ -5,6 +5,7 @@
 }
 
 .restaurant-item {
+  position: relative;
   height: 38rem;
   padding: 1.2rem;
   border-radius: 11px;
@@ -69,4 +70,36 @@
 .restaurant-item a:link,
 .restaurant-item a:visited {
   margin-top: auto;
+}
+
+.btn--favorite {
+  background-color: #fff;
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: 1px solid #f97474;
+  cursor: pointer;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.btn--favorite--active,
+.btn--favorite:hover {
+  background-color: #f97474;
+}
+
+.favorite-icon {
+  height: 3.2rem;
+  width: 3.2rem;
+  fill: #f97474;
+  transition: all 0.3s;
+}
+
+.btn--favorite--active .favorite-icon,
+.btn--favorite:hover .favorite-icon {
+  fill: #fff;
 }

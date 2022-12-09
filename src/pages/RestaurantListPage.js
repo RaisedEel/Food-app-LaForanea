@@ -18,7 +18,7 @@ function RestaurantListPage() {
   return (
     <div
       className='container'
-      style={{ display: 'flex', flexDirection: 'column', gap: '2.4rem' }}
+      style={{ display: 'flex', flexDirection: 'column', gap: '3.2rem' }}
     >
       <ArrowLink onClick={returnToPreviousPageHandler}>Regresar</ArrowLink>
       <h2 className='heading-secondary'>

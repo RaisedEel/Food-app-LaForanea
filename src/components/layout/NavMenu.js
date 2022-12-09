@@ -7,9 +7,20 @@ import classes from './NavMenu.module.css';
 
 function NavMenu(props) {
   const dispatch = useDispatch();
-  const { isAuthenticated, currentProfile } = useSelector(
-    (state) => state.authentication
-  );
+  const {
+    isAuthenticated,
+    profiles,
+    currentProfile: currentIndex,
+  } = useSelector((state) => state.authentication);
+  const currentProfile = profiles[currentIndex];
+  const { allRestaurants } = useSelector((state) => state.restaurants);
+  let myRestaurant = {};
+
+  if (isAuthenticated && currentProfile.type === 'owner') {
+    myRestaurant = allRestaurants.find(
+      (restaurant) => restaurant.restaurantOwner === currentProfile.id
+    );
+  }
 
   return (
     <nav className={classes.nav} onClick={props.closeMenu}>
@@ -37,12 +48,12 @@ function NavMenu(props) {
         {isAuthenticated && (
           <Fragment>
             <li>
-              <Link className={classes['nav-link']} to='/'>
+              <Link className={classes['nav-link']} to='/user/home'>
                 Feed
               </Link>
             </li>
             <li>
-              <Link className={classes['nav-link']} to='/'>
+              <Link className={classes['nav-link']} to='/user/favorites'>
                 Favoritos
               </Link>
             </li>
@@ -52,7 +63,7 @@ function NavMenu(props) {
           <li>
             <Link
               className={classes['nav-link']}
-              to={`/restaurant/${currentProfile.id}`}
+              to={`/restaurant/${myRestaurant.id}`}
             >
               Mi Restaurante
             </Link>

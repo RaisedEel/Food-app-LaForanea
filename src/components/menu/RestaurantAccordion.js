@@ -73,9 +73,11 @@ function RestaurantAccordion(props) {
           ></div>
           {props.data.social.length > 0 && (
             <div className={classes['social-links']}>
-              {props.data.social.map((link, index) => (
-                <SocialMediaLink key={index} {...link} />
-              ))}
+              {props.data.social
+                .filter((link) => link.url !== '')
+                .map((link, index) => (
+                  <SocialMediaLink key={index} {...link} />
+                ))}
             </div>
           )}
         </div>

@@ -35,8 +35,8 @@ function UserForm(props) {
     if (props.initialValues)
       dispatch(
         authenticationActions.updateProfile({
+          ...valuesToSubmit,
           id: initialValues.id,
-          values: valuesToSubmit,
         })
       );
 

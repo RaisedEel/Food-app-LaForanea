@@ -2,7 +2,8 @@ import restaurant from '../assets/images/restaurant.jpg';
 
 const restaurants = [
   {
-    id: 'abcd102',
+    id: '1',
+    restaurantOwner: 'abcd102',
     name: 'El Clásico',
     type: 'Restaurante de Comida Rápida',
     rating: [4.8, 1235],
@@ -22,7 +23,8 @@ const restaurants = [
     categories: ['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Drinks'],
   },
   {
-    id: '106',
+    id: '2',
+    restaurantOwner: 'abcd1013',
     name: 'Little China',
     type: 'Restaurante Tradicional Chino',
     rating: [4.7, 5061],
@@ -41,7 +43,8 @@ const restaurants = [
     categories: ['Hamburguesa'],
   },
   {
-    id: '107',
+    id: '3',
+    restaurantOwner: 'abcf101',
     name: 'El Noa Noa',
     type: 'Bar y Karaoke',
     rating: [2, 102],
@@ -60,7 +63,8 @@ const restaurants = [
     ],
   },
   {
-    id: '202',
+    id: '4',
+    restaurantOwner: 'abcd1016',
     name: 'Moka',
     type: 'Cafeteria',
     rating: [3.8, 380],
@@ -79,7 +83,8 @@ const restaurants = [
     ],
   },
   {
-    id: '221',
+    id: '5',
+    restaurantOwner: 'adfa101',
     name: 'Florinda',
     type: 'Fonda Mexicana',
     rating: [4, 642],
@@ -97,7 +102,8 @@ const restaurants = [
     ],
   },
   {
-    id: '351',
+    id: '6',
+    restaurantOwner: 'gfrh101',
     name: 'América',
     type: 'Pastelería',
     rating: [5, 123],
@@ -115,7 +121,8 @@ const restaurants = [
     ],
   },
   {
-    id: '382',
+    id: '7',
+    restaurantOwner: 'ab1f0f1',
     name: 'Cafetería',
     type: 'Pasteleria',
     rating: [3.6, 6242],
