@@ -17,6 +17,7 @@ import Login from './components/forms/Login';
 import UserForm from './components/forms/UserForm';
 import RestaurantForm from './components/forms/RestaurantForm';
 import FavoritesPage from './pages/FavoritesPage';
+import CataloguePage from './pages/CataloguePage';
 
 function App() {
   const dispatch = useDispatch();
@@ -57,6 +58,7 @@ function App() {
         <Route path='*' element={<Navigate replace to='/' />} />
         <Route path='/search/:term' element={<RestaurantListPage />} />
         <Route path='/restaurant/:restaurantCode' element={<MenuPage />} />
+        <Route path='/catalogue' element={<CataloguePage />} />
         <Route
           path='/'
           element={

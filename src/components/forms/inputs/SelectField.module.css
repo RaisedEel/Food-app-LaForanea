@@ -1,4 +1,4 @@
-.categories-container {
+.select-container {
   font-size: 1.8rem;
 
   display: flex;
@@ -6,12 +6,12 @@
   gap: 3.2rem;
 }
 
-.categories-container label {
+.select-label {
   color: #f97474;
   font-weight: 600;
 }
 
-.categories {
+.select-input {
   flex: 1;
   font-weight: 500;
   color: #f97474;

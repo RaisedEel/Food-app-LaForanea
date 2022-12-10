@@ -16,7 +16,13 @@ function FavoritesPage() {
       <h2 className='heading-secondary' style={{ marginBottom: '3.2rem' }}>
         Mis Favoritos
       </h2>
-      <RestaurantList data={favorites} />
+      {favorites.length > 0 && <RestaurantList data={favorites} />}
+      {favorites.length === 0 && (
+        <p style={{ fontSize: '1.8rem', fontWeight: '600', lineHeight: '1.6' }}>
+          Oops...no tienes favoritos. Empiece a agregar favoritos usando el
+          botón con el &#9829;.
+        </p>
+      )}
     </div>
   );
 }

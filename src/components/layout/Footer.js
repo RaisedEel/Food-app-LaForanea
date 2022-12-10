@@ -73,8 +73,8 @@ function Footer() {
             <p className={`heading ${classes['footer-heading']}`}>Recursos</p>
             <ul className={classes['footer-actions']}>
               <li>
-                <Link className={classes['footer-action']} to='/'>
-                  Ver Catálogo Completo
+                <Link className={classes['footer-action']} to='/catalogue'>
+                  Catálogo Completo
                 </Link>
               </li>
               <li>

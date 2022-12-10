@@ -38,7 +38,7 @@ function CallToAction() {
               />
             </svg>
           }
-          link={<Link to='/'>Crear mi cuenta &rarr;</Link>}
+          link={<Link to='/new/user'>Crear mi cuenta &rarr;</Link>}
         />
         <CardCTA
           title='Dueño de restaurante?'
@@ -59,7 +59,7 @@ function CallToAction() {
               />
             </svg>
           }
-          link={<Link to='/'>Crear mi restaurante &rarr;</Link>}
+          link={<Link to='/new/restaurant'>Crear mi restaurante &rarr;</Link>}
         />
         <CardCTA
           title='Programador?'

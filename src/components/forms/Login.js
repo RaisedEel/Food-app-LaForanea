@@ -34,7 +34,7 @@ function Login() {
       <p className={classes['login-create-account']}>
         No tienes cuenta aún?{' '}
         <Link
-          className={classes['login-link']}
+          className='link'
           to='/new/user'
           onClick={() => {
             dispatch(authenticationActions.toggleLogin());

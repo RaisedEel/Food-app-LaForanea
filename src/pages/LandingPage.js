@@ -23,8 +23,8 @@ function LandingPage() {
           text='La Foránea te trae todo el sazón de Zihuatanejo a tu alcance con un solo click. Te traemos nuestra selección de lo mejor para tu proxima comida.'
           image={carousel1}
           link={{
-            type: 'ext',
-            href: 'https://www.google.com',
+            type: 'int',
+            href: '/catalogue',
             message: 'Ve nuestro catálogo completo',
           }}
         />
@@ -44,7 +44,7 @@ function LandingPage() {
           image={carousel3}
           link={{
             type: 'int',
-            href: '/restaurant/101',
+            href: '/new/restaurant',
             message: '¿Qué estas esperando?',
           }}
         />

@@ -9,6 +9,8 @@ import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
 import ArrowLink from '../components/ui/ArrowLink';
+import FavoriteButton from '../components/ui/FavoriteButton';
+import { authenticationActions } from '../context/authentication-slice';
 
 function MenuPage() {
   const dispatch = useDispatch();
@@ -16,6 +18,9 @@ function MenuPage() {
   const { restaurantCode } = useParams();
   const showCart = useMatchMedia('(min-width: 62em)');
   const { allRestaurants } = useSelector((state) => state.restaurants);
+  const { profiles, currentProfile: currentIndex } = useSelector(
+    (state) => state.authentication
+  );
 
   const restaurant = allRestaurants.find(
     (restaurant) => restaurant.id === restaurantCode
@@ -28,16 +33,34 @@ function MenuPage() {
     }
   }, [dispatch, restaurant]);
 
+  function toggleFavoriteHandler(event) {
+    dispatch(authenticationActions.toggleFavoriteRestaurant(restaurantCode));
+  }
+
   return (
     <div className='container'>
-      <ArrowLink
-        onClick={() => {
-          navigate(-1);
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          marginBottom: '2.4rem',
         }}
-        style={{ marginBottom: '2.4rem' }}
       >
-        Regresar
-      </ArrowLink>
+        <ArrowLink
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          Regresar
+        </ArrowLink>
+        <FavoriteButton
+          style={{ position: 'static', marginLeft: 'auto', padding: '1.2rem' }}
+          isActivated={profiles[currentIndex].restaurants.includes(
+            restaurantCode
+          )}
+          onClick={toggleFavoriteHandler}
+        />
+      </div>
       {restaurant && (
         <Fragment>
           <RestaurantAccordion data={restaurant} />
