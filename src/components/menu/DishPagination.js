@@ -3,24 +3,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { menuActions } from '../../context/menu-slice';
 import classes from './DishPagination.module.css';
 
-function DishPagination() {
-  const { currentPage } = useSelector((state) => state.menu);
+function DishPagination(props) {
+  const { currentPage, numberOfPages } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
 
   return (
     <div className={classes.pagination}>
       <button
-        className='btn'
+        className={currentPage === 1 ? 'btn btn--disabled' : 'btn'}
         onClick={() => {
           dispatch(menuActions.goToPage(1));
+          props.onChange();
         }}
       >
         Inicio
       </button>
       <button
-        className='btn'
+        className={currentPage === 1 ? 'btn btn--disabled' : 'btn'}
         onClick={() => {
           dispatch(menuActions.decreasePage());
+          props.onChange();
         }}
       >
         <svg
@@ -42,9 +44,10 @@ function DishPagination() {
         {currentPage < 10 ? `0${currentPage}` : currentPage}
       </span>
       <button
-        className='btn'
+        className={currentPage === numberOfPages ? 'btn btn--disabled' : 'btn'}
         onClick={() => {
           dispatch(menuActions.increasePage());
+          props.onChange();
         }}
       >
         <svg
@@ -63,9 +66,10 @@ function DishPagination() {
         </svg>
       </button>
       <button
-        className='btn'
+        className={currentPage === numberOfPages ? 'btn btn--disabled' : 'btn'}
         onClick={() => {
           dispatch(menuActions.goToPage(1000));
+          props.onChange();
         }}
       >
         Final

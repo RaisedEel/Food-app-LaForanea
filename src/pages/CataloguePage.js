@@ -5,32 +5,30 @@ import SelectField from '../components/forms/inputs/SelectField';
 
 function CataloguePage() {
   const { allRestaurants } = useSelector((state) => state.restaurants);
-  const [sortBy, setSortBy] = useState('Nombres');
-  const [orderBy, setOrderBy] = useState('Descendente');
+  const [sortBy, setSortBy] = useState(0);
+  const [orderBy, setOrderBy] = useState(0);
 
   function sortByHandler(event) {
-    setSortBy(event.target.value);
+    setSortBy(+event.target.value);
   }
 
   function orderByHandler(event) {
-    setOrderBy(event.target.value);
+    setOrderBy(+event.target.value);
   }
 
   let catalogue = allRestaurants.slice();
 
-  if (sortBy === 'Nombres')
+  if (sortBy === 0)
     catalogue.sort((a, b) => (a.name > b.name ? 1 : a.name < b.name ? -1 : 0));
 
-  if (sortBy === 'Tipos')
+  if (sortBy === 1)
     catalogue.sort((a, b) => (a.type > b.type ? 1 : a.type < b.type ? -1 : 0));
 
-  if (sortBy === 'Calificación')
-    catalogue.sort((a, b) => b.rating[0] - a.rating[0]);
+  if (sortBy === 2) catalogue.sort((a, b) => b.rating[0] - a.rating[0]);
 
-  if (sortBy === 'Num. de Reviews')
-    catalogue.sort((a, b) => b.rating[1] - a.rating[1]);
+  if (sortBy === 3) catalogue.sort((a, b) => b.rating[1] - a.rating[1]);
 
-  if (orderBy === 'Ascendiente') catalogue.reverse();
+  if (orderBy === 1) catalogue.reverse();
 
   return (
     <div className='container'>

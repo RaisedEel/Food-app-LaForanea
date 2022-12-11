@@ -45,7 +45,8 @@ function UserForm(props) {
         authenticationActions.addProfile({
           ...valuesToSubmit,
           type: 'client',
-          restaurants: [],
+          favored: [],
+          reviewed: [],
         })
       );
 

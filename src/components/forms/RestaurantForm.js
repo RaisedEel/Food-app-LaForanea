@@ -101,7 +101,8 @@ function RestaurantForm(props) {
         authenticationActions.addProfile({
           ...userToSubmit,
           type: 'owner',
-          restaurants: [],
+          favored: [],
+          reviewed: [],
         })
       );
 

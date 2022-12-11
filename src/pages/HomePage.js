@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PreviewList from '../components/restaurant/PreviewList';
 
@@ -8,16 +8,12 @@ function HomePage() {
     (state) => state.authentication
   );
   const currentProfile = profiles[currentIndex];
-  const [recommended, setRecommended] = useState([]);
-
-  useEffect(() => {
-    setRecommended(
-      allRestaurants
-        .slice()
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 6)
-    );
-  }, [setRecommended, allRestaurants]);
+  const [recommended] = useState(
+    allRestaurants
+      .slice()
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 6)
+  );
 
   return (
     <div

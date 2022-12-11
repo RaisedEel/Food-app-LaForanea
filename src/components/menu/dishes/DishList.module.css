@@ -1,4 +1,5 @@
 .dish-list {
+  scroll-margin-top: 8rem;
   list-style: none;
 
   display: grid;

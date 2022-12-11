@@ -20,7 +20,7 @@ const restaurants = [
       { type: 'WH', url: 'https://www.whatsapp.com' },
       { type: 'IG', url: '' },
     ],
-    categories: ['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Drinks'],
+    categories: ['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Bebidas'],
   },
   {
     id: '2',
@@ -40,7 +40,7 @@ const restaurants = [
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
-    categories: ['Hamburguesa'],
+    categories: ['Hamburguesa', 'Bebidas'],
   },
   {
     id: '3',
@@ -54,7 +54,7 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Hamburguesa'],
+    categories: ['Tacos', 'Pizzas'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
@@ -93,7 +93,7 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Hamburguesa'],
+    categories: ['Tacos'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },

@@ -4,8 +4,10 @@ const initialMenu = {
   restaurantId: '',
   menu: [],
   slice: [],
+  categories: [],
   currentCategory: '',
-  currentPage: 1,
+  currentPage: -1,
+  numberOfPages: -1,
   amountPerPage: 4,
 };
 
@@ -14,17 +16,25 @@ const menuSlice = createSlice({
   initialState: initialMenu,
   reducers: {
     setMenu(state, action) {
-      state.menu = action.payload;
+      state.menu = action.payload.menu;
+      state.categories = action.payload.categories;
     },
     setCategory(state, action) {
-      state.currentCategory = action.payload;
+      state.currentCategory = state.categories[action.payload];
       state.slice = state.menu.filter(
-        (dish) => dish.category === action.payload
+        (dish) => dish.category === state.currentCategory
       );
       state.currentPage = 1;
+      state.numberOfPages = Math.max(
+        Math.ceil(state.slice.length / state.amountPerPage),
+        1
+      );
+
+      if (state.numberOfPages === 0) {
+      }
     },
     increasePage(state) {
-      if (state.currentPage >= state.slice.length / state.amountPerPage) {
+      if (state.currentPage >= state.numberOfPages) {
         return;
       }
 
@@ -38,12 +48,12 @@ const menuSlice = createSlice({
       state.currentPage--;
     },
     goToPage(state, action) {
-      if (action.payload <= state.slice.length / state.amountPerPage) {
+      if (action.payload <= state.numberOfPages) {
         state.currentPage = action.payload;
         return;
       }
 
-      state.currentPage = Math.ceil(state.slice.length / state.amountPerPage);
+      state.currentPage = state.numberOfPages;
     },
   },
 });

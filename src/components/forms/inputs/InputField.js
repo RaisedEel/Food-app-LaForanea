@@ -24,7 +24,7 @@ function InputField(props) {
   }
 
   return (
-    <div className={classes['input-container']}>
+    <div className={classes['input-container']} style={props.style}>
       {props.label && (
         <label htmlFor={props.id} className={classes['input-label']}>
           {props.label}

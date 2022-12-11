@@ -44,7 +44,7 @@ function RestaurantItem(props) {
           </p>
           {isAuthenticated && (
             <FavoriteButton
-              isActivated={currentProfile.restaurants.includes(props.id)}
+              isActivated={currentProfile.favored.includes(props.id)}
               onClick={toggleFavoriteHandler}
             />
           )}

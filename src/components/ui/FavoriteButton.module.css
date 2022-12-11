@@ -13,8 +13,7 @@
   transition: all 0.3s;
 }
 
-.btn--favorite--active,
-.btn--favorite:hover {
+.btn--favorite--active {
   background-color: #f97474;
 }
 
@@ -25,7 +24,16 @@
   transition: all 0.3s;
 }
 
-.btn--favorite--active .favorite-icon,
-.btn--favorite:hover .favorite-icon {
+.btn--favorite--active .favorite-icon {
   fill: #fff;
+}
+
+@media (hover: hover) {
+  .btn--favorite:hover {
+    background-color: #f97474;
+  }
+
+  .btn--favorite:hover .favorite-icon {
+    fill: #fff;
+  }
 }

@@ -1,15 +1,16 @@
+import { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
 
 import DishItem from './DishItem';
 import classes from './DishList.module.css';
 
-function DishList() {
+function DishList(props, ref) {
   const { slice, currentPage, amountPerPage } = useSelector(
     (state) => state.menu
   );
 
   return (
-    <ul className={classes['dish-list']}>
+    <ul ref={ref} className={classes['dish-list']}>
       {slice
         .slice((currentPage - 1) * amountPerPage, amountPerPage * currentPage)
         .map((dish) => (
@@ -19,4 +20,4 @@ function DishList() {
   );
 }
 
-export default DishList;
+export default forwardRef(DishList);

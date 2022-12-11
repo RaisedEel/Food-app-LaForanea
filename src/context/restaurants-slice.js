@@ -42,6 +42,34 @@ const restaurantsSlice = createSlice({
         elements: action.payload.elements,
       });
     },
+    updateRating(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (!restaurant) return;
+
+      if (action.payload.oldRating > 0) {
+        restaurant.rating[1]--;
+
+        if (restaurant.rating[1] === 0) {
+          restaurant.rating[0] = 0;
+        } else {
+          restaurant.rating[0] =
+            (restaurant.rating[0] * (restaurant.rating[1] + 1) -
+              action.payload.oldRating) /
+            restaurant.rating[1];
+        }
+      }
+
+      if (action.payload.newRating <= 0) return;
+
+      restaurant.rating[1]++;
+      restaurant.rating[0] =
+        restaurant.rating[0] +
+        (action.payload.newRating - restaurant.rating[0]) /
+          restaurant.rating[1];
+    },
   },
 });
 

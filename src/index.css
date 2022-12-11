@@ -130,9 +130,14 @@ select:focus {
   cursor: pointer;
 }
 
-.btn:hover,
 .btn:active {
   background-color: #367416;
+}
+
+.btn--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: #7cb25f;
 }
 
 .link:link,
@@ -151,6 +156,13 @@ select:focus {
 /*  */
 /* MEDIA QUERIES */
 /*  */
+
+/* For Hover State of btn */
+@media (hover: hover) {
+  .btn:hover {
+    background-color: #367416;
+  }
+}
 
 /* 1344px */
 @media (max-width: 84em) {
