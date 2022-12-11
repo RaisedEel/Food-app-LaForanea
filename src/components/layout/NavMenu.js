@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import { authenticationActions } from '../../context/authentication-slice';
 import classes from './NavMenu.module.css';
@@ -39,42 +39,79 @@ function NavMenu(props) {
             </li>
 
             <li>
-              <Link className={classes['nav-link']} to='/new'>
+              <NavLink
+                className={classes['nav-link']}
+                to='/new'
+                style={({ isActive }) =>
+                  isActive
+                    ? { backgroundColor: '#f97474', color: '#fff' }
+                    : undefined
+                }
+              >
                 Crear Cuenta
-              </Link>
+              </NavLink>
             </li>
           </Fragment>
         )}
         {isAuthenticated && (
           <Fragment>
             <li>
-              <Link className={classes['nav-link']} to='/user/home'>
+              <NavLink
+                className={classes['nav-link']}
+                to='/user/home'
+                style={({ isActive }) =>
+                  isActive
+                    ? { backgroundColor: '#f97474', color: '#fff' }
+                    : undefined
+                }
+              >
                 Feed
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className={classes['nav-link']} to='/user/favorites'>
+              <NavLink
+                className={classes['nav-link']}
+                to='/user/favorites'
+                style={({ isActive }) =>
+                  isActive
+                    ? { backgroundColor: '#f97474', color: '#fff' }
+                    : undefined
+                }
+              >
                 Favoritos
-              </Link>
+              </NavLink>
             </li>
           </Fragment>
         )}
         {isAuthenticated && currentProfile.type === 'owner' && (
           <li>
-            <Link
+            <NavLink
               className={classes['nav-link']}
               to={`/restaurant/${myRestaurant.id}`}
+              style={({ isActive }) =>
+                isActive
+                  ? { backgroundColor: '#f97474', color: '#fff' }
+                  : undefined
+              }
             >
               Mi Restaurante
-            </Link>
+            </NavLink>
           </li>
         )}
         {isAuthenticated && (
           <Fragment>
             <li>
-              <Link className={classes['nav-link']} to='/user/settings'>
+              <NavLink
+                className={classes['nav-link']}
+                to='/user/settings'
+                style={({ isActive }) =>
+                  isActive
+                    ? { backgroundColor: '#f97474', color: '#fff' }
+                    : undefined
+                }
+              >
                 Opciones de Cuenta
-              </Link>
+              </NavLink>
             </li>
 
             <li>
