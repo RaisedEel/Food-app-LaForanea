@@ -75,7 +75,7 @@ function MenuPage() {
           display: 'flex',
           flexWrap: 'wrap',
           alignItems: 'center',
-          gap: '3.2rem',
+          gap: '1.6rem',
           marginBottom: '2.4rem',
         }}
       >

@@ -6,7 +6,15 @@ function Layout(props) {
   return (
     <Fragment>
       <MainHeader />
-      <main>{props.children}</main>
+      <main
+        style={{
+          minHeight: '100vh',
+          paddingTop: '7.2rem',
+          overflow: 'hidden',
+        }}
+      >
+        {props.children}
+      </main>
       <Footer />
     </Fragment>
   );

@@ -63,8 +63,8 @@
   -webkit-line-clamp: 3;
   text-overflow: ellipsis;
   overflow: hidden;
-  font-size: 1.4rem;
-  line-height: 1.4;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 .restaurant-item a:link,

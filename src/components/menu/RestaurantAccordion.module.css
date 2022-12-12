@@ -14,6 +14,20 @@
   width: 100%;
 }
 
+.restaurant-rating {
+  letter-spacing: -1px;
+  font-size: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.rating-icon {
+  height: 2rem;
+  width: 2rem;
+}
+
 .accordion-btn {
   width: 4.4rem;
   height: 4.4rem;

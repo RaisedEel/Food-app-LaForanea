@@ -3,6 +3,7 @@
   background-color: #fff;
   border: 1px solid #555;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
 
   position: fixed;
   top: 7.2rem;
@@ -32,15 +33,19 @@
 
 .nav-link:hover,
 .nav-link:active {
-  /* background-color: #f97474; */
   color: #f97474;
+}
+
+@media (max-width: 62em) {
+  .nav {
+    font-size: 1.8rem;
+  }
 }
 
 @media (max-width: 48em) {
   .nav-link,
   .nav-link:link,
   .nav-link:visited {
-    font-size: 1.8rem;
     padding: 1.6rem 1.2rem;
   }
 }
