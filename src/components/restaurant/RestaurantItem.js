@@ -1,18 +1,16 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { authenticationActions } from '../../context/authentication-slice';
-import FavoriteButton from '../ui/FavoriteButton';
+import {
+  authenticationActions,
+  selectCurrentProfile,
+} from '../../context/authentication-slice';
+import { FavoriteButton } from '../ui/RadiusButton';
 import Rating from './Rating';
 import classes from './RestaurantItem.module.css';
 
 function RestaurantItem(props) {
   const dispatch = useDispatch();
-  const {
-    isAuthenticated,
-    profiles,
-    currentProfile: currentIndex,
-  } = useSelector((state) => state.authentication);
-  const currentProfile = profiles[currentIndex];
+  const currentProfile = useSelector(selectCurrentProfile);
 
   function toggleFavoriteHandler(event) {
     event.preventDefault();
@@ -42,8 +40,9 @@ function RestaurantItem(props) {
           <p className={classes['restaurant-description']}>
             {props.description}
           </p>
-          {isAuthenticated && (
+          {currentProfile && (
             <FavoriteButton
+              style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
               isActivated={currentProfile.favored.includes(props.id)}
               onClick={toggleFavoriteHandler}
             />

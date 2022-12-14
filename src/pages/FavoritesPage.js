@@ -3,12 +3,13 @@ import RestaurantList from '../components/restaurant/RestaurantList';
 import SelectField from '../components/forms/inputs/SelectField';
 import { Fragment, useState } from 'react';
 import { createSearchParams, useSearchParams } from 'react-router-dom';
+import { selectCurrentProfile } from '../context/authentication-slice';
 
 function FavoritesPage() {
-  const { profiles, currentProfile: currentIndex } = useSelector(
-    (state) => state.authentication
+  const currentProfile = useSelector(selectCurrentProfile);
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
   );
-  const { allRestaurants } = useSelector((state) => state.restaurants);
   const [searchParams, setSearchParams] = useSearchParams({});
   const [listShowed, setListShowed] = useState(
     searchParams.get('reviewed') ? 1 : 0
@@ -17,15 +18,13 @@ function FavoritesPage() {
   let list = [];
   if (listShowed === 0) {
     list = allRestaurants.filter((restaurant) =>
-      profiles[currentIndex].favored.includes(restaurant.id)
+      currentProfile.favored.includes(restaurant.id)
     );
   }
 
   if (listShowed === 1) {
     list = allRestaurants.filter((restaurant) =>
-      profiles[currentIndex].reviewed.some(
-        (review) => review.id === restaurant.id
-      )
+      currentProfile.reviewed.some((review) => review.id === restaurant.id)
     );
   }
 

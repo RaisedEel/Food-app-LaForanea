@@ -1,4 +1,5 @@
 .dish {
+  position: relative;
   height: 40rem;
   padding: 2rem;
   border-radius: 11px;

@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialMenu = {
-  restaurantId: '',
+  restaurantOwner: '',
   menu: [],
   slice: [],
   categories: [],
@@ -9,6 +9,7 @@ const initialMenu = {
   currentPage: -1,
   numberOfPages: -1,
   amountPerPage: 4,
+  showDishForm: false,
 };
 
 const menuSlice = createSlice({
@@ -16,6 +17,7 @@ const menuSlice = createSlice({
   initialState: initialMenu,
   reducers: {
     setMenu(state, action) {
+      state.restaurantOwner = action.payload.owner;
       state.menu = action.payload.menu;
       state.categories = action.payload.categories;
     },
@@ -54,6 +56,12 @@ const menuSlice = createSlice({
       }
 
       state.currentPage = state.numberOfPages;
+    },
+    openDishForm(state) {
+      state.showDishForm = true;
+    },
+    closeDishForm(state) {
+      state.showDishForm = false;
     },
   },
 });

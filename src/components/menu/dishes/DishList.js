@@ -5,9 +5,9 @@ import DishItem from './DishItem';
 import classes from './DishList.module.css';
 
 function DishList(props, ref) {
-  const { slice, currentPage, amountPerPage } = useSelector(
-    (state) => state.menu
-  );
+  const slice = useSelector((state) => state.menu.slice);
+  const currentPage = useSelector((state) => state.menu.currentPage);
+  const amountPerPage = useSelector((state) => state.menu.amountPerPage);
 
   return (
     <ul ref={ref} className={classes['dish-list']}>

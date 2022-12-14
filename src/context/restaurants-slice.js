@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 import restaurants from '../data/restaurants-data';
 
 const initialState = { allRestaurants: restaurants, history: [] };
@@ -73,5 +73,11 @@ const restaurantsSlice = createSlice({
   },
 });
 
+export const selectRestaurantById = createSelector(
+  (state) => state.restaurants.allRestaurants,
+  (state, id) => id,
+  (allRestaurants, id) =>
+    allRestaurants.find((restaurant) => restaurant.id === id)
+);
 export default restaurantsSlice;
 export const restaurantsActions = restaurantsSlice.actions;

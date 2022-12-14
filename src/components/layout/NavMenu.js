@@ -2,21 +2,21 @@ import { Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
-import { authenticationActions } from '../../context/authentication-slice';
+import {
+  authenticationActions,
+  selectCurrentProfile,
+} from '../../context/authentication-slice';
 import classes from './NavMenu.module.css';
 
 function NavMenu(props) {
   const dispatch = useDispatch();
-  const {
-    isAuthenticated,
-    profiles,
-    currentProfile: currentIndex,
-  } = useSelector((state) => state.authentication);
-  const currentProfile = profiles[currentIndex];
-  const { allRestaurants } = useSelector((state) => state.restaurants);
-  let myRestaurant = {};
+  const currentProfile = useSelector(selectCurrentProfile);
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
+  );
 
-  if (isAuthenticated && currentProfile.type === 'owner') {
+  let myRestaurant = {};
+  if (currentProfile && currentProfile.type === 'owner') {
     myRestaurant = allRestaurants.find(
       (restaurant) => restaurant.restaurantOwner === currentProfile.id
     );
@@ -25,7 +25,7 @@ function NavMenu(props) {
   return (
     <nav className={classes.nav} onClick={props.closeMenu}>
       <ul className={classes['nav-links']}>
-        {!isAuthenticated && (
+        {!currentProfile && (
           <Fragment>
             <li>
               <button
@@ -53,7 +53,7 @@ function NavMenu(props) {
             </li>
           </Fragment>
         )}
-        {isAuthenticated && (
+        {currentProfile && (
           <Fragment>
             <li>
               <NavLink
@@ -83,7 +83,7 @@ function NavMenu(props) {
             </li>
           </Fragment>
         )}
-        {isAuthenticated && currentProfile.type === 'owner' && (
+        {currentProfile && currentProfile.type === 'owner' && (
           <li>
             <NavLink
               className={classes['nav-link']}
@@ -98,7 +98,7 @@ function NavMenu(props) {
             </NavLink>
           </li>
         )}
-        {isAuthenticated && (
+        {currentProfile && (
           <Fragment>
             <li>
               <NavLink

@@ -1,13 +1,13 @@
 import { useSelector } from 'react-redux';
 import UserForm from '../components/forms/UserForm';
 import RestaurantForm from '../components/forms/RestaurantForm';
+import { selectCurrentProfile } from '../context/authentication-slice';
 
 function SettingsPage() {
-  const { profiles, currentProfile: currentIndex } = useSelector(
-    (state) => state.authentication
+  const currentProfile = useSelector(selectCurrentProfile);
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
   );
-  const { allRestaurants } = useSelector((state) => state.restaurants);
-  const currentProfile = profiles[currentIndex];
 
   let currentRestaurant = {};
   if (currentProfile.type === 'owner') {

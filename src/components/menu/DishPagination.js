@@ -4,8 +4,9 @@ import { menuActions } from '../../context/menu-slice';
 import classes from './DishPagination.module.css';
 
 function DishPagination(props) {
-  const { currentPage, numberOfPages } = useSelector((state) => state.menu);
   const dispatch = useDispatch();
+  const currentPage = useSelector((state) => state.menu.currentPage);
+  const numberOfPages = useSelector((state) => state.menu.numberOfPages);
 
   return (
     <div className={classes.pagination}>

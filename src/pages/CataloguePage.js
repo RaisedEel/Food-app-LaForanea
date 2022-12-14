@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import SelectField from '../components/forms/inputs/SelectField';
 
 function CataloguePage() {
-  const { allRestaurants } = useSelector((state) => state.restaurants);
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
+  );
   const [sortBy, setSortBy] = useState(0);
   const [orderBy, setOrderBy] = useState(0);
 

@@ -1,13 +1,18 @@
 import { Fragment, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentProfile } from '../../../context/authentication-slice';
 
 import { cartActions } from '../../../context/cart-slice';
 import Modal from '../../ui/Modal';
+import { EditButton } from '../../ui/RadiusButton';
 import classes from './DishItem.module.css';
 import DishView from './DishView';
 
 function DishItem(props) {
   const dispatch = useDispatch();
+  const restaurantOwner = useSelector((state) => state.menu.restaurantOwner);
+  const currentProfile = useSelector(selectCurrentProfile);
+
   const [itemAmount, setItemAmount] = useState(1);
   const [showViewModal, setShowViewModal] = useState(false);
 
@@ -48,6 +53,13 @@ function DishItem(props) {
       )}
       <li>
         <article className={classes.dish}>
+          {currentProfile &&
+            currentProfile.type === 'owner' &&
+            currentProfile.id === restaurantOwner && (
+              <EditButton
+                style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
+              />
+            )}
           <div className={classes['dish-img-container']}>
             <img
               className={classes['dish-img']}

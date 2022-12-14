@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PreviewList from '../components/restaurant/PreviewList';
+import { selectCurrentProfile } from '../context/authentication-slice';
 
 function HomePage() {
-  const { allRestaurants } = useSelector((state) => state.restaurants);
-  const { profiles, currentProfile: currentIndex } = useSelector(
-    (state) => state.authentication
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
   );
-  const currentProfile = profiles[currentIndex];
+  const currentProfile = useSelector(selectCurrentProfile);
   const [recommended] = useState(
     allRestaurants
       .slice()

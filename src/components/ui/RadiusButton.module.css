@@ -1,0 +1,36 @@
+.btn {
+  background-color: #fff;
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  z-index: 1;
+}
+
+.btn--active {
+  background-color: currentColor;
+}
+
+.btn svg {
+  height: 2.4rem;
+  width: 2.4rem;
+  transition: all 0.3s;
+}
+
+.btn--active svg {
+  fill: #fff;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: currentColor;
+  }
+
+  .btn:hover svg {
+    fill: #fff;
+  }
+}

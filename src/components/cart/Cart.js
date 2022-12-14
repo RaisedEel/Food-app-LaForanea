@@ -6,15 +6,16 @@ import CartList from './CartList';
 import EmptyCart from './EmptyCart';
 
 function Cart(props) {
-  const cart = useSelector((state) => state.cart);
+  const cartContent = useSelector((state) => state.cart.cartContent);
+  const amountOfItems = useSelector((state) => state.cart.amountOfItems);
 
   return (
     <div className={classes.cart} style={props.style}>
-      {cart.amountOfItems === 0 && <EmptyCart />}
-      {cart.amountOfItems > 0 && (
-        <CartList items={cart.cartContent} amountOfItems={cart.amountOfItems} />
+      {amountOfItems === 0 && <EmptyCart />}
+      {amountOfItems > 0 && (
+        <CartList items={cartContent} amountOfItems={amountOfItems} />
       )}
-      {cart.amountOfItems > 0 && <CartForm />}
+      {amountOfItems > 0 && <CartForm />}
     </div>
   );
 }

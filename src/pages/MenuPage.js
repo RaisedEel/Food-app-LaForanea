@@ -9,10 +9,16 @@ import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
 import menu from '../data/menu-data';
 import ArrowLink from '../components/ui/ArrowLink';
-import FavoriteButton from '../components/ui/FavoriteButton';
-import { authenticationActions } from '../context/authentication-slice';
+import { FavoriteButton } from '../components/ui/RadiusButton';
+import {
+  authenticationActions,
+  selectCurrentProfile,
+} from '../context/authentication-slice';
 import SelectField from '../components/forms/inputs/SelectField';
-import { restaurantsActions } from '../context/restaurants-slice';
+import {
+  restaurantsActions,
+  selectRestaurantById,
+} from '../context/restaurants-slice';
 
 function MenuPage() {
   const dispatch = useDispatch();
@@ -20,20 +26,14 @@ function MenuPage() {
   const { restaurantCode } = useParams();
   const showCart = useMatchMedia('(min-width: 62em)');
 
-  const { allRestaurants } = useSelector((state) => state.restaurants);
-  const {
-    isAuthenticated,
-    profiles,
-    currentProfile: currentIndex,
-  } = useSelector((state) => state.authentication);
-
-  const restaurant = allRestaurants.find(
-    (restaurant) => restaurant.id === restaurantCode
+  const restaurant = useSelector((state) =>
+    selectRestaurantById(state, restaurantCode)
   );
+  const currentProfile = useSelector(selectCurrentProfile);
 
   let review;
-  if (isAuthenticated) {
-    review = profiles[currentIndex].reviewed.find(
+  if (currentProfile) {
+    review = currentProfile.reviewed.find(
       (review) => review.id === restaurantCode
     );
   }
@@ -41,7 +41,11 @@ function MenuPage() {
   useEffect(() => {
     if (restaurant) {
       dispatch(
-        menuActions.setMenu({ menu, categories: restaurant.categories })
+        menuActions.setMenu({
+          owner: restaurant.restaurantOwner,
+          menu,
+          categories: restaurant.categories,
+        })
       );
       dispatch(menuActions.setCategory(0));
     }
@@ -86,7 +90,7 @@ function MenuPage() {
         >
           Regresar
         </ArrowLink>
-        {restaurant && isAuthenticated && (
+        {restaurant && currentProfile && (
           <div
             style={{
               marginLeft: 'auto',
@@ -108,9 +112,7 @@ function MenuPage() {
             />
             <FavoriteButton
               style={{ position: 'static', padding: '1.2rem' }}
-              isActivated={profiles[currentIndex].favored.includes(
-                restaurantCode
-              )}
+              isActivated={currentProfile.favored.includes(restaurantCode)}
               onClick={toggleFavoriteHandler}
             />
           </div>

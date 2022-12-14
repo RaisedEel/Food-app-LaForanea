@@ -14,7 +14,7 @@ function RestaurantForm(props) {
   const { initialValues } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { profiles } = useSelector((state) => state.authentication);
+  const profiles = useSelector((state) => state.authentication.profiles);
   const totalOfRes = useSelector(
     (state) => state.restaurants.allRestaurants.length
   );

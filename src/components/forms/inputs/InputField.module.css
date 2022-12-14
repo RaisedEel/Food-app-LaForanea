@@ -34,38 +34,6 @@
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.edit--button {
-  padding: 0 0.8rem;
-  background-color: transparent;
-  border: 1px solid #44911b;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-.edit-icon {
-  height: 2.4rem;
-  width: 2.4rem;
-  stroke: #44911b;
-}
-
-.edit--button:hover,
-.edit--button--active {
-  background-color: #44911b;
-}
-
-.edit--button:hover .edit-icon,
-.edit--button--active .edit-icon {
-  stroke: #fff;
-}
-
-.edit--button--active:hover {
-  background-color: transparent;
-}
-
-.edit--button--active:hover .edit-icon {
-  stroke: #44911b;
-}
-
 .input-error {
   height: 1.4rem;
   margin-top: 0.8rem;

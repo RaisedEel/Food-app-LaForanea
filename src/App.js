@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { cartActions } from './context/cart-slice';
-import { authenticationActions } from './context/authentication-slice';
+import {
+  authenticationActions,
+  selectCurrentProfile,
+} from './context/authentication-slice';
 import Cart from './components/cart/Cart';
 import Modal from './components/ui/Modal';
 import PrivateRoutes from './components/layout/PrivateRoutes';
@@ -22,9 +25,8 @@ import CataloguePage from './pages/CataloguePage';
 function App() {
   const dispatch = useDispatch();
   const showCart = useSelector((state) => state.cart.showCart);
-  const { showLogin, isAuthenticated } = useSelector(
-    (state) => state.authentication
-  );
+  const showLogin = useSelector((state) => state.authentication.showLogin);
+  const currentProfile = useSelector(selectCurrentProfile);
 
   function closeCartHandler() {
     dispatch(cartActions.toggleCart());
@@ -63,7 +65,7 @@ function App() {
           path='/'
           element={
             <PrivateRoutes
-              accessOn={!isAuthenticated}
+              accessOn={!currentProfile}
               redirectPath='/user/home'
             />
           }
@@ -80,7 +82,7 @@ function App() {
         <Route
           path='/user'
           element={
-            <PrivateRoutes accessOn={isAuthenticated} redirectPath='/welcome' />
+            <PrivateRoutes accessOn={currentProfile} redirectPath='/welcome' />
           }
         >
           <Route index path='home' element={<HomePage />} />

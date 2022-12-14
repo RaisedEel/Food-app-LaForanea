@@ -9,9 +9,9 @@ import { Fragment, useState } from 'react';
 import NavMenu from './NavMenu';
 
 function MainHeader() {
-  const [showMenu, setShowMenu] = useState(false);
-  const { amountOfItems } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const [showMenu, setShowMenu] = useState(false);
+  const amountOfItems = useSelector((state) => state.cart.amountOfItems);
 
   function openCartHandler() {
     dispatch(cartActions.toggleCart());

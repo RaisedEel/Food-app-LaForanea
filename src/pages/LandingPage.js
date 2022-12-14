@@ -9,7 +9,9 @@ import carousel2 from '../assets/images/carousel/carousel-2.png';
 import carousel3 from '../assets/images/carousel/carousel-3.jpg';
 
 function LandingPage() {
-  const { allRestaurants } = useSelector((state) => state.restaurants);
+  const allRestaurants = useSelector(
+    (state) => state.restaurants.allRestaurants
+  );
 
   return (
     <div

@@ -1,8 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSelector, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   showLogin: false,
-  isAuthenticated: false,
   currentProfile: -1,
   profiles: [
     {
@@ -31,13 +30,12 @@ const authenticationSlice = createSlice({
   initialState,
   reducers: {
     toggleLogin(state) {
-      if (state.isAuthenticated) return;
+      if (state.currentProfile !== -1) return;
       state.showLogin = !state.showLogin;
     },
     addProfile(state, action) {
       state.currentProfile = state.profiles.length;
       state.profiles.push(action.payload);
-      state.isAuthenticated = true;
       state.showLogin = false;
     },
     updateProfile(state, action) {
@@ -57,34 +55,33 @@ const authenticationSlice = createSlice({
       if (profileIndex === -1) return;
 
       state.currentProfile = profileIndex;
-      state.isAuthenticated = true;
       state.showLogin = false;
     },
     logout(state) {
       state.currentProfile = -1;
-      state.isAuthenticated = false;
     },
     toggleFavoriteRestaurant(state, action) {
-      if (
-        state.profiles[state.currentProfile].favored.includes(action.payload)
-      ) {
-        state.profiles[state.currentProfile].favored = state.profiles[
-          state.currentProfile
-        ].favored.filter((restaurant) => restaurant !== action.payload);
+      const currentProfile = state.profiles[state.currentProfile];
+
+      if (currentProfile.favored.includes(action.payload)) {
+        currentProfile.favored = currentProfile.favored.filter(
+          (restaurant) => restaurant !== action.payload
+        );
         return;
       }
 
-      state.profiles[state.currentProfile].favored.push(action.payload);
+      currentProfile.favored.push(action.payload);
     },
     updateReviews(state, action) {
-      const review = state.profiles[state.currentProfile].reviewed.find(
+      const currentProfile = state.profiles[state.currentProfile];
+      const review = currentProfile.reviewed.find(
         (review) => review.id === action.payload.id
       );
 
       if (review && action.payload.rating === 0) {
-        state.profiles[state.currentProfile].reviewed = state.profiles[
-          state.currentProfile
-        ].reviewed.filter((review) => review.id !== action.payload.id);
+        currentProfile.reviewed = currentProfile.reviewed.filter(
+          (review) => review.id !== action.payload.id
+        );
         return;
       }
 
@@ -93,10 +90,15 @@ const authenticationSlice = createSlice({
         return;
       }
 
-      state.profiles[state.currentProfile].reviewed.push(action.payload);
+      currentProfile.reviewed.push(action.payload);
     },
   },
 });
 
+export const selectCurrentProfile = createSelector(
+  (state) => state.authentication.profiles,
+  (state) => state.authentication.currentProfile,
+  (profiles, currentProfileIndex) => profiles[currentProfileIndex]
+);
 export const authenticationActions = authenticationSlice.actions;
 export default authenticationSlice;

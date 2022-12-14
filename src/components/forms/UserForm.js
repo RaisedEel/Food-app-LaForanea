@@ -13,7 +13,8 @@ function UserForm(props) {
   const { initialValues } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { profiles } = useSelector((state) => state.authentication);
+  const profiles = useSelector((state) => state.authentication.profiles);
+
   const [validatedName, setValidatedName] = useState(null);
   const [validatedEmail, setValidatedEmail] = useState(null);
   const [validatedPassword, setValidatedPassword] = useState(null);
