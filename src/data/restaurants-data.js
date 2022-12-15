@@ -1,4 +1,5 @@
 import restaurant from '../assets/images/restaurant.jpg';
+import { createMenu } from './menu-data';
 
 const restaurants = [
   {
@@ -21,6 +22,7 @@ const restaurants = [
       { type: 'IG', url: '' },
     ],
     categories: ['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Bebidas'],
+    menu: createMenu(['Hamburguesa', 'Hot dogs', 'Pizzas', 'Tacos', 'Bebidas']),
   },
   {
     id: '2',
@@ -41,6 +43,7 @@ const restaurants = [
       { type: 'IG', url: '' },
     ],
     categories: ['Hamburguesa', 'Bebidas'],
+    menu: createMenu(['Hamburguesa', 'Bebidas']),
   },
   {
     id: '3',
@@ -54,13 +57,14 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Tacos', 'Pizzas'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
+    categories: ['Tacos', 'Pizzas'],
+    menu: createMenu(['Tacos', 'Pizzas']),
   },
   {
     id: '4',
@@ -74,13 +78,14 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Hamburguesa'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
+    categories: ['Hamburguesa'],
+    menu: createMenu(['Hamburguesa']),
   },
   {
     id: '5',
@@ -93,13 +98,14 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Tacos'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
+    categories: ['Tacos'],
+    menu: createMenu(['Tacos']),
   },
   {
     id: '6',
@@ -112,13 +118,14 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Hamburguesa'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
+    categories: ['Hamburguesa'],
+    menu: createMenu(['Hamburguesa']),
   },
   {
     id: '7',
@@ -131,13 +138,14 @@ const restaurants = [
     address: '560 N KINGSLEY DR 111 LOS ANGELES CA 90004-1919',
     email: 'restaurant@gmail.com',
     cellphone: '755-555-6666',
-    categories: ['Hamburguesa'],
     social: [
       { type: 'FB', url: '' },
       { type: 'TW', url: '' },
       { type: 'WH', url: '' },
       { type: 'IG', url: '' },
     ],
+    categories: ['Hamburguesa'],
+    menu: createMenu(['Hamburguesa']),
   },
 ];
 

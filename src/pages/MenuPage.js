@@ -3,18 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import useMatchMedia from '../hooks/useMatchMedia';
 
-import { menuActions } from '../context/menu-slice';
 import Cart from '../components/cart/Cart';
 import Menu from '../components/menu/Menu';
 import RestaurantAccordion from '../components/menu/RestaurantAccordion';
-import menu from '../data/menu-data';
+import SelectField from '../components/forms/inputs/SelectField';
 import ArrowLink from '../components/ui/ArrowLink';
 import { FavoriteButton } from '../components/ui/RadiusButton';
+
+import { menuActions } from '../context/menu-slice';
 import {
   authenticationActions,
   selectCurrentProfile,
 } from '../context/authentication-slice';
-import SelectField from '../components/forms/inputs/SelectField';
 import {
   restaurantsActions,
   selectRestaurantById,
@@ -43,7 +43,7 @@ function MenuPage() {
       dispatch(
         menuActions.setMenu({
           owner: restaurant.restaurantOwner,
-          menu,
+          menu: restaurant.menu,
           categories: restaurant.categories,
         })
       );
@@ -122,7 +122,7 @@ function MenuPage() {
         <Fragment>
           <RestaurantAccordion data={restaurant} />
           <div className='grid grid--menu'>
-            <Menu categories={restaurant.categories} />
+            <Menu id={restaurant.id} categories={restaurant.categories} />
             {showCart && (
               <Cart
                 style={{

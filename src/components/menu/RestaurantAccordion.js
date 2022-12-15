@@ -21,7 +21,7 @@ function RestaurantAccordion(props) {
             alt={`Logo de ${props.data.name}`}
           />
           <p className={classes['restaurant-rating']}>
-            {(Math.round(props.data.rating[0] * 100) / 100).toFixed(1)}{' '}
+            {(Math.floor(props.data.rating[0] * 100) / 100).toFixed(1)}{' '}
             <svg
               xmlns='http://www.w3.org/2000/svg'
               viewBox='0 0 24 24'

@@ -143,11 +143,13 @@ const menu = [
   },
 ];
 
-function createMenu(numberOfItems) {
-  if (numberOfItems < 0) numberOfItems = 0;
-  if (numberOfItems >= menu.length) numberOfItems = menu.length - 1;
+function createMenu(categories) {
+  let newMenu = [];
+  for (const category of categories) {
+    newMenu = newMenu.concat(menu.filter((dish) => dish.category === category));
+  }
 
-  return menu.slice(numberOfItems);
+  return newMenu;
 }
 
 export { createMenu };

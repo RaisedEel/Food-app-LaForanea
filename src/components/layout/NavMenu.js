@@ -6,21 +6,15 @@ import {
   authenticationActions,
   selectCurrentProfile,
 } from '../../context/authentication-slice';
+import { selectRestaurantByOwner } from '../../context/restaurants-slice';
 import classes from './NavMenu.module.css';
 
 function NavMenu(props) {
   const dispatch = useDispatch();
   const currentProfile = useSelector(selectCurrentProfile);
-  const allRestaurants = useSelector(
-    (state) => state.restaurants.allRestaurants
+  const ownedRestaurant = useSelector((state) =>
+    selectRestaurantByOwner(state, currentProfile ? currentProfile.id : '')
   );
-
-  let myRestaurant = {};
-  if (currentProfile && currentProfile.type === 'owner') {
-    myRestaurant = allRestaurants.find(
-      (restaurant) => restaurant.restaurantOwner === currentProfile.id
-    );
-  }
 
   return (
     <nav className={classes.nav} onClick={props.closeMenu}>
@@ -87,7 +81,7 @@ function NavMenu(props) {
           <li>
             <NavLink
               className={classes['nav-link']}
-              to={`/restaurant/${myRestaurant.id}`}
+              to={`/restaurant/${ownedRestaurant.id}`}
               style={({ isActive }) =>
                 isActive
                   ? { backgroundColor: '#f97474', color: '#fff' }

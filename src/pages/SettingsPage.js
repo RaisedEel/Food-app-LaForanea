@@ -2,31 +2,27 @@ import { useSelector } from 'react-redux';
 import UserForm from '../components/forms/UserForm';
 import RestaurantForm from '../components/forms/RestaurantForm';
 import { selectCurrentProfile } from '../context/authentication-slice';
+import { selectRestaurantByOwner } from '../context/restaurants-slice';
 
 function SettingsPage() {
   const currentProfile = useSelector(selectCurrentProfile);
-  const allRestaurants = useSelector(
-    (state) => state.restaurants.allRestaurants
+  const ownedRestaurant = useSelector((state) =>
+    selectRestaurantByOwner(state, currentProfile.id)
   );
 
-  let currentRestaurant = {};
-  if (currentProfile.type === 'owner') {
-    currentRestaurant = allRestaurants.find(
-      (restaurant) => restaurant.restaurantOwner === currentProfile.id
-    );
+  const {
+    id: userId,
+    name: userName,
+    email: userEmail,
+    password,
+  } = currentProfile;
 
-    const { social } = currentRestaurant;
-
-    const {
-      id: userId,
-      name: userName,
-      email: userEmail,
-      password,
-    } = currentProfile;
-
+  let currentRestaurant = null;
+  if (ownedRestaurant) {
+    const { social } = ownedRestaurant;
     currentRestaurant = {
       ...social,
-      ...currentRestaurant,
+      ...ownedRestaurant,
       userId,
       userName,
       userEmail,

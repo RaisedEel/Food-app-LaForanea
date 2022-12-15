@@ -48,6 +48,11 @@
   transition: all 0.3s;
 }
 
+.delete-button {
+  background-color: #670d05;
+  align-self: flex-start;
+}
+
 .form-button:disabled {
   background-color: #888;
   cursor: default;

@@ -70,6 +70,63 @@ const restaurantsSlice = createSlice({
         (action.payload.newRating - restaurant.rating[0]) /
           restaurant.rating[1];
     },
+    addCategory(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (
+        !restaurant ||
+        restaurant.categories.includes(action.payload.category)
+      )
+        return;
+
+      restaurant.categories.push(action.payload.category);
+    },
+    updateCategory(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (
+        !restaurant ||
+        restaurant.categories.includes(action.payload.newCategory)
+      )
+        return;
+
+      const categoryIndex = restaurant.categories.findIndex(
+        (category) => category === action.payload.oldCategory
+      );
+
+      if (categoryIndex === -1) return;
+
+      restaurant.categories[categoryIndex] = action.payload.newCategory;
+      for (const dish of restaurant.menu) {
+        if (dish.category !== action.payload.oldCategory) {
+          continue;
+        }
+
+        dish.category = action.payload.newCategory;
+      }
+    },
+    removeCategory(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (!restaurant || restaurant.categories.length === 1) return;
+
+      restaurant.categories = restaurant.categories.filter(
+        (category) => category !== action.payload.category
+      );
+
+      restaurant.menu = restaurant.menu.filter(
+        (dish) => dish.category !== action.payload.category
+      );
+    },
+    addDish() {},
+    updateDish() {},
+    removeDish() {},
   },
 });
 
@@ -78,6 +135,13 @@ export const selectRestaurantById = createSelector(
   (state, id) => id,
   (allRestaurants, id) =>
     allRestaurants.find((restaurant) => restaurant.id === id)
+);
+
+export const selectRestaurantByOwner = createSelector(
+  (state) => state.restaurants.allRestaurants,
+  (state, ownerId) => ownerId,
+  (allRestaurants, ownerId) =>
+    allRestaurants.find((restaurant) => restaurant.restaurantOwner === ownerId)
 );
 export default restaurantsSlice;
 export const restaurantsActions = restaurantsSlice.actions;
