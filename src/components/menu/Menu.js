@@ -18,9 +18,10 @@ function Menu(props) {
   const dishListEl = useRef(null);
   const dispatch = useDispatch();
 
+  const restaurantId = useSelector((state) => state.menu.id);
   const restaurantOwner = useSelector((state) => state.menu.restaurantOwner);
   const currentCategory = useSelector((state) => state.menu.currentCategory);
-  const showDishForm = useSelector((state) => state.menu.showDishForm);
+  const dishFormState = useSelector((state) => state.menu.dishFormState);
   const currentProfile = useSelector(selectCurrentProfile);
 
   const [categoryFormState, setCategoryFormState] = useState({
@@ -46,7 +47,7 @@ function Menu(props) {
   }
 
   function openDishFormHandler() {
-    dispatch(menuActions.openDishForm());
+    dispatch(menuActions.openDishForm(null));
   }
 
   function closeDishFormHandler() {
@@ -63,13 +64,18 @@ function Menu(props) {
 
   return (
     <Fragment>
-      {showDishForm && (
+      {dishFormState.show && (
         <Modal
-          title='Agregar Platillo'
+          title='Platillo'
           preferredWidth='80rem'
           onClose={closeDishFormHandler}
         >
-          <DishForm />
+          <DishForm
+            restaurantId={restaurantId}
+            category={currentCategory}
+            initialValues={dishFormState.values ? dishFormState.values : null}
+            onClose={closeDishFormHandler}
+          />
         </Modal>
       )}
       {categoryFormState.show && (
@@ -79,6 +85,7 @@ function Menu(props) {
           onClose={closeCategoryFormHandler}
         >
           <CategoryForm
+            restaurantId={restaurantId}
             initialValue={categoryFormState.initialValue}
             onClose={closeCategoryFormHandler}
           />
@@ -87,19 +94,18 @@ function Menu(props) {
       <div className={classes.menu}>
         <div className={classes['categories']}>
           <SelectField
+            id='category-select'
             label='Categorías'
             options={props.categories}
             onChange={changeCategoryHandler}
             style={{ flex: '1' }}
           />
+
           {currentProfile &&
             currentProfile.type === 'owner' &&
             currentProfile.id === restaurantOwner && (
               <EditButton
-                onClick={openCategoryFormHandler.bind(null, {
-                  id: props.id,
-                  value: currentCategory,
-                })}
+                onClick={openCategoryFormHandler.bind(null, currentCategory)}
               />
             )}
         </div>
@@ -109,10 +115,7 @@ function Menu(props) {
             <div className={classes.controls}>
               <button
                 className='btn'
-                onClick={openCategoryFormHandler.bind(null, {
-                  id: props.id,
-                  value: null,
-                })}
+                onClick={openCategoryFormHandler.bind(null, null)}
               >
                 Agregar Categoría
               </button>

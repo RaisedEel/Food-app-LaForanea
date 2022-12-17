@@ -42,12 +42,13 @@ function MenuPage() {
     if (restaurant) {
       dispatch(
         menuActions.setMenu({
+          id: restaurant.id,
           owner: restaurant.restaurantOwner,
           menu: restaurant.menu,
           categories: restaurant.categories,
         })
       );
-      dispatch(menuActions.setCategory(0));
+      dispatch(menuActions.setCategory());
     }
   }, [dispatch, restaurant]);
 

@@ -36,7 +36,10 @@ function RestaurantAccordion(props) {
             </svg>
           </p>
         </div>
-        <h2 className='heading-secondary' style={{ color: '#fff' }}>
+        <h2
+          className='heading-secondary'
+          style={{ color: '#fff', overflow: 'hidden', wordWrap: 'break-word' }}
+        >
           {`${props.data.name} : ${props.data.type}`}
         </h2>
         <button

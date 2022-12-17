@@ -239,7 +239,6 @@ function RestaurantForm(props) {
           <InputField
             id='photo-input'
             label='Fotografía del Restaurante (Enlace)'
-            inputConfiguration={{ type: 'url' }}
             getValidatedValue={setValidatedPhoto}
             initialValue={initialValues ? initialValues.photo : null}
             editable={props.editable ? true : false}
@@ -252,6 +251,9 @@ function RestaurantForm(props) {
                 className={classes['form-img']}
                 src={validatedPhoto}
                 alt='&nbsp;Error: La imagen escogida no pudo ser encontrada. Revise que el enlace este correcto.'
+                onLoad={() => {
+                  setSubmitPlaceholder(false);
+                }}
                 onError={() => {
                   setSubmitPlaceholder(true);
                 }}

@@ -4,6 +4,7 @@ import { restaurantsActions } from '../../context/restaurants-slice';
 
 import InputField from './inputs/InputField';
 import classes from './Form.module.css';
+import { menuActions } from '../../context/menu-slice';
 
 function CategoryForm(props) {
   const dispatch = useDispatch();
@@ -16,35 +17,35 @@ function CategoryForm(props) {
 
     if (!validatedCategory) return;
 
-    if (props.initialValue.value) {
+    if (props.initialValue) {
       dispatch(
         restaurantsActions.updateCategory({
-          id: props.initialValue.id,
-          oldCategory: props.initialValue.value,
+          id: props.restaurantId,
+          oldCategory: props.initialValue,
           newCategory: validatedCategory,
         })
       );
-      props.onClose();
-      return;
+    } else {
+      dispatch(
+        restaurantsActions.addCategory({
+          id: props.restaurantId,
+          category: validatedCategory,
+        })
+      );
     }
 
-    dispatch(
-      restaurantsActions.addCategory({
-        id: props.initialValue.id,
-        category: validatedCategory,
-      })
-    );
-
+    dispatch(menuActions.setCategory(validatedCategory));
     props.onClose();
   }
 
   function deleteCategoryHandler() {
     dispatch(
       restaurantsActions.removeCategory({
-        id: props.initialValue.id,
+        id: props.restaurantId,
         category: validatedCategory,
       })
     );
+    dispatch(menuActions.setCategory(0));
     props.onClose();
   }
 
@@ -55,7 +56,7 @@ function CategoryForm(props) {
       onSubmit={onSubmitHandler}
     >
       <fieldset className={classes['form-fieldset']}>
-        {props.initialValue.value && (
+        {props.initialValue && (
           <p>
             <strong>Info:</strong> Eliminar una categoría con platillos
             eliminará también todos sus platillos.
@@ -67,27 +68,31 @@ function CategoryForm(props) {
           getValidatedValue={setValidatedCategory}
           validation={[
             {
+              condition: (value) => value.trim().length <= 60,
+              errorMessage: 'Este campo acepta un máximo de 60 caracteres',
+            },
+            {
               condition: (value) =>
-                !categories.includes(value) ||
-                props.initialValue.value === value,
+                !categories.includes(value) || props.initialValue === value,
               errorMessage: 'Existe otra categoría con el mismo nombre',
             },
           ]}
-          initialValue={props.initialValue.value}
+          initialValue={props.initialValue}
         />
 
-        {props.initialValue.value && (
+        {props.initialValue && (
           <button
             className={`${classes['form-button']} ${classes['delete-button']}`}
             type='button'
             onClick={deleteCategoryHandler}
+            disabled={categories.length === 1}
           >
             Eliminar Categoría
           </button>
         )}
       </fieldset>
       <button className={classes['form-button']} disabled={!validatedCategory}>
-        {props.initialValue.value ? 'Actualizar Categoría' : 'Crear Categoría'}
+        {props.initialValue ? 'Actualizar Categoría' : 'Agregar Categoría'}
       </button>
     </form>
   );

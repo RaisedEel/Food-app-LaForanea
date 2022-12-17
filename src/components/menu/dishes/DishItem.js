@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentProfile } from '../../../context/authentication-slice';
 
 import { cartActions } from '../../../context/cart-slice';
+import { menuActions } from '../../../context/menu-slice';
 import Modal from '../../ui/Modal';
 import { EditButton } from '../../ui/RadiusButton';
 import classes from './DishItem.module.css';
@@ -36,6 +37,10 @@ function DishItem(props) {
     dispatch(cartActions.addItemsToCart(item));
   }
 
+  function openDishFormHandler() {
+    dispatch(menuActions.openDishForm(props.id));
+  }
+
   return (
     <Fragment>
       {showViewModal && (
@@ -51,13 +56,14 @@ function DishItem(props) {
           />
         </Modal>
       )}
-      <li>
+      <li style={{ minWidth: '0' }}>
         <article className={classes.dish}>
           {currentProfile &&
             currentProfile.type === 'owner' &&
             currentProfile.id === restaurantOwner && (
               <EditButton
                 style={{ position: 'absolute', top: '0.5rem', right: '0.5rem' }}
+                onClick={openDishFormHandler}
               />
             )}
           <div className={classes['dish-img-container']}>

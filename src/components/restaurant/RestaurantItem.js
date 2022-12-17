@@ -18,7 +18,7 @@ function RestaurantItem(props) {
   }
 
   return (
-    <li>
+    <li style={{ minWidth: '0' }}>
       <Link
         to={`/restaurant/${props.id}`}
         className={classes['restaurant-link']}

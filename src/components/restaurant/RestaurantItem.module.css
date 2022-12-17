@@ -38,7 +38,7 @@
 }
 
 .restaurant-subheading {
-  align-self: flex-start;
+  max-width: fit-content;
   text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 600;
@@ -46,10 +46,16 @@
   border-radius: 5px;
   padding: 0.4rem 0.8rem;
   background-color: #ffd597;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .restaurant-heading {
   font-size: 2.4rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   transition: all 0.4s;
 }
 

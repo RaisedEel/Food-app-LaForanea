@@ -124,9 +124,50 @@ const restaurantsSlice = createSlice({
         (dish) => dish.category !== action.payload.category
       );
     },
-    addDish() {},
-    updateDish() {},
-    removeDish() {},
+    addDish(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (
+        !restaurant ||
+        restaurant.menu.some((dish) => dish.name === action.payload.dish.name)
+      )
+        return;
+
+      const highest = restaurant.menu.reduce(
+        (highest, value) => Math.max(highest, value.id),
+        0
+      );
+
+      restaurant.menu.unshift({ ...action.payload.dish, id: highest + 1 });
+    },
+    updateDish(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (!restaurant) return;
+
+      const dishIndex = restaurant.menu.findIndex(
+        (dish) => dish.id === +action.payload.dish.id
+      );
+
+      if (dishIndex === -1) return;
+
+      restaurant.menu[dishIndex] = action.payload.dish;
+    },
+    removeDish(state, action) {
+      const restaurant = state.allRestaurants.find(
+        (restaurant) => restaurant.id === action.payload.id
+      );
+
+      if (!restaurant) return;
+
+      restaurant.menu = restaurant.menu.filter(
+        (dish) => dish.id !== action.payload.dishId
+      );
+    },
   },
 });
 
