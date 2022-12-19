@@ -87,7 +87,7 @@ const menu = [
     description:
       'Curry de brotes mixtos altamente nutritivo y saludable hecho con una combinación de lentejas germinadas, frijoles, nueces y semillas.',
     image:
-      'https://photo2.foodgawker.com/wp-content/uploads/2021/06/3733317.https://photo.foodgawker.com/wp-content/uploads/2022/12/3878374.jpg',
+      'https://photo.foodgawker.com/wp-content/uploads/2022/12/3878374.jpg',
   },
   {
     id: 10,
@@ -97,7 +97,7 @@ const menu = [
     description:
       'Esta sopa de tomate con arroz salvaje es un cambio de la versión cremosa tradicional. Cargado con verduras y tomates, es una gran variación de la versión habitual.',
     image:
-      'https://photo2.foodgawker.com/wp-content/uploads/2021/06/3733317.https://photo2.foodgawker.com/wp-content/uploads/2022/12/3876133.jpeg',
+      'https://photo2.foodgawker.com/wp-content/uploads/2022/12/3876133.jpeg',
   },
   {
     id: 11,
