@@ -39,6 +39,10 @@ function MenuPage() {
   }
 
   useEffect(() => {
+    dispatch(menuActions.resetMenu());
+  }, [dispatch]);
+
+  useEffect(() => {
     if (restaurant) {
       dispatch(
         menuActions.setMenu({

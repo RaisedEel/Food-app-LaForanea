@@ -17,6 +17,9 @@ const menuSlice = createSlice({
   name: 'menu',
   initialState: initialMenu,
   reducers: {
+    resetMenu() {
+      return initialMenu;
+    },
     setMenu(state, action) {
       state.id = action.payload.id;
       state.restaurantOwner = action.payload.owner;

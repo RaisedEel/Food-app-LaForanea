@@ -4,11 +4,12 @@ import InputField from './inputs/InputField';
 import classes from './Form.module.css';
 
 import placeholder from '../../assets/images/placeholders/dish-photo.jpg';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { restaurantsActions } from '../../context/restaurants-slice';
 
 function DishForm(props) {
   const dispatch = useDispatch();
+  const menuSlice = useSelector((state) => state.menu.slice);
   const [validatedName, setValidatedName] = useState(null);
   const [validatedPrice, setValidatedPrice] = useState(null);
   const [validatedPhoto, setValidatedPhoto] = useState(null);
@@ -67,6 +68,13 @@ function DishForm(props) {
           inputConfiguration={{ placeholder: 'Nombre del Platillo' }}
           getValidatedValue={setValidatedName}
           validation={[
+            {
+              condition: (value) =>
+                !menuSlice.some((dish) => dish.name === value) ||
+                (props.initialValues && props.initialValues.name === value),
+              errorMessage:
+                'Otro platillo de la categoría contiene el mismo nombre',
+            },
             {
               condition: (value) => value.trim().length <= 40,
               errorMessage: 'Este campo acepta un máximo de 40 caracteres',

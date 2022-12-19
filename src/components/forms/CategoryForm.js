@@ -25,6 +25,7 @@ function CategoryForm(props) {
           newCategory: validatedCategory,
         })
       );
+      dispatch(menuActions.setCategory(validatedCategory));
     } else {
       dispatch(
         restaurantsActions.addCategory({
@@ -34,7 +35,6 @@ function CategoryForm(props) {
       );
     }
 
-    dispatch(menuActions.setCategory(validatedCategory));
     props.onClose();
   }
 
@@ -59,7 +59,7 @@ function CategoryForm(props) {
         {props.initialValue && (
           <p>
             <strong>Info:</strong> Eliminar una categoría con platillos
-            eliminará también todos sus platillos.
+            eliminará también a todos sus platillos.
           </p>
         )}
         <InputField
