@@ -90,7 +90,7 @@ function Footer() {
               <li>
                 <a
                   className={classes['footer-action']}
-                  href='/'
+                  href='https://github.com/RaisedEel/Food-app-LaForanea'
                   target='_blank'
                   rel='noreferrer'
                 >
